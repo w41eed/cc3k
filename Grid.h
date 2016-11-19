@@ -9,6 +9,6 @@ class Grid {
  public:
  void init(std::ifstream &file);
  void printIt();
-
+ ~Grid();
 
 };

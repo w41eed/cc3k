@@ -1,7 +1,7 @@
 #include "DoorWay.h"
 
 
-DoorWay::DoorWay() : Cell{'+'} {
+DoorWay::DoorWay(int x, int y) : Cell{'+', x, y} {
 
 
 }

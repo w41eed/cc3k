@@ -1,6 +1,6 @@
 #include "FloorTile.h"
 
-FloorTile::FloorTile() : Cell{'.'} {
+FloorTile::FloorTile(int x, int y) : Cell{'.', x ,y} {
 }
 
 char FloorTile::getChar() {

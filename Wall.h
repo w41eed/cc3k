@@ -4,7 +4,7 @@ class Wall: public Cell {
  bool hor;
 
  public:
- Wall(bool hor);
- char getChar();
+ Wall(char, int, int);
+ char getChar() override;
 
 };

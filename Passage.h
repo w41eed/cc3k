@@ -6,7 +6,7 @@ class Passage : public Cell {
 
 
 public:
- Passage();
- char getChar();
+ Passage(int, int);
+ char getChar() override;
 
 };

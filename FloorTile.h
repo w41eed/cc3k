@@ -4,7 +4,7 @@ class FloorTile: public Cell {
 
 
 public:
- FloorTile();
- char getChar();
+ FloorTile(int, int);
+ char getChar() override;
 
 };

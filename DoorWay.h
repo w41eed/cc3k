@@ -5,7 +5,7 @@ class DoorWay: public Cell {
 
 
 public:
- DoorWay();
- char getChar();
+ DoorWay(int, int);
+ char getChar() override;
 
 };
