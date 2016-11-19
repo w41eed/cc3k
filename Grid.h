@@ -1,8 +1,9 @@
 #include <vector>
 #include <fstream>
+#include "Cell.h"
 
 class Grid {
- std::vector<std::vector<char> > theGrid;
+ std::vector<std::vector<Cell *>> theGrid;
  int gridLen;
 
  public:
