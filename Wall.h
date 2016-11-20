@@ -2,7 +2,6 @@
 
 
 class Wall: public Cell {
- bool hor;
 
  public:
  Wall(char, int, int);
