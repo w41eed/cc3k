@@ -5,8 +5,10 @@
 #ifndef CC_3K_MERCHANT_H
 #define CC_3K_MERCHANT_H
 
+#include "Enemy.h"
 
-class Merchant {
+
+class Merchant: public Enemy {
 public:
     Merchant();
     void move() override ;

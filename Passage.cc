@@ -1,4 +1,7 @@
 #include "Passage.h"
+#include <iostream>
+
+using namespace std;
 
 Passage::Passage(int x, int y): Cell{'#', x, y} {}
 
