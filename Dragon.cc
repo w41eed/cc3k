@@ -13,5 +13,5 @@ void Dragon::move() {
 }
 
 char Dragon::getChar() {
-    return 'd';
+    return 'D';
 }

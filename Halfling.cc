@@ -13,5 +13,5 @@ void Halfing::move() {
 }
 
 char Halfing::getChar() {
-    return 'f';
+    return 'L';
 }

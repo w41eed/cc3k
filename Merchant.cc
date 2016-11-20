@@ -14,5 +14,5 @@ void Merchant::move() {
 }
 
 char Merchant::getChar() {
-    return 'm';
+    return 'M';
 }

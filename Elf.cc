@@ -14,5 +14,5 @@ void Elf::move() {
 }
 
 char Elf::getChar() {
-    return 'e';
+    return 'E';
 }

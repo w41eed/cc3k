@@ -12,5 +12,5 @@ void Dwarf::move() {
 }
 
 char Dwarf::getChar() {
-    return 'd';
+    return 'W';
 }

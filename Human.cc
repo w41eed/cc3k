@@ -11,5 +11,5 @@ void Human::move() {
 }
 
 char Human::getChar() {
-    return 'h';
+    return 'H';
 }
