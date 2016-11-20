@@ -13,5 +13,7 @@ class Grid {
  void init(std::ifstream &file);
  void printIt();
  ~Grid();
+ bool canWalk(int, int);
+ bool canPlace(int, int);
 
 };
