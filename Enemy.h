@@ -14,10 +14,10 @@ protected:
     int *goldDrop;
 public:
     Enemy(int HP, int Atk, int Def);
-    virtual ~Enemy();
-    void setHostile();
-    bool isHostile();
-    virtual int attack(Player *p);
+    virtual ~Enemy() = 0;
+    void setHostile() = 0;
+    bool isHostile() = 0;
+    virtual int attack(Player *p) = 0;
 
 };
 
