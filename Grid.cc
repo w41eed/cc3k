@@ -32,8 +32,8 @@ void Grid::init(ifstream &file) {
   for (int i = 0; i < 79; ++i) {
    char curChar = s[i];
 
-   if (curChar == '_') {
-    theGrid[i][row] = new Wall('_', i, row);
+   if (curChar == '-') {
+    theGrid[i][row] = new Wall('-', i, row);
     theGrid[i][row]->attach(td);
     theGrid[i][row]->notifyObservers();
    } else if (curChar == '|') {
@@ -75,10 +75,18 @@ cout << *td;
 }
 
 bool Grid::canWalk(int x, int y) {
+ if (theGrid[x][y] == nullptr) {
+  return false;
+ }
+
  return theGrid[x][y]->canWalk();
 }
 
 bool Grid::canPlace(int x, int y) {
+ if (theGrid[x][y] == nullptr) {
+  return false;
+ }
+
  return theGrid[x][y]->canWalk();
 }
 

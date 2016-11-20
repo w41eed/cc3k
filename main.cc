@@ -65,27 +65,54 @@ int main() {
      c->setX(curX + 1);
      c->setY(curY);
     }
-   } else if (input == "q") {
-    break;
+   } else if (input == "so") {
+    if (g.canWalk(curX, curY + 1)) {
+     g.moveOff(curX, curY);
+     g.place(curX, curY + 1, c);
+     c->setX(curX);
+     c->setY(curY + 1);
+    }
+   } else if (input == "we") {
+    if (g.canWalk(curX - 1, curY)) {
+     g.moveOff(curX, curY);
+     g.place(curX - 1, curY, c);
+     c->setX(curX - 1);
+     c->setY(curY);
+    }
+   } else if (input == "ne") {
+    if (g.canWalk(curX + 1, curY - 1)) {
+     g.moveOff(curX, curY);
+     g.place(curX + 1, curY - 1, c);
+     c->setX(curX + 1);
+     c->setY(curY - 1);
+    }
+   } else if (input == "nw") {
+    if (g.canWalk(curX - 1, curY - 1)) {
+     g.moveOff(curX, curY);
+     g.place(curX - 1, curY - 1, c);
+     c->setX(curX - 1);
+     c->setY(curY - 1);
+    }
+   } else if (input == "se") {
+    if (g.canWalk(curX + 1, curY + 1)) {
+     g.moveOff(curX, curY);
+     g.place(curX + 1, curY + 1, c);
+     c->setX(curX + 1);
+     c->setY(curY + 1);
+    }
+   } else if (input == "sw") {
+    if (g.canWalk(curX - 1, curY + 1)) {
+     g.moveOff(curX, curY);
+     g.place(curX - 1, curY + 1, c);
+     c->setX(curX - 1);
+     c->setY(curY + 1);
+    }
    }
 
-
-
-
-  
-
+ else if (input == "q") {
+    break;
+   }
    g.printIt();
-
-
-
-
-
-
  }
-
-
-
-
  return 0;
-
 }
