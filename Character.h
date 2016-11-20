@@ -2,21 +2,21 @@
 #define CHARACTER_H
 
 class Character {
- int HP;
- int Atk;
- int Def;
- int gold;
- int xCo;
- int yCo;
+ int HP; // health
+ int Atk; // attack power
+ int Def; // defence
+ int gold; // current gold
+ int xCo; // current x coordinate
+ int yCo; // current y coordinate
 
  public:
- Character(int, int, int, int, int, int);
- virtual ~Character();
- virtual char getChar() = 0;
- void setX(int);
- void setY(int);
- int getX();
- int getY();
+ Character(int, int, int, int, int, int); // ctor
+ virtual ~Character(); // dtor
+ virtual char getChar() = 0; // returns char to be printed
+ void setX(int); // sets X val of current Character
+ void setY(int); // sets Y val of current Character
+ int getX(); // returns X val
+ int getY(); // returns Y val
 
 
 

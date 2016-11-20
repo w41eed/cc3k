@@ -7,7 +7,7 @@ class Troll: public Player {
 
 
 public:
- Troll();
+ Troll(); //ctor
 
 
 };

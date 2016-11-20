@@ -6,21 +6,21 @@
 
 class Cell: public Subject{
 protected:
- char symbol;
- int x;
- int y;
- Character *c;
+ char symbol; // symbol to be printed
+ int x; // x coordinate
+ int y; // y coordinate
+ Character *c; // ability for character to stand atop
 
 public:
- virtual char getChar() = 0;
- virtual bool canWalk() = 0;
- virtual bool canPlace() = 0;
- virtual void place(Character *) = 0;
- virtual void moveOff() = 0;
- virtual ~Cell();
- Cell(char, int, int);
- int getX() override;
- int getY() override;
+ virtual char getChar() = 0; // gets character to be printed
+ virtual bool canWalk() = 0; // checks if Cell can be walked on
+ virtual bool canPlace() = 0; // checks if Cell can be placed on
+ virtual void place(Character *) = 0; // place Character on Cell
+ virtual void moveOff() = 0; // move item/character off Cell
+ virtual ~Cell(); // dtor
+ Cell(char, int, int); // ctor
+ int getX() override; // returns x coordinate
+ int getY() override; // returns y coordinate
 
 
 };

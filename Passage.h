@@ -9,12 +9,12 @@ class Passage : public Cell {
 
 
 public:
- Passage(int, int);
- char getChar() override;
- bool canWalk() override;
- bool canPlace() override;
- void place(Character *) override;
- void moveOff() override;
+ Passage(int, int); //ctor
+ char getChar() override; // gets char to be printed
+ bool canWalk() override; // can walk atop
+ bool canPlace() override; // can place atop
+ void place(Character *) override; // place Character atop
+ void moveOff() override; // move Character/Item off
 };
 
 #endif

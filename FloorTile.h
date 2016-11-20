@@ -8,12 +8,12 @@ class FloorTile: public Cell {
 
 
 public:
- FloorTile(int, int);
- char getChar() override;
- bool canPlace() override;
- bool canWalk() override;
- void place(Character *) override;
- void moveOff() override;
+ FloorTile(int, int); // ctor
+ char getChar() override; // returns char to be printed
+ bool canPlace() override; // can place atop
+ bool canWalk() override; // can walk atop
+ void place(Character *) override; // place Character atop
+ void moveOff() override; // move Character/Item off
 
 };
 

@@ -9,8 +9,8 @@ class Player: public Character {
 
 
 public:
- Player(int, int, int, int);
- char getChar();
+ Player(int, int, int, int); //ctor
+ char getChar(); // gets char to be printed
 };
 
 #endif

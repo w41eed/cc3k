@@ -8,9 +8,11 @@
 
 using namespace std;
 
+// ctor
 Grid::Grid() :
  td{nullptr} {}
 
+// initialize from map text file
 void Grid::init(ifstream &file) {
 
  if (td == nullptr) {
@@ -61,6 +63,7 @@ void Grid::init(ifstream &file) {
  }
 }
 
+// dtor
 Grid::~Grid() {
 
  delete td;
@@ -79,11 +82,13 @@ Grid::~Grid() {
 
 }
 
+// prints the Grid
 void Grid::printIt() {
 
 cout << *td;
 }
 
+// checks if Cell at x,y is walkable
 bool Grid::canWalk(int x, int y) {
  if (theGrid[x][y] == nullptr) {
   return false;
@@ -92,6 +97,7 @@ bool Grid::canWalk(int x, int y) {
  return theGrid[x][y]->canWalk();
 }
 
+//checks if Cell at x,y is placeable
 bool Grid::canPlace(int x, int y) {
  if (theGrid[x][y] == nullptr) {
   return false;
@@ -100,6 +106,7 @@ bool Grid::canPlace(int x, int y) {
  return theGrid[x][y]->canWalk();
 }
 
+// place Character at x, y
 bool Grid::place(int x, int y, Character *other) {
  if (theGrid[x][y]->canWalk()) {
   theGrid[x][y]->place(other);
@@ -109,6 +116,7 @@ bool Grid::place(int x, int y, Character *other) {
  }
 }
 
+// move Character/Item off Cell at x,y
 void Grid::moveOff(int x, int y) {
  theGrid[x][y]->moveOff();
 }

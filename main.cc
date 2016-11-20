@@ -46,17 +46,11 @@ cin >> c;
  }
 }
 
-
-
-
-
-
-
-
-
 int main() {
 
  // reads in file name
+ cout << "Please enter map file: ";
+
  string fileName;
  cin >> fileName;
 
@@ -79,7 +73,7 @@ int main() {
  int curX;
  int curY;
 
-
+// command loop
  while(1) {
   cin >> input;
   if (cin.fail()) {

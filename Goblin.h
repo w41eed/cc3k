@@ -7,15 +7,9 @@ class Goblin: public Player {
 
 
 public:
- Goblin();
+ Goblin(); // ctor
 
 
 };
-
-
-
-
-
-
 
 #endif

@@ -1,11 +1,10 @@
 #include "DoorWay.h"
 
-
+// ctor
 DoorWay::DoorWay(int x, int y) : Cell{'+', x, y} {
-
-
 }
 
+// returns char to be printed
 char DoorWay::getChar() {
  if (c == nullptr) {
   return symbol;
@@ -14,19 +13,23 @@ char DoorWay::getChar() {
  }
 }
 
+// returns can walk on top
 bool DoorWay::canWalk() {
  return true;
 }
 
+// returns can place on top
 bool DoorWay::canPlace() {
  return false;
 }
 
+// place Character atop
 void DoorWay::place(Character *other) {
  c = other;
  notifyObservers();
 }
 
+// remove Character from atop
 void DoorWay::moveOff() {
  c = nullptr;
  notifyObservers();
