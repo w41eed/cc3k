@@ -12,7 +12,10 @@ class Character {
  public:
  Character(int, int, int, int, int, int);
  virtual char getChar() = 0;
- virtual void move() = 0;
+ void setX(int);
+ void setY(int);
+ int getX();
+ int getY();
 
 
 
