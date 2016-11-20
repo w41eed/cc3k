@@ -1,4 +1,6 @@
-//
-// Created by john on 19/11/16.
-//
+#include "Character.h"
+#include "Enemy.h"
 
+Enemy::Enemy(int HP, int Atk, int Def) : Character(HP, Atk, Def) {
+
+}
