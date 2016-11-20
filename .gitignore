@@ -3,3 +3,4 @@
 CMakeLists.txt
 *.o
 *.d
+*.gch
