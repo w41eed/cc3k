@@ -4,7 +4,10 @@
 #include "DragonGold.h"
 
 //Constructor for DragonGold
-DragonGold::DragonGold(): value{4}, symbol{'G'} {}
+DragonGold::DragonGold(){
+	value = 6;
+	symbol = 'G';
+}
 
 //Returns the value of DragonGold
 int DragonGold::getVal(){ return value;}

@@ -4,7 +4,10 @@
 #include "SmallGold.h"
 
 //Constructor for SmallGold
-SmallGold::SmallGold(): value{1}, symbol{'G'} {}
+SmallGold::SmallGold(){
+	value = 1;
+	symbol = 'G';
+}
 
 //Returns the value of SmallGold
 int SmallGold::getVal(){ return value;}

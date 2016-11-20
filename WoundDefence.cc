@@ -6,7 +6,11 @@
 #include "WoundDefence.h"
 
 //Constructor
-WoundDefence::WoundDefence(): symbol{'P'}, amount{-5}, potionType{"WD"} {}
+WoundDefence::WoundDefence(){
+	symbol = 'P';
+  	amount = (-5);
+  	potionType = "WD";
+}
 
 //Returns the amount
 int WoundDefence::getAmount(){ return amount;}

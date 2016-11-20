@@ -6,7 +6,11 @@
 #include "RestoreHealth.h"
 
 //Constructor
-RestoreHealth::RestoreHealth(): symbol{'P'}, amount{10}, potionType{"RH"} {}
+RestoreHealth::RestoreHealth(){
+	symbol = 'P';
+  	amount = 10;
+  	potionType = "RH";
+}
 
 //Returns the amount
 int RestoreHealth::getAmount(){ return amount;}

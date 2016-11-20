@@ -16,3 +16,5 @@ class Potions: Item {
 		virtual std::string getType() = 0; //returns the type of potion
 		virtual ~Potions() {} //destructor for Potions
 };
+
+#endif

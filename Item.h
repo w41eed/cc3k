@@ -5,7 +5,7 @@
 #define ITEM_H
 
 class Item {
-
+	public:
 	virtual ~Item() {}	
 
 };

@@ -6,7 +6,11 @@
 #include "BoostDefence.h"
 
 //Constructor
-BoostDefence::BoostDefence(): symbol{'P'}, amount{5}, potionType{"BD"} {}
+BoostDefence::BoostDefence(){
+	symbol = 'P';
+  	amount = 5;
+  	potionType = "BD";
+}
 
 //Returns the amount
 int BoostDefence::getAmount(){ return amount;}

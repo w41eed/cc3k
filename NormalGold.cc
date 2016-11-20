@@ -4,7 +4,10 @@
 #include "NormalGold.h"
 
 //Constructor for NormalGold
-NormalGold::NormalGold(): value{2}, symbol{'G'} {}
+NormalGold::NormalGold(){
+	value = 2;
+	symbol = 'G';
+}
 
 //Returns the value of NormalGold
 int NormalGold::getVal(){ return value;}

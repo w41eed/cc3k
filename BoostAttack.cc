@@ -6,7 +6,12 @@
 #include "BoostAttack.h"
 
 //Constructor
-BoostAttack::BoostAttack(): symbol{'P'}, amount{5}, potionType{"BA"} {}
+BoostAttack::BoostAttack(){
+
+	symbol = 'P';
+  	amount = 5;
+  	potionType = "BA";
+}
 
 //Returns the amount
 int BoostAttack::getAmount(){ return amount;}
@@ -18,4 +23,4 @@ char BoostAttack::getSym(){ return symbol;}
 std::string BoostAttack::getType(){ return potionType;}
 
 //Destructor
-BoostAttack::~RBoostAttack(){}
+BoostAttack::~BoostAttack(){}

@@ -14,7 +14,7 @@ public:
 					 //potionType = WD
 	int getAmount(); //gets the amount
 	char getSym(); //gets the symbol
-	std:string getType(); //gets the type of potion
+	std::string getType(); //gets the type of potion
 	~WoundDefence ();
 
 };

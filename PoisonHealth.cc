@@ -6,7 +6,12 @@
 #include "PoisonHealth.h"
 
 //Constructor
-PoisonHealth::PoisonHealth(): symbol{'P'}, amount{-10}, potionType{"PH"} {}
+PoisonHealth::PoisonHealth(){
+  	symbol = 'P';
+  	amount = (-10);
+  	potionType = "PH";
+
+}
 
 //Returns the amount
 int PoisonHealth::getAmount(){ return amount;}

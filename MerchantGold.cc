@@ -4,7 +4,10 @@
 #include "MerchantGold.h"
 
 //Constructor for MerchantGold
-MerchantGold::MerchantGold(): value{4}, symbol{'G'} {}
+MerchantGold::MerchantGold(){
+	value = 4;
+	symbol = 'G';
+}
 
 //Returns the value of MerchantGold
 int MerchantGold::getVal(){ return value;}
