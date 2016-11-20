@@ -16,6 +16,7 @@ public:
     virtual ~Enemy();
     virtual int attack(Player *p) = 0;
     virtual void move() = 0;
+    virtual char getChar() = 0;
 };
 
 

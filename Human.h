@@ -11,6 +11,7 @@ class Human: public Enemy {
 public:
     Human();
     void move() override;
+    char getChar() override;
 };
 
 
