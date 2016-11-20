@@ -12,6 +12,7 @@ class Dwarf: public Enemy {
 public:
     Dwarf();
     void move() override;
+    char getChar() override;
 };
 
 

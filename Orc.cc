@@ -10,4 +10,8 @@ void Orc::move() {
 
 }
 
+char Orc::getChar() {
+    return 'o';
+}
+
 

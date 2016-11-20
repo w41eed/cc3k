@@ -12,6 +12,7 @@ class Elf: public Enemy {
 public:
     Elf();
     void move() override;
+    char getChar() override;
 };
 
 

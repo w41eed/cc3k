@@ -12,3 +12,7 @@ void Elf::move() {
 //    TODO: implement move for enemy
 
 }
+
+char Elf::getChar() {
+    return 'e';
+}

@@ -11,8 +11,8 @@
 class Merchant: public Enemy {
 public:
     Merchant();
-    void move() override ;
-
+    void move() override;
+    char getChar() override;
 };
 
 

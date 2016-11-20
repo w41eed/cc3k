@@ -12,3 +12,7 @@ Merchant::Merchant(): Enemy(30, 70, 5, 4){
 void Merchant::move() {
 
 }
+
+char Merchant::getChar() {
+    return 'm';
+}

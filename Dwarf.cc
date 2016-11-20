@@ -10,3 +10,7 @@ Dwarf::Dwarf(): Enemy( 100, 20, 30,1) {
 void Dwarf::move() {
 
 }
+
+char Dwarf::getChar() {
+    return 'd';
+}

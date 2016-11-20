@@ -12,7 +12,7 @@ class Halfing: public Enemy {
 public:
     Halfing();
     void move() override;
-
+    char getChar() override;
 };
 
 

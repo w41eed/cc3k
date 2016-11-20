@@ -11,7 +11,7 @@ class Orc: public Enemy {
 public:
     Orc();
     void move() override ;
-
+    char getChar() override;
 };
 
 

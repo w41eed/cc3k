@@ -11,3 +11,7 @@ Halfing::Halfing(): Enemy(100, 15, 20, 1){
 void Halfing::move() {
 
 }
+
+char Halfing::getChar() {
+    return 'f';
+}
