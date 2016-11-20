@@ -6,3 +6,11 @@ Wall::Wall(char c, int x, int y) :
 char Wall::getChar() {
  return symbol;
 }
+
+bool Wall::canWalk() {
+ return false;
+}
+
+bool Wall::canPlace() {
+ return false;
+}

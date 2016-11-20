@@ -6,5 +6,6 @@ class Wall: public Cell {
  public:
  Wall(char, int, int);
  char getChar() override;
-
+ bool canWalk() override;
+ bool canPlace() override;
 };
