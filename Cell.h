@@ -17,7 +17,7 @@ public:
  virtual bool canPlace() = 0;
  virtual void place(Character *) = 0;
  virtual void moveOff() = 0;
- virtual ~Cell() = 0;
+ virtual ~Cell();
  Cell(char, int, int);
  int getX() override;
  int getY() override;

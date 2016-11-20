@@ -11,6 +11,7 @@ class Character {
 
  public:
  Character(int, int, int, int, int, int);
+ virtual ~Character();
  virtual char getChar() = 0;
  void setX(int);
  void setY(int);

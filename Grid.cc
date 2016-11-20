@@ -62,11 +62,21 @@ void Grid::init(ifstream &file) {
 }
 
 Grid::~Grid() {
+
+ delete td;
+
  for (int i = 0; i < 79; ++i) {
   for (int j = 0; j < 25; ++j) {
    delete theGrid[i][j];
   }
  }
+
+ for (int i = 0; i < 79; ++i) {
+  theGrid[i].resize(0);
+ }
+
+ theGrid.resize(0);
+
 }
 
 void Grid::printIt() {
