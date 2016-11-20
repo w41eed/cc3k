@@ -81,3 +81,12 @@ bool Grid::canWalk(int x, int y) {
 bool Grid::canPlace(int x, int y) {
  return theGrid[x][y]->canWalk();
 }
+
+bool Grid::place(int x, int y, Character *other) {
+ if (theGrid[x][y]->canPlace()) {
+  theGrid[x][y]->place(other);
+  return true;
+ } else {
+  return false;
+ }
+}

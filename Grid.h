@@ -15,5 +15,6 @@ class Grid {
  ~Grid();
  bool canWalk(int, int);
  bool canPlace(int, int);
+ bool place(int, int, Character *);
 
 };
