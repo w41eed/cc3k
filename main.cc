@@ -16,6 +16,7 @@
 #include "Elf.h"
 #include "Merchant.h"
 #include "Dragon.h"
+#include "Halfling.h"
 
 using namespace std;
 
