@@ -8,7 +8,9 @@
 #include "Enemy.h"
 
 class Human: public Enemy {
-
+public:
+    Human();
+    void move() override;
 };
 
 

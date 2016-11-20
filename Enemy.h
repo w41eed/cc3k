@@ -10,15 +10,12 @@ class Player;
 
 class Enemy: public Character {
 protected:
-    bool hostility;
-    int *goldDrop;
+    int goldDrop;
 public:
-    Enemy(int HP, int Atk, int Def);
+    Enemy(int HP, int Atk, int Def, int gold);
     virtual ~Enemy();
-    void setHostile();
-    bool isHostile();
-    virtual int attack(Player *p);
-
+    virtual int attack(Player *p) = 0;
+    virtual void move() = 0;
 };
 
 
