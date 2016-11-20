@@ -7,7 +7,6 @@ Passage::Passage(int x, int y): Cell{'#', x, y} {}
 
 char Passage::getChar() {
  if (c == nullptr) {
-  cout << "C WAS NULL" << endl;
   return symbol;
  } else {
   return c->getChar();

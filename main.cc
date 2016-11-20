@@ -9,6 +9,13 @@
 #include "Vampire.h"
 #include "Troll.h"
 #include "Goblin.h"
+#include "Enemy.h"
+#include "Orc.h"
+#include "Human.h"
+#include "Dwarf.h"
+#include "Elf.h"
+#include "Merchant.h"
+#include "Dragon.h"
 
 using namespace std;
 
@@ -30,7 +37,7 @@ int main() {
  g.place(4, 4, c);
  g.printIt();
 
- cout << "Moving" << endl;
+ cout << "Please enter command: ";
 
  string input;
 
