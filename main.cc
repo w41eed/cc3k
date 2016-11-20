@@ -20,6 +20,40 @@
 
 using namespace std;
 
+
+
+
+Character *selectCharacter() {
+cout << "Please select your class: ";
+char c;
+cin >> c;
+
+ if (c == 's') {
+  cout << "Shade selected." << endl;
+  return new Shade;
+ } else if (c == 'd') {
+  cout << "Drow selected." << endl;
+  return new Drow;
+ } else if (c == 'v') {
+  cout << "Vampire selected." << endl;
+  return new Vampire;
+ } else if (c == 'g') {
+  cout << "Goblin selected." << endl;
+  return new Goblin;
+ } else{
+  cout << "Troll selected." << endl;
+  return new Troll;
+ }
+}
+
+
+
+
+
+
+
+
+
 int main() {
 
  // reads in file name
@@ -28,7 +62,7 @@ int main() {
 
  ifstream file(fileName);
 
- Character *c = new Shade;
+ Character *c = selectCharacter();
 
  Grid g;
  g.init(file);
