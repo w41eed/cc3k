@@ -65,6 +65,30 @@ cin >> c;
 }
 
 
+
+
+void randPlace(Character *ch, Grid &g) {
+
+ int x;
+ int y;
+
+ while(1) {
+  x = getRand(0, 78);
+  y = getRand(0, 24);
+
+ char c = g.getChar(x, y);
+
+  if (g.canWalk(x,y) && c != '+' && c != '#') {
+   g.place(x, y, ch);
+   break;
+  }
+ }
+
+}
+
+
+
+
 int main() {
 
  srand(time(0));
@@ -85,20 +109,15 @@ int main() {
  file.close();
 
 
- int x;
- int y;
+ randPlace(c, g);
 
- while(1) {
-  x = getRand(0, 78);
-  y = getRand(0, 24);
 
- char ch = g.getChar(x, y);
+ Enemy *e1 = new Human;
+ Enemy *e2 = new Orc;
+ randPlace(e1, g);
+ randPlace(e2, g);
 
-  if (g.canWalk(x,y) && ch != '+' && ch != '#') {
-   g.place(x, y, c);
-   break;
-  }
- }
+
 
  g.printIt();
 
