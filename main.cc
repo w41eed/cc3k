@@ -19,8 +19,11 @@ int main() {
 
  ifstream file(fileName);
 
+ Character *c = new Shade();
+
  Grid g;
  g.init(file);
+ g.place(4, 4, c);
  g.printIt();
 
  return 0;

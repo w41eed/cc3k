@@ -3,7 +3,12 @@
 Passage::Passage(int x, int y): Cell{'#', x, y} {}
 
 char Passage::getChar() {
- return symbol;
+ if (c == nullptr) {
+  return symbol;
+ } else {
+  return c->getChar();
+ }
+
 }
 
 bool Passage::canWalk() {
@@ -16,8 +21,10 @@ bool Passage::canPlace() {
 
 void Passage::place(Character *other) {
  c = other;
+ notifyObservers();
 }
 
 void Passage::moveOff() {
  c = nullptr;
+ notifyObservers();
 }

@@ -4,7 +4,11 @@ FloorTile::FloorTile(int x, int y) : Cell{'.', x ,y} {
 }
 
 char FloorTile::getChar() {
- return symbol;
+ if (c == nullptr) {
+  return symbol;
+ } else {
+  return c->getChar();
+ }
 }
 
 bool FloorTile::canPlace() {
@@ -17,8 +21,10 @@ bool FloorTile::canWalk() {
 
 void FloorTile::place(Character *other) {
  c = other;
+ notifyObservers();
 }
 
 void FloorTile::moveOff() {
  c = nullptr;
+ notifyObservers();
 }

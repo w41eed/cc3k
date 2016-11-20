@@ -2,8 +2,7 @@
 #define CELL_H_
 
 #include "Subject.h"
-
-class Character;
+#include "Character.h"
 
 class Cell: public Subject{
 protected:

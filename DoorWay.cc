@@ -7,7 +7,11 @@ DoorWay::DoorWay(int x, int y) : Cell{'+', x, y} {
 }
 
 char DoorWay::getChar() {
- return symbol;
+ if (c == nullptr) {
+  return symbol;
+ } else {
+  return c->getChar();
+ }
 }
 
 bool DoorWay::canWalk() {
@@ -20,8 +24,10 @@ bool DoorWay::canPlace() {
 
 void DoorWay::place(Character *other) {
  c = other;
+ notifyObservers();
 }
 
 void DoorWay::moveOff() {
  c = nullptr;
+ notifyObservers();
 }
