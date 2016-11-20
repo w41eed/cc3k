@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
 #include "Character.h"
 #include "Player.h"
 #include "Shade.h"
@@ -33,7 +35,11 @@
 using namespace std;
 
 
-
+int getRand(int min, int max) {
+ double f = 1.0 / (RAND_MAX + 1.0);
+ int x = rand() * f * (max - min + 1) + min;
+ return x;
+}
 
 Character *selectCharacter() {
 cout << "Please select your class: ";
@@ -58,7 +64,10 @@ cin >> c;
  }
 }
 
+
 int main() {
+
+ srand(time(0));
 
  // reads in file name
  cout << "Please enter map file: ";
@@ -75,7 +84,22 @@ int main() {
 
  file.close();
 
- g.place(4, 4, c);
+
+ int x;
+ int y;
+
+ while(1) {
+  x = getRand(0, 78);
+  y = getRand(0, 24);
+
+ char ch = g.getChar(x, y);
+
+  if (g.canWalk(x,y) && ch != '+' && ch != '#') {
+   g.place(x, y, c);
+   break;
+  }
+ }
+
  g.printIt();
 
  cout << "Please enter command: ";

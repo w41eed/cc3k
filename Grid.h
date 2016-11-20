@@ -21,6 +21,7 @@ class Grid {
  bool canPlace(int, int); // chefcks if Cell at X, Y is placeable
  bool place(int, int, Character *); // places Character at X, Y
  void moveOff(int, int); // moves Character/Item off X, Y
+ char getChar(int, int); // gets char at x,y
 
 };
 

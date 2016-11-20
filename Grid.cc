@@ -120,3 +120,12 @@ bool Grid::place(int x, int y, Character *other) {
 void Grid::moveOff(int x, int y) {
  theGrid[x][y]->moveOff();
 }
+
+// returns char at x,y
+char Grid::getChar(int x, int y) {
+ if (theGrid[x][y]) {
+  return theGrid[x][y]->getChar();
+ }
+
+ return ' ';
+}
