@@ -62,9 +62,9 @@ void Grid::init(ifstream &file) {
 }
 
 Grid::~Grid() {
- for (int row = 0; row < 25; ++row) {
-  for (int col = 0; col < 79; ++col) {
-   delete theGrid[col][row];
+ for (int i = 0; i < 79; ++i) {
+  for (int j = 0; j < 25; ++j) {
+   delete theGrid[i][j];
   }
  }
 }

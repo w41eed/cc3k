@@ -48,6 +48,10 @@ int main() {
 
  while(1) {
   cin >> input;
+  if (cin.fail()) {
+   break;
+  }
+
   curX = c->getX();
   curY = c->getY();
 

@@ -2,6 +2,7 @@
 
 
 Cell::~Cell() {
+ delete c;
 }
 
 Cell::Cell(char symbol, int x, int y) :
