@@ -4,4 +4,8 @@
 
 #include "Human.h"
 
-Human::Human() : Enemy(140, 20, 20, 2) {}
+Human::Human() : Enemy(140, 20, 20, 4) {}
+
+void Human::move() {
+
+}
