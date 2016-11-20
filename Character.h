@@ -6,9 +6,11 @@ class Character {
  int Atk;
  int Def;
  int gold;
+ int xCo;
+ int yCo;
 
  public:
- Character(int, int, int, int);
+ Character(int, int, int, int, int, int);
  virtual char getChar() = 0;
  virtual void move() = 0;
 

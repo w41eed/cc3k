@@ -1,3 +1,6 @@
+#ifndef PASSAGE_H
+#define PASSAGE_H
+
 #include "Cell.h"
 
 
@@ -10,4 +13,8 @@ public:
  char getChar() override;
  bool canWalk() override;
  bool canPlace() override;
+ void place(Character *) override;
+ void moveOff() override;
 };
+
+#endif

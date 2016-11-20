@@ -17,3 +17,11 @@ bool DoorWay::canWalk() {
 bool DoorWay::canPlace() {
  return false;
 }
+
+void DoorWay::place(Character *other) {
+ c = other;
+}
+
+void DoorWay::moveOff() {
+ c = nullptr;
+}

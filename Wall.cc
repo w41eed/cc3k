@@ -14,3 +14,11 @@ bool Wall::canWalk() {
 bool Wall::canPlace() {
  return false;
 }
+
+void Wall::place(Character *other) {
+ return;
+}
+
+void Wall::moveOff() {
+ return;
+}

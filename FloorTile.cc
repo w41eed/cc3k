@@ -14,3 +14,11 @@ bool FloorTile::canPlace() {
 bool FloorTile::canWalk() {
  return true;
 }
+
+void FloorTile::place(Character *other) {
+ c = other;
+}
+
+void FloorTile::moveOff() {
+ c = nullptr;
+}

@@ -13,3 +13,11 @@ bool Passage::canWalk() {
 bool Passage::canPlace() {
  return false;
 }
+
+void Passage::place(Character *other) {
+ c = other;
+}
+
+void Passage::moveOff() {
+ c = nullptr;
+}
