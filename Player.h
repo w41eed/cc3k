@@ -10,7 +10,7 @@ class Player: public Character {
 
 public:
  Player(int, int, int, int);
-
+ char getChar();
 };
 
 #endif
