@@ -17,6 +17,18 @@
 #include "Merchant.h"
 #include "Dragon.h"
 #include "Halfling.h"
+#include "Potions.h"
+#include "BoostAttack.h"
+#include "BoostDefence.h"
+#include "DragonGold.h"
+#include "Item.h"
+#include "MerchantGold.h"
+#include "NormalGold.h"
+#include "PoisonHealth.h"
+#include "RestoreHealth.h"
+#include "SmallGold.h"
+#include "WoundAttack.h"
+#include "WoundDefence.h"
 
 using namespace std;
 
