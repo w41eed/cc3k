@@ -13,7 +13,7 @@ protected:
     bool hostility;
     int *goldDrop;
 public:
-    Enemy(int HP, int Atk, int Def);
+    Enemy(int HP, int Atk, int Def, int gold);
     virtual ~Enemy() = 0;
     void setHostile() = 0;
     bool isHostile() = 0;
