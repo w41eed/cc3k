@@ -9,7 +9,7 @@ class Player: public Character {
 
 
 public:
- Player(int, int, int);
+ Player(int, int, int, int);
 
 };
 

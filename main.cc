@@ -2,6 +2,13 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "Character.h"
+#include "Player.h"
+#include "Shade.h"
+#include "Drow.h"
+#include "Vampire.h"
+#include "Troll.h"
+#include "Goblin.h"
 
 using namespace std;
 

@@ -11,7 +11,9 @@ public:
  void attach(Observer *o);
  void notifyObservers();
  virtual ~Subject() = 0;
-
+ virtual int getX() = 0;
+ virtual int getY() = 0;
+ virtual char getChar() = 0;
 
 
 

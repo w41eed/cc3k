@@ -8,7 +8,15 @@
 
 using namespace std;
 
+Grid::Grid() :
+ td{nullptr} {}
+
 void Grid::init(ifstream &file) {
+
+ if (td == nullptr) {
+  td = new TextDisplay;
+ }
+
  string s;
 
  theGrid.resize(79);
@@ -25,15 +33,25 @@ void Grid::init(ifstream &file) {
    char curChar = s[i];
 
    if (curChar == '_') {
-    theGrid[i][row] = new Wall('_', row, i);
+    theGrid[i][row] = new Wall('_', i, row);
+    theGrid[i][row]->attach(td);
+    theGrid[i][row]->notifyObservers();
    } else if (curChar == '|') {
-    theGrid[i][row] = new Wall('|', row, i);
-   } else if (curChar == '.') {
-    theGrid[i][row] = new FloorTile(row, i);
+    theGrid[i][row] = new Wall('|', i, row);
+    theGrid[i][row]->attach(td);
+    theGrid[i][row]->notifyObservers(); 
+  } else if (curChar == '.') {
+    theGrid[i][row] = new FloorTile(i, row);
+    theGrid[i][row]->attach(td);
+    theGrid[i][row]->notifyObservers();
    } else if (curChar == '#') {
-    theGrid[i][row] = new Passage(row, i);
+    theGrid[i][row] = new Passage(i, row);
+    theGrid[i][row]->attach(td);
+    theGrid[i][row]->notifyObservers();
    } else if (curChar == '+') {
-    theGrid[i][row] = new DoorWay(row, i);
+    theGrid[i][row] = new DoorWay(i, row);
+    theGrid[i][row]->attach(td);
+    theGrid[i][row]->notifyObservers(); 
    } else {
     theGrid[i][row] = nullptr;
    }
@@ -52,6 +70,12 @@ Grid::~Grid() {
 }
 
 void Grid::printIt() {
+
+cout << *td;
+
+
+/*
+
  for(int row = 0; row < 25; ++row) {
   for(int col = 0; col < 79; ++col) {
    if (theGrid[col][row] == nullptr) {
@@ -62,4 +86,6 @@ void Grid::printIt() {
   }
    cout << endl;
  }
+
+*/
 }
