@@ -18,7 +18,6 @@ public:
     void setHostile();
     bool isHostile();
     virtual int attack(Player *p);
-    void move();
 
 };
 
