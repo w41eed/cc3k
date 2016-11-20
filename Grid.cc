@@ -72,20 +72,12 @@ Grid::~Grid() {
 void Grid::printIt() {
 
 cout << *td;
+}
 
+bool Grid::canWalk(int x, int y) {
+ return theGrid[x][y]->canWalk();
+}
 
-/*
-
- for(int row = 0; row < 25; ++row) {
-  for(int col = 0; col < 79; ++col) {
-   if (theGrid[col][row] == nullptr) {
-    cout << ' ';
-   } else {
-    cout << theGrid[col][row]->getChar();
-   }
-  }
-   cout << endl;
- }
-
-*/
+bool Grid::canPlace(int x, int y) {
+ return theGrid[x][y]->canWalk();
 }
