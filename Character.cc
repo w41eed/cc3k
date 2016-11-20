@@ -1,4 +1,4 @@
 #include "Character.h"
 
-Character::Character(int HP, int Atk, int Def):
- HP{HP}, Atk{Atk}, Def{Def} {}
+Character::Character(int HP, int Atk, int Def, int gold):
+ HP{HP}, Atk{Atk}, Def{Def}, gold{gold} {}

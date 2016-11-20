@@ -2,4 +2,4 @@
 #include "Player.h"
 
 Shade::Shade() :
- Player{125, 25, 25} {}
+ Player{125, 25, 25, 0} {}
