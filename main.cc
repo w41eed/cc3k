@@ -78,6 +78,10 @@ void randPlace(Character *ch, Grid &g) {
 
  char c = g.getChar(x, y);
 
+ ch->setX(x);
+ ch->setY(y);
+
+
   if (g.canWalk(x,y) && c != '+' && c != '#') {
    g.place(x, y, ch);
    break;
