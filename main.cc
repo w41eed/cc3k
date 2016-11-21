@@ -94,7 +94,15 @@ void randPlace(Character *ch, Grid &g) {
 
 
 int main() {
+ /*
+ ifstream bannerfile("banner.txt");
+ string s;
 
+ while(getline(bannerfile, s)) {
+  cout << s;
+ }
+ cout << endl;
+ */
  srand(time(0));
 
  // reads in file name
@@ -114,8 +122,6 @@ int main() {
 
 
  randPlace(c, g);
-
- rand();
 
  int type = 0;
 
