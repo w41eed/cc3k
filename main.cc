@@ -117,12 +117,28 @@ int main() {
 
  rand();
 
- Enemy *e1 = new Human;
- Enemy *e2 = new Orc;
- randPlace(e1, g);
- randPlace(e2, g);
+ int type = 0;
 
+ for (int i = 0; i < 20; ++i) {
+  type = getRand(1, 18);
+  Enemy *e = nullptr;
+  if (type <= 2) {
+    e = new Merchant;
+  } else if (type <= 4 ) {
+    e = new Orc;
+  } else if (type <= 6 ) {
+    e = new Elf;
+  } else if (type <= 11 ) {
+    e = new Halfling;
+  } else if (type <= 14) {
+    e = new Dwarf;
+  } else if (type <= 18) {
+    e = new Human;
+  }
 
+  randPlace(e, g);
+
+ }
 
  g.printIt();
 
