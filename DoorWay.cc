@@ -15,6 +15,9 @@ char DoorWay::getChar() {
 
 // returns can walk on top
 bool DoorWay::canWalk() {
+ if (c) {
+  return false;
+ }
  return true;
 }
 

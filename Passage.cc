@@ -18,6 +18,9 @@ char Passage::getChar() {
 
 // can walk atop
 bool Passage::canWalk() {
+ if(c) {
+  return false;
+ }
  return true;
 }
 

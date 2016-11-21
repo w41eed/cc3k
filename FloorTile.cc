@@ -20,6 +20,9 @@ bool FloorTile::canPlace() {
 
 // can walk atop
 bool FloorTile::canWalk() {
+ if (c) {
+  return false;
+ }
  return true;
 }
 
