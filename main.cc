@@ -111,6 +111,7 @@ int main() {
 
  randPlace(c, g);
 
+ rand();
 
  Enemy *e1 = new Human;
  Enemy *e2 = new Orc;

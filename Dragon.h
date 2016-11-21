@@ -13,6 +13,7 @@ public:
     Dragon();
     void move() override;
     char getChar() override;
+    int attack(Player *p) override;
 };
 
 

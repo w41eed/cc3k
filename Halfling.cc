@@ -4,14 +4,18 @@
 
 #include "Halfling.h"
 
-Halfing::Halfing(): Enemy(100, 15, 20, 1){
+Halfling::Halfling(): Enemy(100, 15, 20, 1){
 
 }
 
-void Halfing::move() {
+void Halfling::move() {
 
 }
 
-char Halfing::getChar() {
+char Halfling::getChar() {
     return 'L';
+}
+
+int Halfling::attack(Player *p) {
+ return 0;
 }

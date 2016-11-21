@@ -3,6 +3,7 @@
 //
 
 #include "Orc.h"
+#include "Player.h"
 
 Orc::Orc(): Enemy(180, 30, 25, 1) {}
 
@@ -14,4 +15,6 @@ char Orc::getChar() {
     return 'O';
 }
 
-
+int Orc::attack(Player *p) {
+ return 0;
+}

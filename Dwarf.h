@@ -13,6 +13,7 @@ public:
     Dwarf();
     void move() override;
     char getChar() override;
+    int attack(Player *p) override;
 };
 
 

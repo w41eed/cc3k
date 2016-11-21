@@ -8,11 +8,12 @@
 
 #include "Enemy.h"
 
-class Halfing: public Enemy {
+class Halfling: public Enemy {
 public:
-    Halfing();
+    Halfling();
     void move() override;
     char getChar() override;
+    int attack(Player *p) override;
 };
 
 

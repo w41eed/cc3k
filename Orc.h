@@ -12,6 +12,7 @@ public:
     Orc();
     void move() override ;
     char getChar() override;
+    int attack(Player *p) override;
 };
 
 
