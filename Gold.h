@@ -6,13 +6,14 @@
 #define GOLD_H
 
 class Gold: Item{
-	protected:
+	private:
 		int value; //amount of gold that gets added to player
 		char symbol; //the symbol that gets displayed on TextDisplay
 	public:
-		virtual char getSym() = 0;
-		virtual int getVal() = 0;
-		virtual ~Gold() {}
+		Gold(int n, char s); //constructor for Gold
+		char getSym(); //returns the Gold symbol
+		int getVal(); //returns the gold value
+		virtual ~Gold() {} //virtual destructor for gold and types of gold
 
 };
 
