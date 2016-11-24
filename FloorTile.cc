@@ -15,12 +15,19 @@ char FloorTile::getChar() {
 
 // can place atop
 bool FloorTile::canPlace() {
+ if (c) {
+  return false;
+ } else if (i) {
+  return false;
+ }
  return true;
 }
 
 // can walk atop
 bool FloorTile::canWalk() {
  if (c) {
+  return false;
+ } else if (i) {
   return false;
  }
  return true;

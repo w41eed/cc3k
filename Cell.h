@@ -3,6 +3,7 @@
 
 #include "Subject.h"
 #include "Character.h"
+#include "Item.h"
 
 class Cell: public Subject{
 protected:
@@ -10,6 +11,7 @@ protected:
  int x; // x coordinate
  int y; // y coordinate
  Character *c; // ability for character to stand atop
+ Item *i; // ability for item to be placed atop
 
 public:
  virtual char getChar() = 0; // gets character to be printed

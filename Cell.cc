@@ -7,7 +7,7 @@ Cell::~Cell() {
 
 // ctor
 Cell::Cell(char symbol, int x, int y) :
-  symbol{symbol}, x{x}, y{y}, c{nullptr} {}
+  symbol{symbol}, x{x}, y{y}, c{nullptr}, i{nullptr} {}
 
 // returns x coordinate
 int Cell::getX() {
