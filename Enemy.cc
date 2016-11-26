@@ -1,5 +1,4 @@
 #include "Enemy.h"
-#include <iostream>
 
 Enemy::Enemy(int HP, int Atk, int Def, int gold, Grid *g) :
         Character(HP, Atk, Def, gold, 0, 0), g{g} {}
@@ -15,18 +14,19 @@ int getERand(int min, int max) {
     return x;
 }
 
-void Enemy::checkAndPlace(int xDisp, int yDisp) {
-    if (g->canWalk(getX() + xDisp, getY() + yDisp)) {
+bool Enemy::checkAndPlace(int xDisp, int yDisp) {
+    if (g->canPlace(getX() + xDisp, getY() + yDisp)) {
         g->moveOff(getX(), getY());
         g->place(getX() + xDisp, getY() + yDisp, this);
         setX(getX() + xDisp);
         setY(getY() + yDisp);
+        return true;
     }
-
+  return false;
 }
 
 void Enemy::Move() {
-
+  while(1) {
     int randPos = getERand(0, 7);
 
 //    Use code below if switch case doesn't work
@@ -43,20 +43,22 @@ void Enemy::Move() {
 //    5 = south/east, 6 = south/west, 7 = north/west
     switch (randPos) {
         case 0:
-            checkAndPlace( 0, -1);
+            if (checkAndPlace( 0, -1)) {return;}
         case 1:
-            checkAndPlace( 1, 0);
+            if (checkAndPlace( 1, 0)) {return;}
         case 2:
-            checkAndPlace( 0, 1);
+            if (checkAndPlace( 0, 1)) {return;}
         case 3:
-            checkAndPlace( -1, 0);
+            if (checkAndPlace( -1, 0)) {return;}
         case 4:
-            checkAndPlace( 1, -1);
+            if (checkAndPlace( 1, -1)) {return;}
         case 5:
-            checkAndPlace( 1, 1);
+            if (checkAndPlace( 1, 1)) {return;}
         case 6:
-            checkAndPlace( -1, 1);
+            if (checkAndPlace( -1, 1)) {return;}
         case 7:
-            checkAndPlace( -1, -1);
+            if (checkAndPlace( -1, -1)) {return;}
     }
+
+  }
 }

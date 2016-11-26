@@ -11,7 +11,7 @@ class Player;
 
 class Enemy: public Character {
     Grid *g;
-   void checkAndPlace(int xDisp, int yDisp); 
+    bool checkAndPlace(int xDisp, int yDisp); 
 protected:
     int goldDrop;
 public:

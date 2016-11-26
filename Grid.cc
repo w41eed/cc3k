@@ -103,7 +103,7 @@ bool Grid::canPlace(int x, int y) {
   return false;
  }
 
- return theGrid[x][y]->canWalk();
+ return theGrid[x][y]->canPlace();
 }
 
 // place Character at x, y
