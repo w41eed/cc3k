@@ -6,13 +6,10 @@
 #include "Enemy.h"
 #include "Player.h"
 
-Merchant::Merchant(): Enemy(30, 70, 5, 4){
+Merchant::Merchant(Grid *g): Enemy(30, 70, 5, 4, g){
 
 }
 
-void Merchant::move() {
-
-}
 
 char Merchant::getChar() {
     return 'M';

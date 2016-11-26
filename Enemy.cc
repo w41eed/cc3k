@@ -1,30 +1,33 @@
 #include "Enemy.h"
+#include <iostream>
 
-Enemy::Enemy(int HP, int Atk, int Def, int gold) :
-        Character(HP, Atk, Def, gold, 0, 0) {}
+Enemy::Enemy(int HP, int Atk, int Def, int gold, Grid *g) :
+        Character(HP, Atk, Def, gold, 0, 0), g{g} {}
 
 Enemy::~Enemy() {
 
 //    TODO: finish destructor for enemy, probably delete its gold pointer
 }
 
-int getRand(int min, int max) {
+int getERand(int min, int max) {
     double f = 1.0 / (RAND_MAX + 1.0);
     int x = (int) (rand() * f * (max - min + 1) + min); // cast expression to int
     return x;
 }
 
-void checkAndPlace(int xDisp, int yDisp, Enemy& e, Grid g) {
-    if (g->canWalk(e..getX(), e.getY())) {
-        g->moveOff(e.getX(), e.getY());
-        g->place(e.getX() + xDisp, e.getY() + yDisp, e);
-        e.setX(e.getX() + xDisp);
-        e.setY(e.getY() + yDisp);
+void Enemy::checkAndPlace(int xDisp, int yDisp) {
+    if (g->canWalk(getX() + xDisp, getY() + yDisp)) {
+        g->moveOff(getX(), getY());
+        g->place(getX() + xDisp, getY() + yDisp, this);
+        setX(getX() + xDisp);
+        setY(getY() + yDisp);
     }
+
 }
 
-void Enemy::move() {
-    int randPos = getRand(0, 7);
+void Enemy::Move() {
+
+    int randPos = getERand(0, 7);
 
 //    Use code below if switch case doesn't work
 //    if (randPos == 0) {
@@ -40,20 +43,20 @@ void Enemy::move() {
 //    5 = south/east, 6 = south/west, 7 = north/west
     switch (randPos) {
         case 0:
-            checkAndPlace( 0, -1, *this, g);
+            checkAndPlace( 0, -1);
         case 1:
-            checkAndPlace( 1, 0, *this, g);
+            checkAndPlace( 1, 0);
         case 2:
-            checkAndPlace( 0, 1, *this, g);
+            checkAndPlace( 0, 1);
         case 3:
-            checkAndPlace( -1, 0, *this, g);
+            checkAndPlace( -1, 0);
         case 4:
-            checkAndPlace( 1, -1, *this, g);
+            checkAndPlace( 1, -1);
         case 5:
-            checkAndPlace( 1, 1, *this, g);
+            checkAndPlace( 1, 1);
         case 6:
-            checkAndPlace( -1, 1, *this, g);
+            checkAndPlace( -1, 1);
         case 7:
-            checkAndPlace( -1, -1, *this, g);
+            checkAndPlace( -1, -1);
     }
 }

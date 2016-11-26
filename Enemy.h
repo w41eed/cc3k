@@ -11,13 +11,14 @@ class Player;
 
 class Enemy: public Character {
     Grid *g;
+   void checkAndPlace(int xDisp, int yDisp); 
 protected:
     int goldDrop;
 public:
-    Enemy(int HP, int Atk, int Def, int gold);
+    Enemy(int HP, int Atk, int Def, int gold, Grid *);
     virtual ~Enemy();
     virtual int attack(Player *p) = 0;
-    virtual void move();
+    virtual void Move();
     virtual char getChar() = 0;
 };
 

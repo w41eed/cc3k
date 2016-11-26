@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 #include "Character.h"
 #include "Player.h"
 #include "Shade.h"
@@ -125,21 +126,29 @@ int main() {
 
  int type = 0;
 
+ vector<Enemy *> enemyVec;
+
  for (int i = 0; i < 20; ++i) {
   type = getRand(1, 18);
   Enemy *e = nullptr;
   if (type <= 2) {
-    e = new Merchant;
+    e = new Merchant(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 4 ) {
-    e = new Orc;
+    e = new Orc(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 6 ) {
-    e = new Elf;
+    e = new Elf(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 11 ) {
-    e = new Halfling;
+    e = new Halfling(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 14) {
-    e = new Dwarf;
+    e = new Dwarf(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 18) {
-    e = new Human;
+    e = new Human(&g);
+    enemyVec.emplace_back(e);
   }
 
   randPlace(e, g);
@@ -148,8 +157,6 @@ int main() {
 
  g.printIt();
 
- cout << "Please enter command: ";
-
  string input;
 
  int curX;
@@ -157,6 +164,7 @@ int main() {
 
 // command loop
  while(1) {
+  cout << "Please enter command: ";
   cin >> input;
   if (cin.fail()) {
    break;
@@ -226,6 +234,10 @@ int main() {
  else if (input == "q") {
     break;
    }
+
+ for (int i = 0; i < 20; ++i) {
+   enemyVec[i]->Move();
+  }
    g.printIt();
  }
  return 0;
