@@ -29,11 +29,3 @@ void Character::setX(int i) {
 void Character::setY(int i) {
  yCo = i;
 }
-
-void Character::setHealth(int h) {
- HP = h;
-}
-
-int Character::getHealth() {
- return HP;
-}

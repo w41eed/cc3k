@@ -2,10 +2,12 @@
 #define CHARACTER_H
 
 class Character {
+ protected:
  int HP; // health
  int Atk; // attack power
  int Def; // defence
  int gold; // current gold
+ private:
  int xCo; // current x coordinate
  int yCo; // current y coordinate
 
@@ -17,8 +19,6 @@ class Character {
  void setY(int); // sets Y val of current Character
  int getX(); // returns X val
  int getY(); // returns Y val
- void setHealth(int);
- int getHealth();
 
 
 
