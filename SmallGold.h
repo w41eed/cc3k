@@ -9,8 +9,6 @@
 class SmallGold: Gold {
 	public:
 		SmallGold(); //Constructs a SmallGold with value 1
-		char getSym(); //returns the symbol to be displayed on TextDisplay
-		int getVal(); //Returns the value of the Gold (1 in this case)
 		~SmallGold();
 
 

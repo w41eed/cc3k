@@ -11,9 +11,6 @@ class PoisonHealth : Potions {
 public:
 	PoisonHealth(); //constructor. initializes the amount to -10, symbol = P, 
 					 //potionType = PH
-	int getAmount(); //gets the amount
-	char getSym(); //gets the symbol
-	std::string getType(); //gets the type of potion
 	~PoisonHealth();
 
 };

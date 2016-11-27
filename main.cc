@@ -148,6 +148,7 @@ int main() {
 
  int floorNum = 1;
  string haveQuit;
+ bool next_floor;
 
 while(floorNum <= 5) {
 //loop starts here for new floor
@@ -210,6 +211,9 @@ while(floorNum <= 5) {
      g.place(curX, curY - 1, c);
      c->setX(curX);
      c->setY(curY - 1);
+     next_floor = g.nextFloor(curX,curY-1);
+     if(next_floor == 1) {break;}
+
     }
    } else if (input == "ea") {
     if (g.canWalk(curX + 1, curY)) {
@@ -217,6 +221,8 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY, c);
      c->setX(curX + 1);
      c->setY(curY);
+     next_floor = g.nextFloor(curX+1,curY);
+     if(next_floor == 1) {break;}
     }
    } else if (input == "so") {
     if (g.canWalk(curX, curY + 1)) {
@@ -224,6 +230,8 @@ while(floorNum <= 5) {
      g.place(curX, curY + 1, c);
      c->setX(curX);
      c->setY(curY + 1);
+     next_floor = g.nextFloor(curX,curY+1);
+     if(next_floor == 1) {break;}
     }
    } else if (input == "we") {
     if (g.canWalk(curX - 1, curY)) {
@@ -231,6 +239,8 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY, c);
      c->setX(curX - 1);
      c->setY(curY);
+     next_floor = g.nextFloor(curX-1,curY);
+     if(next_floor == 1) {break;}
     }
    } else if (input == "ne") {
     if (g.canWalk(curX + 1, curY - 1)) {
@@ -238,6 +248,8 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY - 1, c);
      c->setX(curX + 1);
      c->setY(curY - 1);
+     next_floor = g.nextFloor(curX+1,curY-1);
+     if(next_floor == 1) {break;}
     }
    } else if (input == "nw") {
     if (g.canWalk(curX - 1, curY - 1)) {
@@ -245,6 +257,8 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY - 1, c);
      c->setX(curX - 1);
      c->setY(curY - 1);
+     next_floor = g.nextFloor(curX-1,curY-1);
+     if(next_floor == 1) {break;}
     }
    } else if (input == "se") {
     if (g.canWalk(curX + 1, curY + 1)) {
@@ -252,6 +266,8 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY + 1, c);
      c->setX(curX + 1);
      c->setY(curY + 1);
+     next_floor = g.nextFloor(curX+1,curY+1);
+     if(next_floor == 1) {break;}
     }
    } else if (input == "sw") {
     if (g.canWalk(curX - 1, curY + 1)) {
@@ -259,6 +275,8 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY + 1, c);
      c->setX(curX - 1);
      c->setY(curY + 1);
+     next_floor = g.nextFloor(curX-1,curY+1);
+     if(next_floor == 1) {break;}
     }
    }
 
