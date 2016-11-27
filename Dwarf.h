@@ -10,9 +10,10 @@
 
 class Dwarf: public Enemy {
 public:
-    Dwarf(Grid *);
-    char getChar() override;
-    int attack(Player *p) override;
+    Dwarf(Grid *); // ctor
+    char getChar() override; // gets char to be printed
+    void strike(Player &) override; // strikes player
+    void getStruckBy(Player &) override; // gets struck by player
 };
 
 

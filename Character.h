@@ -17,7 +17,8 @@ class Character {
  void setY(int); // sets Y val of current Character
  int getX(); // returns X val
  int getY(); // returns Y val
-
+ void setHealth(int);
+ int getHealth();
 
 
 

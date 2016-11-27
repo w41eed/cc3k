@@ -9,9 +9,10 @@
 
 class Orc: public Enemy {
 public:
-    Orc(Grid *);
-    char getChar() override;
-    int attack(Player *p) override;
+    Orc(Grid *); // ctor
+    char getChar() override; // gets char to be printed
+    void strike(Player &) override; // strikes player
+    void getStruckBy(Player &) override; // gets struck by player
 };
 
 

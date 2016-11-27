@@ -5,7 +5,7 @@
 #include "Grid.h"
 #include <string>
 #include <vector>
-using namespace std;
+
 
 class Player;
 
@@ -17,9 +17,10 @@ protected:
 public:
     Enemy(int HP, int Atk, int Def, int gold, Grid *);
     virtual ~Enemy();
-    virtual int attack(Player *p) = 0;
     virtual void Move();
     virtual char getChar() = 0;
+    virtual void strike(Player &) = 0;
+    virtual void getStruckBy(Player &) = 0;
 };
 
 

@@ -4,14 +4,22 @@
 
 #include "Halfling.h"
 
+// ctor
 Halfling::Halfling(Grid *g): Enemy(100, 15, 20, 1, g){
 
 }
 
+// gets char to be printed
 char Halfling::getChar() {
     return 'L';
 }
 
-int Halfling::attack(Player *p) {
- return 0;
+// strikes player
+void Halfling::strike(Player &other) {
+ return;
+}
+
+// gets struck by player
+void Halfling::getStruckBy(Player &other) {
+ return;
 }
