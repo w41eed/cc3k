@@ -3,12 +3,31 @@
 
 // dtor
 Cell::~Cell() {
- delete c;
+ char car = ' ';
+
+ if (c) {
+  car = c->getChar();
+ }
+
+ if (car == '@') {
+  delete c;
+ } else {
+  delete c;
+ }
+
+ if (i) {
+  car = i->getSym();
+ }
+
+ if (car!= '/') {
+  delete i;
+ } else {
+  delete i;
+ }
 }
 
 //cleans the cell
 void Cell::cleanCell(){
-	std::cout << "entered cleanCell in Cell" << std::endl;
 	if(i != nullptr){
       char ix = i->getSym();
       if(ix == '/'){

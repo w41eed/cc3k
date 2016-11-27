@@ -87,6 +87,9 @@ Grid::~Grid() {
 void Grid::cleanGrid(){
  for (int i = 0; i < 79; ++i) {
   for (int j = 0; j < 25; ++j) {
+   if (theGrid[i][j] == nullptr) {
+    continue;
+   }
     theGrid[i][j]->cleanCell();
   }
  }

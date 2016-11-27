@@ -273,9 +273,10 @@ while(floorNum <= 5) {
  } //inner loop ends
   ++floorNum;
   g.cleanGrid();
-  //if(haveQuit == "q"){ break;}
+  if(haveQuit == "q"){ break;}
 }
  //loop ends here for new floor
- delete sp;
+ c = nullptr;
+ sp = nullptr;
  return 0;
 }
