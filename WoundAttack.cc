@@ -6,20 +6,8 @@
 #include "WoundAttack.h"
 
 //Constructor
-WoundAttack::WoundAttack(){
-	symbol = 'P';
-  	amount = (-5);
-  	potionType = "WA";
-}
+WoundAttack::WoundAttack():Potions(-5,'P',"WA") {}
 
-//Returns the amount
-int WoundAttack::getAmount(){ return amount;}
-
-//Returns the Symbol for TextDisplay
-char WoundAttack::getSym(){ return symbol;}
-
-//Returns the type of potion
-std::string WoundAttack::getType(){ return potionType;}
 
 //Destructor
 WoundAttack::~WoundAttack(){}

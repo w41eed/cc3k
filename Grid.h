@@ -24,7 +24,7 @@ class Grid {
  void moveOff(int, int); // moves Character/Item off X, Y
  char getChar(int, int); // gets char at x,y
  void cleanGrid(); // removes all the pointers to all the characters and items
- //bool nextFloor(int x, int y); //returns true if player is on stairs
+ bool nextFloor(int x, int y); //returns true if player is on stairs
 
 };
 
