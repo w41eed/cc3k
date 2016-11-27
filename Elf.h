@@ -10,8 +10,7 @@
 
 class Elf: public Enemy {
 public:
-    Elf();
-    void move() override;
+    Elf(Grid *);
     char getChar() override;
     int attack(Player *p) override;
 };

@@ -5,12 +5,7 @@
 #include "Elf.h"
 #include "Player.h"
 
-Elf::Elf(): Enemy(140, 30, 10, 2) {
-
-}
-
-void Elf::move() {
-//    TODO: implement move for enemy
+Elf::Elf(Grid *g): Enemy(140, 30, 10, 2, g) {
 
 }
 

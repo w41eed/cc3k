@@ -10,8 +10,7 @@
 
 class Dragon: public Enemy {
 public:
-    Dragon();
-    void move() override;
+    Dragon(Grid *);
     char getChar() override;
     int attack(Player *p) override;
 };

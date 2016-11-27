@@ -5,11 +5,7 @@
 #include "Orc.h"
 #include "Player.h"
 
-Orc::Orc(): Enemy(180, 30, 25, 1) {}
-
-void Orc::move() {
-
-}
+Orc::Orc(Grid *g): Enemy(180, 30, 25, 1, g) {}
 
 char Orc::getChar() {
     return 'O';

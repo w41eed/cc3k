@@ -20,8 +20,11 @@ class Grid {
  bool canWalk(int, int); // checks if Cell at X, Y is walkable
  bool canPlace(int, int); // chefcks if Cell at X, Y is placeable
  bool place(int, int, Character *); // places Character at X, Y
+ bool place(int, int, Item *); // places Item at X, Y
  void moveOff(int, int); // moves Character/Item off X, Y
  char getChar(int, int); // gets char at x,y
+ void cleanGrid(); // removes all the pointers to all the characters and items
+ bool nextFloor(int x, int y); //returns true if player is on stairs
 
 };
 

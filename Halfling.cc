@@ -4,11 +4,7 @@
 
 #include "Halfling.h"
 
-Halfling::Halfling(): Enemy(100, 15, 20, 1){
-
-}
-
-void Halfling::move() {
+Halfling::Halfling(Grid *g): Enemy(100, 15, 20, 1, g){
 
 }
 

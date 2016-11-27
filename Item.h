@@ -6,6 +6,7 @@
 
 class Item {
 	public:
+	virtual char getSym() = 0;
 	virtual ~Item() {}	
 
 };

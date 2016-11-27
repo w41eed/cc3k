@@ -10,8 +10,7 @@
 
 class Dwarf: public Enemy {
 public:
-    Dwarf();
-    void move() override;
+    Dwarf(Grid *);
     char getChar() override;
     int attack(Player *p) override;
 };

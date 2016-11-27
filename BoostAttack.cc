@@ -6,21 +6,8 @@
 #include "BoostAttack.h"
 
 //Constructor
-BoostAttack::BoostAttack(){
+BoostAttack::BoostAttack(): Potions(5,'P',"BA") {}
 
-	symbol = 'P';
-  	amount = 5;
-  	potionType = "BA";
-}
-
-//Returns the amount
-int BoostAttack::getAmount(){ return amount;}
-
-//Returns the Symbol for TextDisplay
-char BoostAttack::getSym(){ return symbol;}
-
-//Returns the type of potion
-std::string BoostAttack::getType(){ return potionType;}
 
 //Destructor
 BoostAttack::~BoostAttack(){}

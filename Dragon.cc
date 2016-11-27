@@ -5,11 +5,7 @@
 #include "Dragon.h"
 #include "Player.h"
 
-Dragon::Dragon() : Enemy(150, 20, 20, 6) {
-
-}
-
-void Dragon::move() {
+Dragon::Dragon(Grid *g) : Enemy(150, 20, 20, 6, g) {
 
 }
 

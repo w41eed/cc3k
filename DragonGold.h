@@ -9,8 +9,6 @@
 class DragonGold: Gold {
 	public:
 		DragonGold(); //Constructs a DragonGold with value 6
-		char getSym(); //returns the symbol to be displayed on TextDisplay
-		int getVal(); //Returns the value of the Gold (6 in this case)
 		~DragonGold();
 
 
