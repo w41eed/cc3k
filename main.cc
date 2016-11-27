@@ -139,7 +139,7 @@ int main() {
  ifstream file(fileName);
 
  Character *c = selectCharacter();
- Item *sp = new Stairs; 
+ Item *sp = new Stairs;
 
  Grid g;
  g.init(file);
@@ -147,10 +147,11 @@ int main() {
  file.close();
 
  int floorNum = 1;
+ string haveQuit;
 
 while(floorNum <= 5) {
 //loop starts here for new floor
-
+  
  randPlace(c, g);
  randPlace(sp,g);
 
@@ -199,7 +200,7 @@ while(floorNum <= 5) {
   if (cin.fail()) {
    break;
   }
-
+  haveQuit = input;
   curX = c->getX();
   curY = c->getY();
 
@@ -272,8 +273,9 @@ while(floorNum <= 5) {
  } //inner loop ends
   ++floorNum;
   g.cleanGrid();
- //if(input == "q"){ break;}
+  //if(haveQuit == "q"){ break;}
 }
  //loop ends here for new floor
+ delete sp;
  return 0;
 }

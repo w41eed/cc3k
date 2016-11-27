@@ -9,15 +9,25 @@ Cell::~Cell() {
 //cleans the cell
 void Cell::cleanCell(){
 	std::cout << "entered cleanCell in Cell" << std::endl;
-	delete i;
-	i = nullptr;
-	char cx = c->getChar();
-	if(cx != '@'){
-    delete c;
-	c = nullptr;
-	}
-	else { 
+	if(i != nullptr){
+      char ix = i->getSym();
+      if(ix == '/'){
+      	i = nullptr;
+      }
+      else{
+       delete i;
+	   i = nullptr;
+      }
+    }
+	if(c != nullptr){
+	 char cx = c->getChar();
+	 if(cx != '@'){
+     delete c;
+	 c = nullptr;
+	 }
+	 else { 
 		c = nullptr;
+	 }
 	}
 }
 // ctor
@@ -34,7 +44,7 @@ int Cell::getY() {
  return y;
 }
 
-/*
+
 //determines if player is on stairs
 bool Cell::nextFloor(){
 	if(i != nullptr && c != nullptr){
@@ -42,5 +52,6 @@ bool Cell::nextFloor(){
 		char cx = c->getChar();
 		if(ix == '/' && cx == '@'){ return true;}
 	}
+	return false;
+	
 }
-*/

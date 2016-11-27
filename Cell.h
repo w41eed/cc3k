@@ -25,6 +25,7 @@ public:
  Cell(char, int, int); // ctor
  int getX() override; // returns x coordinate
  int getY() override; // returns y coordinate
+ bool nextFloor(); //determines if player is on stairs
 
 
 };

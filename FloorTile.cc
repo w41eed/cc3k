@@ -30,7 +30,7 @@ bool FloorTile::canWalk() {
  if (c) {
   return false;
  } else if (i) {
-  return false;
+  return true;
  }
  return true;
 }
