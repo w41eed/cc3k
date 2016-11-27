@@ -270,7 +270,7 @@ while(floorNum <= 5) {
   }
    g.printIt();
  } //inner loop ends
-
+  ++floorNum;
   g.cleanGrid();
  //if(input == "q"){ break;}
 }
