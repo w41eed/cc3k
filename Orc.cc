@@ -5,6 +5,7 @@
 #include "Orc.h"
 #include "Player.h"
 
+
 // ctor
 Orc::Orc(Grid *g): Enemy(180, 30, 25, 1, g) {}
 
@@ -24,5 +25,7 @@ void Orc::getStruckBy(Character &other) {
  if (net <= 0) {
   net = 0;
  }
+
  HP -= net;
+
 }
