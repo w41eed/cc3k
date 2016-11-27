@@ -14,15 +14,16 @@ char Human::getChar() {
 }
 
 // strikes player
-void Human::strike(Player &other) {
+void Human::strike(Character &other) {
  other.getStruckBy(*this);
 }
 
 // gets struck by player
-void Human::getStruckBy(Player &other) {
+void Human::getStruckBy(Character &other) {
  int net = other.getAtk() - Def;
  if (net <= 0) {
   net = 0;
  }
  HP -= net;
+
 }

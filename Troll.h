@@ -9,8 +9,8 @@ class Troll: public Player {
 
 public:
  Troll(); //ctor
- void strike(Enemy &) override;
- void getStruckBy(Enemy &) override;
+ void strike(Character &) override;
+ void getStruckBy(Character &) override;
 
 };
 

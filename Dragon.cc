@@ -16,16 +16,11 @@ char Dragon::getChar() {
 }
 
 // strikes player
-void Dragon::strike(Player &other) {
+void Dragon::strike(Character &other) {
  return;
 }
 
 // gets struck by player
-void Dragon::getStruckBy(Player &other) {
- return;
-}
-
-// strikes enemy
-void Dragon::strike(Enemy &other) {
+void Dragon::getStruckBy(Character &other) {
  return;
 }

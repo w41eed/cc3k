@@ -15,12 +15,12 @@ char Halfling::getChar() {
 }
 
 // strikes player
-void Halfling::strike(Player &other) {
+void Halfling::strike(Character &other) {
  other.getStruckBy(*this);
 }
 
 // gets struck by player
-void Halfling::getStruckBy(Player &other) {
+void Halfling::getStruckBy(Character &other) {
  int net = other.getAtk() - Def;
  if (net <= 0) {
   net = 0;

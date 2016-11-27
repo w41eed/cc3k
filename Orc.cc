@@ -14,12 +14,12 @@ char Orc::getChar() {
 }
 
 // strikes player
-void Orc::strike(Player &other) {
+void Orc::strike(Character &other) {
  other.getStruckBy(*this);
 }
 
 // gets struck by player
-void Orc::getStruckBy(Player &other) {
+void Orc::getStruckBy(Character &other) {
  int net = other.getAtk() - Def;
  if (net <= 0) {
   net = 0;

@@ -21,7 +21,8 @@ class Character {
  int getY(); // returns Y val
  int getAtk(); // return Atk val
  int getDef(); // return Def val
-
+ virtual void strike(Character &) = 0;
+ virtual void getStruckBy(Character &) = 0;
 
 
 };

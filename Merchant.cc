@@ -17,12 +17,12 @@ char Merchant::getChar() {
 }
 
 // strikes player
-void Merchant::strike(Player &other) {
+void Merchant::strike(Character &other) {
  other.getStruckBy(*this);
 }
 
 // gets struck by a player
-void Merchant::getStruckBy(Player &other) {
+void Merchant::getStruckBy(Character &other) {
  int net = other.getAtk() - Def;
  if (net <= 0) {
   net = 0;

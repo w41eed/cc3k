@@ -160,3 +160,8 @@ char Grid::getChar(int x, int y) {
 
  return ' ';
 }
+
+// returns character pointer at x, y
+Character *Grid::getCPtr(int x, int y) {
+ return theGrid[x][y]->getCPtr();
+}

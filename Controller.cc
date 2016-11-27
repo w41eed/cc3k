@@ -115,6 +115,41 @@ void randPlace(Item *i, Grid &g) {
 
 
 
+void pAttack(Character *player, Grid &g) {
+ string dir;
+ cin >> dir;
+ Character *enem;
+ int x = player->getX();
+ int y = player->getY();
+
+ if (dir == "no") {
+  enem = g.getCPtr(x, y - 1);
+ } else if (dir == "ne") {
+  enem = g.getCPtr(x + 1, y - 1);
+ } else if (dir == "ea") {
+  enem = g.getCPtr(x + 1, y);
+ } else if (dir == "se") {
+  enem = g.getCPtr(x + 1, y + 1);
+ } else if (dir == "so") {
+  enem = g.getCPtr(x, y + 1);
+ } else if (dir == "sw") {
+  enem = g.getCPtr(x - 1, y + 1);
+ } else if (dir == "we") {
+  enem = g.getCPtr(x - 1, y);
+ } else if (dir == "nw") {
+  enem = g.getCPtr(x - 1, y - 1);
+ }
+
+ if (enem == nullptr) {
+  return;
+ }
+
+ player->strike(*enem);
+
+
+}
+
+
 void Controller::play() {
  /*
  ifstream bannerfile("banner.txt");
@@ -202,7 +237,9 @@ while(floorNum <= 5) {
   curX = c->getX();
   curY = c->getY();
 
-  if (input == "no") {
+  if (input == "a") {
+    pAttack(c, g);
+  } else if (input == "no") {
     if (g.canWalk(curX, curY - 1)) {
      g.moveOff(curX, curY);
      g.place(curX, curY - 1, c);

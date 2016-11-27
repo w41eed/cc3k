@@ -6,12 +6,13 @@ Shade::Shade() :
  Player{125, 25, 25, 0} {}
 
 // strikes an enemy
-void Shade::strike(Enemy &other) {
+void Shade::strike(Character &other) {
  other.getStruckBy(*this);
 }
 
+
 // gets struck by an enemy
-void Shade::getStruckBy(Enemy &other) {
+void Shade::getStruckBy(Character &other) {
  int net = other.getAtk() - Def;
  if (net <= 0) {
   net = 0;

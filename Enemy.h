@@ -17,8 +17,6 @@ public:
     virtual ~Enemy();
     virtual void Move();
     virtual char getChar() = 0;
-    virtual void strike(Player &) = 0;
-    virtual void getStruckBy(Player &) = 0;
 };
 
 

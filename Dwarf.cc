@@ -15,12 +15,12 @@ char Dwarf::getChar() {
 }
 
 // strikes player
-void Dwarf::strike(Player &other) {
+void Dwarf::strike(Character &other) {
  other.getStruckBy(*this);
 }
 
 // gets struck by player
-void Dwarf::getStruckBy(Player &other) {
+void Dwarf::getStruckBy(Character &other) {
  int net = other.getAtk() - Def;
  if (net <= 0) {
   net = 0;
