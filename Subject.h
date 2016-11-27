@@ -14,6 +14,8 @@ public:
  virtual int getX() = 0; // get X coordinate
  virtual int getY() = 0; // get Y coordniate
  virtual char getChar() = 0; // get char to be printed
+ virtual void cleanCell() = 0; //removes the pointers to all characters
+ virtual bool nextFloor() = 0; //determines if player is on stairs
 
 
 

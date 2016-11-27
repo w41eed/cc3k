@@ -10,8 +10,7 @@
 
 class Merchant: public Enemy {
 public:
-    Merchant();
-    void move() override;
+    Merchant(Grid *);
     char getChar() override;
     int attack(Player *p) override;
 };

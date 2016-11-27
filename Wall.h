@@ -12,6 +12,7 @@ class Wall: public Cell {
  bool canWalk() override; // can walk atop
  bool canPlace() override; // can place atop
  void place(Character *) override; // place Character atop
+ void place(Item *) override; // place Item atop
  void moveOff() override; // move Character/Item off
 };
 

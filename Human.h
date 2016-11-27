@@ -9,8 +9,7 @@
 
 class Human: public Enemy {
 public:
-    Human();
-    void move() override;
+    Human(Grid *);
     char getChar() override;
     int attack(Player *p) override;
 };

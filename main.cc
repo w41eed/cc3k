@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 #include "Character.h"
 #include "Player.h"
 #include "Shade.h"
@@ -31,6 +32,7 @@
 #include "SmallGold.h"
 #include "WoundAttack.h"
 #include "WoundDefence.h"
+#include "Stairs.h"
 
 using namespace std;
 
@@ -91,6 +93,29 @@ void randPlace(Character *ch, Grid &g) {
 }
 
 
+void randPlace(Item *i, Grid &g) {
+
+ int x;
+ int y;
+
+ while(1) {
+  x = getRand(0, 78);
+  y = getRand(0, 24);
+
+ char c = g.getChar(x, y);
+
+// i->setX(x);
+// i->setY(y);
+
+
+  if (g.canWalk(x,y) && c != '+' && c != '#') {
+   g.place(x, y, i);
+   break;
+  }
+ }
+
+}
+
 
 
 int main() {
@@ -114,32 +139,47 @@ int main() {
  ifstream file(fileName);
 
  Character *c = selectCharacter();
+ Item *sp = new Stairs;
 
  Grid g;
  g.init(file);
 
  file.close();
 
+ int floorNum = 1;
+ string haveQuit;
 
+while(floorNum <= 5) {
+//loop starts here for new floor
+  
  randPlace(c, g);
+ randPlace(sp,g);
 
  int type = 0;
+
+ vector<Enemy *> enemyVec;
 
  for (int i = 0; i < 20; ++i) {
   type = getRand(1, 18);
   Enemy *e = nullptr;
   if (type <= 2) {
-    e = new Merchant;
+    e = new Merchant(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 4 ) {
-    e = new Orc;
+    e = new Orc(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 6 ) {
-    e = new Elf;
+    e = new Elf(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 11 ) {
-    e = new Halfling;
+    e = new Halfling(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 14) {
-    e = new Dwarf;
+    e = new Dwarf(&g);
+    enemyVec.emplace_back(e);
   } else if (type <= 18) {
-    e = new Human;
+    e = new Human(&g);
+    enemyVec.emplace_back(e);
   }
 
   randPlace(e, g);
@@ -148,8 +188,6 @@ int main() {
 
  g.printIt();
 
- cout << "Please enter command: ";
-
  string input;
 
  int curX;
@@ -157,11 +195,12 @@ int main() {
 
 // command loop
  while(1) {
+  cout << "Please enter command: ";
   cin >> input;
   if (cin.fail()) {
    break;
   }
-
+  haveQuit = input;
   curX = c->getX();
   curY = c->getY();
 
@@ -226,7 +265,18 @@ int main() {
  else if (input == "q") {
     break;
    }
+
+ for (int i = 0; i < 20; ++i) {
+   enemyVec[i]->Move();
+  }
    g.printIt();
- }
+ } //inner loop ends
+  ++floorNum;
+  g.cleanGrid();
+  if(haveQuit == "q"){ break;}
+}
+ //loop ends here for new floor
+ c = nullptr;
+ sp = nullptr;
  return 0;
 }

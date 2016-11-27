@@ -29,9 +29,16 @@ bool Passage::canPlace() {
  return false;
 }
 
+
+
 // place Character atop
 void Passage::place(Character *other) {
  c = other;
+ notifyObservers();
+}
+
+void Passage::place(Item *other) {
+ i = other;
  notifyObservers();
 }
 

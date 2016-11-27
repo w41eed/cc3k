@@ -9,8 +9,7 @@
 
 class Orc: public Enemy {
 public:
-    Orc();
-    void move() override ;
+    Orc(Grid *);
     char getChar() override;
     int attack(Player *p) override;
 };

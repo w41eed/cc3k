@@ -5,11 +5,7 @@
 #include "Dwarf.h"
 #include "Player.h"
 
-Dwarf::Dwarf(): Enemy( 100, 20, 30,1) {
-}
-
-void Dwarf::move() {
-
+Dwarf::Dwarf(Grid *g): Enemy( 100, 20, 30, 1, g) {
 }
 
 char Dwarf::getChar() {

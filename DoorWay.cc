@@ -32,6 +32,12 @@ void DoorWay::place(Character *other) {
  notifyObservers();
 }
 
+// place Item atop
+void DoorWay::place(Item *other) {
+ i = other;
+ notifyObservers();
+}
+
 // remove Character from atop
 void DoorWay::moveOff() {
  c = nullptr;

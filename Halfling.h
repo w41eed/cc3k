@@ -10,8 +10,7 @@
 
 class Halfling: public Enemy {
 public:
-    Halfling();
-    void move() override;
+    Halfling(Grid *);
     char getChar() override;
     int attack(Player *p) override;
 };

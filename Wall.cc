@@ -24,6 +24,11 @@ void Wall::place(Character *other) {
  return;
 }
 
+// place Item atop
+void Wall::place(Item *other) {
+ return;
+}
+
 // move Character/Item off
 void Wall::moveOff() {
  return;

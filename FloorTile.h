@@ -13,6 +13,7 @@ public:
  bool canPlace() override; // can place atop
  bool canWalk() override; // can walk atop
  void place(Character *) override; // place Character atop
+ void place(Item *) override; // place Item atop
  void moveOff() override; // move Character/Item off
 
 };
