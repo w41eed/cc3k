@@ -17,10 +17,14 @@ char Elf::getChar() {
 
 // strikes player
 void Elf::strike(Player &other) {
- return;
+ other.getStruckBy(*this);
 }
 
 // gets struck by player
 void Elf::getStruckBy(Player &other) {
- return;
+ int net = other.getAtk() - Def;
+ if (net <= 0) {
+  net = 0;
+ }
+ HP -= net;
 }

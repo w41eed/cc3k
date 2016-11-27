@@ -6,10 +6,14 @@ Drow::Drow() :
 
 // strikes an enemy
 void Drow::strike(Enemy &other) {
- return;
+ other.getStruckBy(*this);
 }
 
 // gets struck by an enemy
 void Drow::getStruckBy(Enemy &other) {
- return;
+int net = other.getAtk() - Def;
+ if (net <= 0) {
+  net = 0;
+ }
+ HP -= net;
 }

@@ -6,9 +6,14 @@ Goblin::Goblin() :
 
 // strikes an enemy
 void Goblin::strike(Enemy &other) {
- return;
+ other.getStruckBy(*this);
 }
 
 void Goblin::getStruckBy(Enemy &other) {
- return;
+ int net = other.getAtk() - Def;
+ if (net <= 0) {
+  net = 0;
+ }
+ HP -= net;
+
 }

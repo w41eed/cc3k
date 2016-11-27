@@ -7,10 +7,15 @@ Shade::Shade() :
 
 // strikes an enemy
 void Shade::strike(Enemy &other) {
- return;
+ other.getStruckBy(*this);
 }
 
 // gets struck by an enemy
 void Shade::getStruckBy(Enemy &other) {
- return;
+ int net = other.getAtk() - Def;
+ if (net <= 0) {
+  net = 0;
+ }
+
+ HP -= net;
 }

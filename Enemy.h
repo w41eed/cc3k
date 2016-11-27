@@ -5,9 +5,7 @@
 #include "Grid.h"
 #include <string>
 #include <vector>
-
-
-class Player;
+#include "Player.h"
 
 class Enemy: public Character {
     Grid *g;

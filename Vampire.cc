@@ -6,10 +6,14 @@ Vampire::Vampire() :
 
 // strikes an enemy
 void Vampire::strike(Enemy &other) {
- return;
+ other.getStruckBy(*this);
 }
 
 // gets struck by an enemy
 void Vampire::getStruckBy(Enemy &other) {
- return;
+ int net = other.getAtk() - Def;
+ if (net <= 0) {
+  net = 0;
+ }
+ HP -= net;
 }
