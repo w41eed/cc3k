@@ -32,6 +32,7 @@
 #include "SmallGold.h"
 #include "WoundAttack.h"
 #include "WoundDefence.h"
+#include "Stairs.h"
 
 using namespace std;
 
@@ -92,6 +93,29 @@ void randPlace(Character *ch, Grid &g) {
 }
 
 
+void randPlace(Item *i, Grid &g) {
+
+ int x;
+ int y;
+
+ while(1) {
+  x = getRand(0, 78);
+  y = getRand(0, 24);
+
+ char c = g.getChar(x, y);
+
+// i->setX(x);
+// i->setY(y);
+
+
+  if (g.canWalk(x,y) && c != '+' && c != '#') {
+   g.place(x, y, i);
+   break;
+  }
+ }
+
+}
+
 
 
 int main() {
@@ -115,14 +139,20 @@ int main() {
  ifstream file(fileName);
 
  Character *c = selectCharacter();
+ Item *sp = new Stairs; 
 
  Grid g;
  g.init(file);
 
  file.close();
 
+ int floorNum = 1;
+
+while(floorNum <= 5) {
+//loop starts here for new floor
 
  randPlace(c, g);
+ randPlace(sp,g);
 
  int type = 0;
 
@@ -239,6 +269,11 @@ int main() {
    enemyVec[i]->Move();
   }
    g.printIt();
- }
+ } //inner loop ends
+
+  g.cleanGrid();
+ //if(input == "q"){ break;}
+}
+ //loop ends here for new floor
  return 0;
 }

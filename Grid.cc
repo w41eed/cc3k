@@ -82,6 +82,24 @@ Grid::~Grid() {
 
 }
 
+
+//cleans the Grid
+void Grid::cleanGrid(){
+ for (int i = 0; i < 79; ++i) {
+  for (int j = 0; j < 25; ++j) {
+    theGrid[i][j]->cleanCell();
+  }
+ }
+}
+
+/*
+//determines if player is on the stairs
+bool Grid::nextFloor(int x, int y){
+  return theGrid[y][x]->nextFloor();
+}
+*/
+
+
 // prints the Grid
 void Grid::printIt() {
 
@@ -108,6 +126,16 @@ bool Grid::canPlace(int x, int y) {
 
 // place Character at x, y
 bool Grid::place(int x, int y, Character *other) {
+ if (theGrid[x][y]->canWalk()) {
+  theGrid[x][y]->place(other);
+  return true;
+ } else {
+  return false;
+ }
+}
+
+// place Item at x, y
+bool Grid::place(int x, int y, Item *other) {
  if (theGrid[x][y]->canWalk()) {
   theGrid[x][y]->place(other);
   return true;
