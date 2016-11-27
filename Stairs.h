@@ -1,5 +1,5 @@
 #include <iostream>
-#include "item.h"
+#include "Item.h"
 #include <string>
 
 #ifndef STAIRS_H
