@@ -3,27 +3,8 @@
 
 // dtor
 Cell::~Cell() {
- char car = ' ';
-
- if (c) {
-  car = c->getChar();
- }
-
- if (car == '@') {
-  delete c;
- } else {
-  delete c;
- }
-
- if (i) {
-  car = i->getSym();
- }
-
- if (car!= '/') {
-  delete i;
- } else {
-  delete i;
- }
+ delete c;
+ delete i;
 }
 
 //cleans the cell
@@ -48,6 +29,7 @@ void Cell::cleanCell(){
 		c = nullptr;
 	 }
 	}
+	notifyObservers();
 }
 // ctor
 Cell::Cell(char symbol, int x, int y) :

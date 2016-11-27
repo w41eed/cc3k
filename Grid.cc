@@ -95,12 +95,12 @@ void Grid::cleanGrid(){
  }
 }
 
-/*
+
 //determines if player is on the stairs
 bool Grid::nextFloor(int x, int y){
-  return theGrid[y][x]->nextFloor();
+  return theGrid[x][y]->nextFloor();
 }
-*/
+
 
 
 // prints the Grid
