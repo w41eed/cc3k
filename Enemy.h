@@ -17,7 +17,7 @@ protected:
 public:
     Enemy(int HP, int Atk, int Def, int gold, Grid *);
     virtual ~Enemy();
-    virtual int attack(Player *p) = 0;
+    virtual int attack(Player *p);
     virtual void Move();
     virtual char getChar() = 0;
 };

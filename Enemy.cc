@@ -1,3 +1,4 @@
+#include <cmath>
 #include "Enemy.h"
 
 Enemy::Enemy(int HP, int Atk, int Def, int gold, Grid *g) :
@@ -62,3 +63,10 @@ void Enemy::Move() {
 
   }
 }
+
+int Enemy::attack(Player *p) {
+    int damage = ceil((100/ (100 + p->getDef()) * Atk)) * -1;
+    p->addHP(damage);
+}
+
+
