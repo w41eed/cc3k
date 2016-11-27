@@ -29,3 +29,15 @@ void Character::setX(int i) {
 void Character::setY(int i) {
  yCo = i;
 }
+
+int Character::getHP() {
+ return HP;
+}
+
+int Character::getDef() {
+ return Def;
+}
+
+void Character::addHP(int HPToAdd) {
+ HP = HP + HPToAdd;
+}

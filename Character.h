@@ -17,6 +17,9 @@ class Character {
  void setY(int); // sets Y val of current Character
  int getX(); // returns X val
  int getY(); // returns Y val
+ int getHP();
+ int getDef();
+ void addHP(int HPToAdd);
 
 
 
