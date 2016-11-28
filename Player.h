@@ -4,6 +4,7 @@
 
 
 #include "Character.h"
+class Enemy;
 
 class Player: public Character {
 

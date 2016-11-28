@@ -25,6 +25,7 @@ class Grid {
  char getChar(int, int); // gets char at x,y
  void cleanGrid(); // removes all the pointers to all the characters and items
  bool nextFloor(int x, int y); //returns true if player is on stairs
+ Character *getCPtr(int, int); //  returns character ptr at X, Y
 
 };
 

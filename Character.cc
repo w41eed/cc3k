@@ -29,3 +29,13 @@ void Character::setX(int i) {
 void Character::setY(int i) {
  yCo = i;
 }
+
+// return Atk val
+int Character::getAtk() {
+ return Atk;
+}
+
+// return Def val
+int Character::getDef() {
+ return Def;
+}

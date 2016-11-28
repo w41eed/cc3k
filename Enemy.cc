@@ -29,18 +29,6 @@ void Enemy::Move() {
   while(1) {
     int randPos = getERand(0, 7);
 
-//    Use code below if switch case doesn't work
-//    if (randPos == 0) {
-//        if (g->canWalk(getX(), getY())) {
-//            g->moveOff(getX(), getY());
-//            g->place(getX(), getY() - 1, this);
-//            this->setX(getX());
-//            this->setY(getY() - 1);
-//        }
-//    }
-
-//    0 = north, 1 = east, 2 = south, 3 = west, 4 = north/east,
-//    5 = south/east, 6 = south/west, 7 = north/west
     switch (randPos) {
         case 0:
             if (checkAndPlace( 0, -1)) {return;}

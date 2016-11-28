@@ -56,3 +56,7 @@ bool Cell::nextFloor(){
 	return false;
 	
 }
+
+Character *Cell::getCPtr() {
+ return c;
+}
