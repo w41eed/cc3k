@@ -39,3 +39,8 @@ int Character::getAtk() {
 int Character::getDef() {
  return Def;
 }
+
+// returns HP
+int Character::getHealth() {
+ return HP;
+}

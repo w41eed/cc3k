@@ -228,6 +228,7 @@ while(floorNum <= 5) {
 
 // command loop
  while(1) {
+  cout << "Player HP: " << c->getHealth() << endl;
   cout << "Please enter command: ";
   cin >> input;
   if (cin.fail()) {
@@ -239,6 +240,7 @@ while(floorNum <= 5) {
 
   if (input == "a") {
     pAttack(c, g);
+    cout << "Attacked Enemy" << endl;
   } else if (input == "no") {
     if (g.canWalk(curX, curY - 1)) {
      g.moveOff(curX, curY);

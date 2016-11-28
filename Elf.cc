@@ -20,6 +20,7 @@ char Elf::getChar() {
 // strikes player
 void Elf::strike(Character &other) {
  other.getStruckBy(*this);
+
 }
 
 // gets struck by player
