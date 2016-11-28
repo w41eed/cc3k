@@ -26,6 +26,11 @@ bool Enemy::checkAndPlace(int xDisp, int yDisp) {
 }
 
 void Enemy::Move() {
+
+ if (eAttack()) {
+  return;
+ }
+
   while(1) {
     int randPos = getERand(0, 7);
 
@@ -49,4 +54,39 @@ void Enemy::Move() {
     }
 
   }
+}
+
+bool Enemy::eAttack() {
+ Character *plyr = nullptr;
+ int x = getX();
+ int y = getY();
+
+ if (g->getChar(x, y - 1) == '@') {
+  plyr = g->getCPtr(x, y - 1);
+ } else if (g->getChar(x + 1, y - 1) == '@') {
+  plyr = g->getCPtr(x + 1, y - 1);
+ } else if (g->getChar(x + 1, y) == '@') {
+  plyr = g->getCPtr(x + 1, y);
+ } else if (g->getChar(x + 1, y + 1) == '@') {
+  plyr = g->getCPtr(x + 1, y + 1);
+ } else if (g->getChar(x, y + 1) == '@') {
+  plyr = g->getCPtr(x, y + 1);
+ } else if (g->getChar(x - 1, y + 1) == '@') {
+  plyr = g->getCPtr(x - 1, y + 1);
+ } else if (g->getChar(x - 1, y) == '@') {
+  plyr = g->getCPtr(x - 1, y);
+ } else if (g->getChar(x - 1, y - 1) == '@') {
+  plyr = g->getCPtr(x - 1, y - 1);
+ }
+
+
+ if (plyr == nullptr) {
+  return false;
+ }
+
+
+
+ strike(*plyr);
+ return true;
+
 }
