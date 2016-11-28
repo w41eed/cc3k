@@ -7,6 +7,14 @@ Vampire::Vampire() :
 // strikes an enemy
 void Vampire::strike(Character &other) {
  other.getStruckBy(*this);
+ char c = other.getChar();
+
+ if (c == 'W') {
+  HP -= 5;
+  return;
+ }
+
+ HP += 5;
 }
 
 // gets struck by an enemy
