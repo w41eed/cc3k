@@ -15,17 +15,3 @@ Merchant::Merchant(Grid *g): Enemy(30, 70, 5, 4, g){
 char Merchant::getChar() {
     return 'M';
 }
-
-// strikes player
-void Merchant::strike(Character &other) {
- other.getStruckBy(*this);
-}
-
-// gets struck by a player
-void Merchant::getStruckBy(Character &other) {
- int net = other.getAtk() - Def;
- if (net <= 0) {
-  net = 0;
- }
- HP -= net;
-}

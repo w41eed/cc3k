@@ -1,5 +1,5 @@
 #include "Character.h"
-
+#include "Elf.h"
 #include <iostream>
 
 // ctor
@@ -43,4 +43,27 @@ int Character::getDef() {
 // returns HP
 int Character::getHealth() {
  return HP;
+}
+
+// strikes other Character
+void Character::strike(Character &other) {
+ other.getStruckBy(*this);
+}
+
+// striks other Character
+void Character::getStruckBy(Character &other) {
+ int net = other.getAtk() - Def;
+ if (net <= 0) {
+  net = 0;
+ }
+ HP -= net;
+}
+
+// Elf strikes Character twice
+void Character::getStruckBy(Elf &other) {
+ int net = (2 * other.getAtk()) - (2 * Def);
+ if (net <= 0) {
+  net = 0;
+ }
+ HP -= net;
 }

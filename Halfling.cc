@@ -13,17 +13,3 @@ Halfling::Halfling(Grid *g): Enemy(100, 15, 20, 1, g){
 char Halfling::getChar() {
     return 'L';
 }
-
-// strikes player
-void Halfling::strike(Character &other) {
- other.getStruckBy(*this);
-}
-
-// gets struck by player
-void Halfling::getStruckBy(Character &other) {
- int net = other.getAtk() - Def;
- if (net <= 0) {
-  net = 0;
- }
- HP -= net;
-}

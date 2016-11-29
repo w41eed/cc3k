@@ -12,8 +12,6 @@ class Merchant: public Enemy {
 public:
     Merchant(Grid *); // ctor
     char getChar() override; // gets char to be printed
-    void strike(Character &) override; // strikes a player
-    void getStruckBy(Character &) override; // gets struck by a player
 };
 
 

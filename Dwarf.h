@@ -12,8 +12,6 @@ class Dwarf: public Enemy {
 public:
     Dwarf(Grid *); // ctor
     char getChar() override; // gets char to be printed
-    void strike(Character &) override; // strikes player
-    void getStruckBy(Character &) override; // gets struck by player
 };
 
 

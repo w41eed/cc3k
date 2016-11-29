@@ -4,14 +4,13 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "Elf.h"
 
 class Shade: public Player {
 
 public:
 Shade(); // ctor
-void strike(Character &) override; // strikes an enemy
-void getStruckBy(Character &) override; // gets struck by an enemy
-
+void getStruckBy(Elf &); // get struck by an Elf
 };
 
 #endif

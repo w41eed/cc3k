@@ -5,18 +5,11 @@
 Shade::Shade() :
  Player{125, 25, 25, 0} {}
 
-// strikes an enemy
-void Shade::strike(Character &other) {
- other.getStruckBy(*this);
-}
-
-
-// gets struck by an enemy
-void Shade::getStruckBy(Character &other) {
- int net = other.getAtk() - Def;
+// get struck by an Elf
+void Shade::getStruckBy(Elf &other) {
+ int net = (2 * other.getAtk()) - (2 * Def);
  if (net <= 0) {
-  net = 0;
+  
  }
 
- HP -= net;
 }
