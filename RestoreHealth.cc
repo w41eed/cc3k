@@ -11,3 +11,9 @@ RestoreHealth::RestoreHealth(): Potions(10,'P',"RH") {}
 
 //Destructor
 RestoreHealth::~RestoreHealth(){}
+
+
+void RestoreHealth::usePotion(Player &p) {
+    const int HPGain = 10;
+    p.setHealth(HPGain);
+}
