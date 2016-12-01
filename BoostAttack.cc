@@ -11,3 +11,8 @@ BoostAttack::BoostAttack(): Potions(5,'P',"BA") {}
 
 //Destructor
 BoostAttack::~BoostAttack(){}
+
+void BoostAttack::usePotion(Player &p) {
+    const int AtkGain = 5;
+    p.setAtk(AtkGain);
+}
