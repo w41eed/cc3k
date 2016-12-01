@@ -15,6 +15,7 @@ public:
 	
 	~WoundDefence ();
 
+	void usePotion(Player &p);
 };
 
 #endif
