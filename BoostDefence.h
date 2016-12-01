@@ -14,6 +14,7 @@ public:
 	
 	~BoostDefence();
 
+	void usePotion(Player &p);
 };
 
 
