@@ -17,12 +17,12 @@ void BoostDefence::usePotion(Player &p) {
     p.setAtk(DefGain);
 }
 
-int BoostDefense::getAtk(){
+int BoostDefence::getAtk(){
     const int AtkGain = 0;
     return AtkGain + innerPlayer->getAtk();
 }
 
-int BoostDefense::getDef(){
+int BoostDefence::getDef(){
     const int DefGain = 5;
     return DefGain + innerPlayer->getDef();
 }

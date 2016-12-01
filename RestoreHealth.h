@@ -1,11 +1,11 @@
+#ifndef RESTORE_HEALTH_H
+#define RESTORE_HEALTH_H
+
 #include "Cell.h"
 #include "Item.h"
 #include <iostream>
 #include "Potions.h"
 #include <string>
-
-#ifndef RESTORE_HEALTH_H
-#define RESTORE_HEALTH_H
 
 class RestoreHealth : public Potions {
 public:

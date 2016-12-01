@@ -1,12 +1,12 @@
+#ifndef BOOST_ATTACK_H
+#define BOOST_ATTACK_H
+// TODO: should there be an underscore after boost in include guard
+
 #include "Cell.h"
 #include "Item.h"
 #include <iostream>
 #include "Potions.h"
 #include <string>
-
-#ifndef BOOST_ATTACK_H
-#define BOOST_ATTACK_H
-// TODO: should there be an underscore after boost in include guard
 
 class BoostAttack : public Potions {
 public:

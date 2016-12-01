@@ -1,11 +1,11 @@
+#ifndef POISON_HEALTH_H
+#define POISON_HEALTH_H
+
 #include "Cell.h"
 #include "Item.h"
 #include <iostream>
 #include "Potions.h"
 #include <string>
-
-#ifndef POISON_HEALTH_H
-#define POISON_HEALTH_H
 
 class PoisonHealth : public Potions {
 public:

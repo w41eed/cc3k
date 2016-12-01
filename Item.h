@@ -1,9 +1,9 @@
+#ifndef ITEM_H
+#define ITEM_H
+
 #include <iostream>
 #include "Cell.h"
 #include "Player.h"
-
-#ifndef ITEM_H
-#define ITEM_H
 
 class Item: public Player {
 protected:

@@ -1,11 +1,11 @@
+#ifndef POTIONS_H
+#define POTIONS_H
+
 #include "Cell.h"
 #include "Item.h"
 #include <iostream>
 #include <string>
 #include "Player.h"
-
-#ifndef POTIONS_H
-#define POTIONS_H
 
 class Potions: public Item {
 	private:
