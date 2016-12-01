@@ -2,6 +2,7 @@
 #include "Item.h"
 #include <iostream>
 #include <string>
+#include "Player.h"
 
 #ifndef POTIONS_H
 #define POTIONS_H
@@ -16,7 +17,8 @@ class Potions: public Item {
 		int getAmount(); //returns the amount
 		char getSym(); //retuns the symbol
 		std::string getType(); //returns the type of potion
-		virtual ~Potions() {} //destructor for Potions
+		virtual ~Potions() {}; //destructor for Potions
+		virtual void usePotion(Player &p) = 0;
 };
 
 #endif
