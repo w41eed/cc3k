@@ -22,8 +22,8 @@ class Character {
  void setY(int); // sets Y val of current Character
  int getX(); // returns X val
  int getY(); // returns Y val
- int getAtk(); // return Atk val
- int getDef(); // return Def val
+ virtual int getAtk(); // return Atk val
+ virtual int getDef(); // return Def val
  void strike(Character &);
  void getStruckBy(Character &);
  void getStruckBy(Elf &);

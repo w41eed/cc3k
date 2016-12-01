@@ -16,3 +16,13 @@ void WoundDefence::usePotion(Player &p) {
     const int DefLoss = -5;
     p.setAtk(DefLoss);
 }
+
+int WoundDefence::getAtk(){
+    const int AtkGain = 0;
+    return AtkGain + innerPlayer->getAtk();
+}
+
+int WoundDefence::getDef(){
+    const int DefLoss = -5;
+    return DefLoss + innerPlayer->getDef();
+}

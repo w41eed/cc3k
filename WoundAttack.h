@@ -15,6 +15,8 @@ public:
 	~WoundAttack();
 
 	void usePotion(Player &p);
+	int getAtk() override;
+    int getDef() override;
 
 };
 

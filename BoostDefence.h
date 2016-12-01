@@ -15,6 +15,8 @@ public:
 	~BoostDefence();
 
 	void usePotion(Player &p);
+    int getAtk() override;
+	int getDef() override;
 };
 
 

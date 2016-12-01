@@ -15,4 +15,15 @@ BoostAttack::~BoostAttack(){}
 void BoostAttack::usePotion(Player &p) {
     const int AtkGain = 5;
     p.setAtk(AtkGain);
+
+}
+
+int BoostAttack::getAtk(){
+    const int AtkGain = 5;
+    return AtkGain + innerPlayer->getAtk();
+}
+
+int BoostAttack::getDef(){
+    const int DefGain = 0;
+    return DefGain + innerPlayer->getDef();
 }
