@@ -67,3 +67,16 @@ void Character::getStruckBy(Elf &other) {
  }
  HP -= net;
 }
+
+// adds healthChange to Character's health
+void Character::setHealth(int healthChange) {
+ HP += healthChange;
+}
+
+void Character::setAtk(int AtkChange) {
+ Atk += AtkChange;
+}
+
+void Character::setDef(int DefChange) {
+ Def += DefChange;
+}

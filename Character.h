@@ -28,6 +28,9 @@ class Character {
  void getStruckBy(Character &);
  void getStruckBy(Elf &);
  int getHealth();
+ void setHealth(int healthChange);
+ void setAtk(int AtkChange);
+ void setDef(int DefChange);
 
 
 };
