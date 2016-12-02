@@ -5,7 +5,7 @@
 #ifndef GOLD_H
 #define GOLD_H
 
-class Gold: Item{
+class Gold: public Item {
 	private:
 		int value; //amount of gold that gets added to player
 		char symbol; //the symbol that gets displayed on TextDisplay

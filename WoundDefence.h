@@ -8,7 +8,7 @@
 #define WOUND_DEFENCE_H
 
 
-class WoundDefence : Potions {
+class WoundDefence : public Potions {
 public:
 	WoundDefence (); //constructor. initializes the amount to -5, symbol = P, 
 					 //potionType = WD

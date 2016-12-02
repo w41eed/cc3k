@@ -9,8 +9,6 @@ class Goblin: public Player {
 
 public:
  Goblin(); // ctor
- void strike(Character &) override; // strikes an enemy
- void getStruckBy(Character &) override; // gets struck by an enemy
 };
 
 #endif

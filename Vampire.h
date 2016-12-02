@@ -3,14 +3,12 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "Elf.h"
 
 class Vampire: public Player {
 
 public:
  Vampire(); // ctor
- void strike(Character &) override; // strikes an enemy
- void getStruckBy(Character &) override; // gets struck by an enemy
-
 
 };
 

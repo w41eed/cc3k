@@ -6,7 +6,7 @@
 #ifndef SMALL_GOLD_H
 #define SMALL_GOLD_H
 
-class SmallGold: Gold {
+class SmallGold: public Gold {
 	public:
 		SmallGold(); //Constructs a SmallGold with value 1
 		~SmallGold();

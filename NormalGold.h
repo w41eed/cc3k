@@ -6,7 +6,7 @@
 #ifndef NORMAL_GOLD_H
 #define NORMAL_GOLD_H
 
-class NormalGold: Gold {
+class NormalGold: public Gold {
 	public:
 		NormalGold(); //Constructs a NormalGold with value 2
 		~NormalGold();

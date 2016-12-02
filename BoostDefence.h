@@ -7,7 +7,7 @@
 #ifndef BOOST_DEFENCE_H
 #define BOOST_DEFENCE_H
 
-class BoostDefence : Potions {
+class BoostDefence :public Potions {
 public:
 	BoostDefence(); //constructor. initializes the amount to +5, symbol = P, 
 					 //potionType = BD

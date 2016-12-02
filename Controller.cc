@@ -143,12 +143,37 @@ void pAttack(Character *player, Grid &g) {
  if (enem == nullptr) {
   return;
  }
-
  player->strike(*enem);
+}
+
+
+Item *pickItem(int val, bool gold) {
+ if (val <= 4 && gold == false) {
+  return new BoostAttack;
+ } else if (val <= 8 && gold == false) {
+  return new BoostDefence;
+ } else if (val <= 12 && gold == false) {
+  return new PoisonHealth;
+ } else if (val <= 15 && gold) {
+  return new NormalGold;
+ } else if (val <= 16 && gold == false) {
+  return new RestoreHealth;
+ } else if (val <= 18 && gold) {
+  return new DragonGold;
+ } else if (val <= 20 && gold == false) {
+  return new WoundAttack;
+ } else if (val <= 24 && gold == false) {
+  return new WoundDefence;
+ } else if (val <= 24) {
+  return new SmallGold;
+ }
+
+
+
+
 
 
 }
-
 
 void Controller::play() {
  /*
@@ -218,6 +243,26 @@ while(floorNum <= 5) {
   randPlace(e, g);
 
  }
+
+ bool gold = false;
+
+ for (int i = 0; i < 20; ++i) {
+  type = getRand(1, 24);
+  Item *it = nullptr;
+
+  it = pickItem(type, gold);
+
+  randPlace(it, g);
+
+
+  if (i == 9) {
+   gold = true;
+  }
+
+ }
+
+
+
 
  g.printIt();
 

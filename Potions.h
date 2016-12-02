@@ -6,7 +6,7 @@
 #ifndef POTIONS_H
 #define POTIONS_H
 
-class Potions: Item {
+class Potions: public Item {
 	private:
 		int amount; //amount by which the Health,Attack,Defence increases or decreases
 		char symbol;

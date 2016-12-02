@@ -7,7 +7,7 @@
 #ifndef RESTORE_HEALTH_H
 #define RESTORE_HEALTH_H
 
-class RestoreHealth : Potions {
+class RestoreHealth : public Potions {
 public:
 	RestoreHealth(); //constructor. initializes the amount to +10, symbol = P, 
 					 //potionType = RH

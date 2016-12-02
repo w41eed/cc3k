@@ -1,5 +1,8 @@
+class Elf;
+
 #ifndef CHARACTER_H
 #define CHARACTER_H
+
 
 class Character {
  protected:
@@ -21,8 +24,9 @@ class Character {
  int getY(); // returns Y val
  int getAtk(); // return Atk val
  int getDef(); // return Def val
- virtual void strike(Character &) = 0;
- virtual void getStruckBy(Character &) = 0;
+ void strike(Character &);
+ void getStruckBy(Character &);
+ void getStruckBy(Elf &);
  int getHealth();
 
 

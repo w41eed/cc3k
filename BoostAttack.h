@@ -7,7 +7,7 @@
 #ifndef BOOST_ATTACK_H
 #define BOOST_ATTACK_H
 
-class BoostAttack : Potions {
+class BoostAttack : public Potions {
 public:
 	BoostAttack(); //constructor. initializes the amount to +5, symbol = P, 
 					 //potionType = BA

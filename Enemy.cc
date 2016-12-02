@@ -84,9 +84,10 @@ bool Enemy::eAttack() {
   return false;
  }
 
+ if(getERand(1, 2) == 1) {
+  strike(*plyr);
+ }
 
-
- strike(*plyr);
  return true;
 
 }
