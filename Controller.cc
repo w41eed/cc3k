@@ -334,6 +334,8 @@ while(floorNum <= 5) {
   } else if (input == "u") {
     pGetPotion(c,g);
     cout << "Used Potion" << endl;
+   cout << "Attack Points:" << c->getAtk() << endl;
+   cout << "Defence Points:" << c->getDef() << endl;
   } else if (input == "no") {
     if (g.canWalk(curX, curY - 1)) {
      g.moveOff(curX, curY);
