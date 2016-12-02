@@ -165,3 +165,8 @@ char Grid::getChar(int x, int y) {
 Character *Grid::getCPtr(int x, int y) {
  return theGrid[x][y]->getCPtr();
 }
+
+// returns a item pointer at x, y
+Item *Grid::getIPtr(int x, int y) {
+ return theGrid[x][y]->getIPtr();
+}
