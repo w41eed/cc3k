@@ -3,6 +3,7 @@
 
 
 #include "Cell.h"
+class Item;
 
 class FloorTile: public Cell {
 

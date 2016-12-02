@@ -1,4 +1,5 @@
 #include "FloorTile.h"
+#include "Item.h"
 
 // ctor
 FloorTile::FloorTile(int x, int y) : Cell{'.', x ,y} {
