@@ -146,6 +146,37 @@ void pAttack(Character *player, Grid &g) {
  player->strike(*enem);
 }
 
+void pGetPotion(Character *player, Grid &g) {
+ string dir;
+ cin >> dir;
+ Item *i;
+ int x = player->getX();
+ int y = player->getY();
+
+ if (dir == "no") {
+  i = g.getIPtr(x, y - 1);
+ } else if (dir == "ne") {
+  i = g.getIPtr(x + 1, y - 1);
+ } else if (dir == "ea") {
+  i = g.getIPtr(x + 1, y);
+ } else if (dir == "se") {
+  i = g.getIPtr(x + 1, y + 1);
+ } else if (dir == "so") {
+  i = g.getIPtr(x, y + 1);
+ } else if (dir == "sw") {
+  i = g.getIPtr(x - 1, y + 1);
+ } else if (dir == "we") {
+  i = g.getIPtr(x - 1, y);
+ } else if (dir == "nw") {
+  i = g.getIPtr(x - 1, y - 1);
+ }
+
+ if (i == nullptr) {
+  return;
+ }
+ i->usePotion(player);
+}
+
 
 Item *pickItem(int val, bool gold) {
  if (val <= 4 && gold == false) {
@@ -286,6 +317,9 @@ while(floorNum <= 5) {
   if (input == "a") {
     pAttack(c, g);
     cout << "Attacked Enemy" << endl;
+  } else if (input == "u") {
+    pGetPotion(c,g);
+    cout << "Used Potion" << endl;
   } else if (input == "no") {
     if (g.canWalk(curX, curY - 1)) {
      g.moveOff(curX, curY);
