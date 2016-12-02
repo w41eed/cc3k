@@ -60,3 +60,7 @@ bool Cell::nextFloor(){
 Character *Cell::getCPtr() {
  return c;
 }
+
+Item *Cell::getIPtr() {
+ return i;
+}
