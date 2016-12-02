@@ -311,8 +311,8 @@ while(floorNum <= 5) {
  int curY;
 
   // store original value of Atk and Def to allow resetting of them after new floor
- int originalAtk = 0;
- int originalDef = 0;
+ const int originalAtk = c->getAtk();
+ const int originalDef = c->getDef();
 
 // command loop
  while(1) {
@@ -325,17 +325,16 @@ while(floorNum <= 5) {
   haveQuit = input;
   curX = c->getX();
   curY = c->getY();
-  int originalAtk = c->getAtk();
-  int originalDef = c->getDef();
+  cout << "Attack Points:" << c->getAtk() << endl;
+  cout << "Defence Points:" << c->getDef() << endl;
 
+  cout << "orig atk" << originalAtk << endl;
   if (input == "a") {
     pAttack(c, g);
     cout << "Attacked Enemy" << endl;
   } else if (input == "u") {
     pGetPotion(c,g);
     cout << "Used Potion" << endl;
-   cout << "Attack Points:" << c->getAtk() << endl;
-   cout << "Defence Points:" << c->getDef() << endl;
   } else if (input == "no") {
     if (g.canWalk(curX, curY - 1)) {
      g.moveOff(curX, curY);
