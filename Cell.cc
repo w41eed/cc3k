@@ -1,5 +1,6 @@
 #include "Cell.h"
 #include <iostream>
+#include "Item.h"
 
 // dtor
 Cell::~Cell() {

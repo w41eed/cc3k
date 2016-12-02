@@ -3,7 +3,8 @@
 
 #include "Subject.h"
 #include "Character.h"
-#include "Item.h"
+//#include "Item.h"
+class Item;
 
 class Cell: public Subject{
 protected:
