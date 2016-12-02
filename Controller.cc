@@ -325,10 +325,7 @@ while(floorNum <= 5) {
   haveQuit = input;
   curX = c->getX();
   curY = c->getY();
-  cout << "Attack Points:" << c->getAtk() << endl;
-  cout << "Defence Points:" << c->getDef() << endl;
 
-  cout << "orig atk" << originalAtk << endl;
   if (input == "a") {
     pAttack(c, g);
     cout << "Attacked Enemy" << endl;
@@ -418,6 +415,8 @@ while(floorNum <= 5) {
    enemyVec[i]->Move();
   }
    g.printIt();
+  cout << "Attack Points:" << c->getAtk() << endl;
+  cout << "Defence Points:" << c->getDef() << endl;
  } //inner loop ends
   ++floorNum;
   c->setAtk(originalAtk - c->getAtk()); // sets atk back to original atk
