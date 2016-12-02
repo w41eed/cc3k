@@ -29,7 +29,7 @@ public:
  bool nextFloor(); //determines if player is on stairs
  Character *getCPtr(); // returns pointer to character on cell
  Item *getIPtr();
-
+ void takeOff(); // takes item off cell
 
 };
 

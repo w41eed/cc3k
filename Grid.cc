@@ -170,3 +170,8 @@ Character *Grid::getCPtr(int x, int y) {
 Item *Grid::getIPtr(int x, int y) {
  return theGrid[x][y]->getIPtr();
 }
+
+// takes item off x, y
+void Grid::takeOff(int x, int y) {
+ theGrid[x][y]->takeOff();
+}

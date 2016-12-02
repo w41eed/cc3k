@@ -65,3 +65,8 @@ Character *Cell::getCPtr() {
 Item *Cell::getIPtr() {
  return i;
 }
+
+void Cell::takeOff() {
+ i = nullptr;
+ notifyObservers();
+}
