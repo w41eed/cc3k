@@ -18,7 +18,6 @@ class Potions: public Item {
 		char getSym(); //retuns the symbol
 		std::string getType(); //returns the type of potion
 		virtual ~Potions() {}; //destructor for Potions
-		virtual void usePotion(Player &p) = 0;
 };
 
 #endif
