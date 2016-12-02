@@ -75,8 +75,14 @@ void Character::setHealth(int healthChange) {
 
 void Character::setAtk(int AtkChange) {
  Atk += AtkChange;
+ if (Atk < 0) {
+  Atk = 0;
+ }
 }
 
 void Character::setDef(int DefChange) {
  Def += DefChange;
+ if (Def < 0) {
+  Def = 0;
+ }
 }
