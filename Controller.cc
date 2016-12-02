@@ -302,6 +302,10 @@ while(floorNum <= 5) {
  int curX;
  int curY;
 
+  // store original value of Atk and Def to allow resetting of them after new floor
+ int originalAtk = 0;
+ int originalDef = 0;
+
 // command loop
  while(1) {
   cout << "Player HP: " << c->getHealth() << endl;
@@ -313,6 +317,8 @@ while(floorNum <= 5) {
   haveQuit = input;
   curX = c->getX();
   curY = c->getY();
+  int originalAtk = c->getAtk();
+  int originalDef = c->getDef();
 
   if (input == "a") {
     pAttack(c, g);
@@ -405,6 +411,8 @@ while(floorNum <= 5) {
    g.printIt();
  } //inner loop ends
   ++floorNum;
+  c->setAtk(originalAtk - c->getAtk()); // sets atk back to original atk
+  c->setDef(originalDef - c->getDef()); // sets def back to original def
   if(haveQuit == "q"){ break;}
   g.cleanGrid();
 }
