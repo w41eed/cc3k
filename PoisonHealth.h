@@ -13,7 +13,7 @@ public:
 					 //potionType = PH
 	~PoisonHealth();
 
-	void usePotion(Player &p) override;
+	void usePotion(Character *c) override;
 //	TODO: check if health below 0. log message of obtaining potion
 };
 

@@ -13,7 +13,7 @@ RestoreHealth::RestoreHealth(): Potions(10,'P',"RH") {}
 RestoreHealth::~RestoreHealth(){}
 
 
-void RestoreHealth::usePotion(Player &p) {
+void RestoreHealth::usePotion(Character *c) {
     const int HPGain = 10;
-    p.setHealth(HPGain);
+    c->setHealth(HPGain);
 }

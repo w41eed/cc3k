@@ -12,7 +12,7 @@ PoisonHealth::PoisonHealth():Potions(-10,'P',"PH") {}
 //Destructor
 PoisonHealth::~PoisonHealth(){}
 
-void PoisonHealth::usePotion(Player &p) {
+void PoisonHealth::usePotion(Character *c) {
     const int HPLose = -10;
-    p.setHealth(HPLose);
+    c->setHealth(HPLose);
 }

@@ -12,7 +12,7 @@ BoostDefence::BoostDefence(): Potions(5,'P',"BD") {}
 //Destructor
 BoostDefence::~BoostDefence(){}
 
-void BoostDefence::usePotion(Player &p) {
+void BoostDefence::usePotion(Character *c) {
     const int DefGain = 5;
-    p.setAtk(DefGain);
+    c->setAtk(DefGain);
 }

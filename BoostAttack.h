@@ -10,11 +10,11 @@
 
 class BoostAttack : public Potions {
 public:
-	BoostAttack(); //constructor. initializes the amount to +5, symbol = P, 
+	BoostAttack(); //constructor. initializes the amount to +5, symbol = P,
 					 //potionType = BA
 	
 	~BoostAttack();
-    void usePotion(Player &p);
+    void usePotion(Character *c) override;
 };
 
 

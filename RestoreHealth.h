@@ -13,7 +13,7 @@ public:
 					 //potionType = RH
 	
 	~RestoreHealth();
-	void usePotion(Player &p) override;
+	void usePotion(Character *c) override;
 };
 
 
