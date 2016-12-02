@@ -155,20 +155,28 @@ void pGetPotion(Character *player, Grid &g) {
 
  if (dir == "no") {
   i = g.getIPtr(x, y - 1);
+  g.moveOff(x,y - 1);
  } else if (dir == "ne") {
   i = g.getIPtr(x + 1, y - 1);
+  g.moveOff(x + 1,y - 1);
  } else if (dir == "ea") {
   i = g.getIPtr(x + 1, y);
+  g.moveOff(x + 1,y);
  } else if (dir == "se") {
   i = g.getIPtr(x + 1, y + 1);
+  g.moveOff(x + 1,y + 1);
  } else if (dir == "so") {
   i = g.getIPtr(x, y + 1);
+  g.moveOff(x,y + 1);
  } else if (dir == "sw") {
   i = g.getIPtr(x - 1, y + 1);
+  g.moveOff(x - 1,y + 1);
  } else if (dir == "we") {
   i = g.getIPtr(x - 1, y);
+  g.moveOff(x - 1,y);
  } else if (dir == "nw") {
   i = g.getIPtr(x - 1, y - 1);
+  g.moveOff(x - 1,y - 1);
  }
 
  if (i == nullptr) {
