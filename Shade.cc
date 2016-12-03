@@ -3,7 +3,7 @@
 
 // ctor
 Shade::Shade() :
- Player{125, 25, 25, 0} {}
+ Player{125, 25, 25, 0, "Shade"} {}
 
 // get struck by an Elf
 void Shade::getStruckBy(Elf &other) {

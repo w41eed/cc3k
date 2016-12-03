@@ -5,12 +5,15 @@
 #include "Wall.h"
 #include "Passage.h"
 #include "DoorWay.h"
+#include "ActionBar.h"
 
 using namespace std;
 
 // ctor
 Grid::Grid() :
- td{nullptr} {}
+ td{nullptr} {
+  ab = new ActionBar;
+ }
 
 // initialize from map text file
 void Grid::init(ifstream &file) {
@@ -67,6 +70,7 @@ void Grid::init(ifstream &file) {
 Grid::~Grid() {
 
  delete td;
+ delete ab;
 
  for (int i = 0; i < 79; ++i) {
   for (int j = 0; j < 25; ++j) {
@@ -107,6 +111,7 @@ bool Grid::nextFloor(int x, int y){
 void Grid::printIt() {
 
 cout << *td;
+cout << *ab << endl;
 }
 
 // checks if Cell at x,y is walkable
@@ -174,4 +179,10 @@ Item *Grid::getIPtr(int x, int y) {
 // takes item off x, y
 void Grid::takeOff(int x, int y) {
  theGrid[x][y]->takeOff();
+}
+
+
+//returns a pointer to the ActionBar
+ActionBar * Grid::getAction(){
+  return ab;
 }

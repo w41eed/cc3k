@@ -6,7 +6,7 @@
 #include "Player.h"
 
 // ctor
-Dwarf::Dwarf(Grid *g): Enemy( 100, 20, 30, 1, g) {
+Dwarf::Dwarf(Grid *g): Enemy( 100, 20, 30, 1, g, "Dwarf") {
 }
 
 // gets char to be printed

@@ -11,5 +11,7 @@ Stairs::Stairs() {}
 char Stairs::getSym(){return symbol;}
 
 
+std::string Stairs::getType() {return "Stairs";}
+
 //destructor
 Stairs::~Stairs(){}

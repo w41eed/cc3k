@@ -7,7 +7,7 @@
 #include "Player.h"
 
 // ctor
-Merchant::Merchant(Grid *g): Enemy(30, 70, 5, 4, g){
+Merchant::Merchant(Grid *g): Enemy(30, 70, 5, 4, g, "Merchant"){
 
 }
 

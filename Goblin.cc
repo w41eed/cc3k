@@ -2,4 +2,4 @@
 
 // ctor
 Goblin::Goblin() :
-  Player(110, 15, 20, 0) {}
+  Player(110, 15, 20, 0, "Goblin") {}

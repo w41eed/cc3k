@@ -11,3 +11,5 @@ int Gold::getVal(){ return value;}
 
 //returns the gold symbol
 char Gold::getSym(){ return symbol;}
+
+std::string Gold::getType() {return "Gold";}

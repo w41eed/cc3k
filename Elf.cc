@@ -8,7 +8,7 @@
 using namespace std;
 
 // ctor
-Elf::Elf(Grid *g): Enemy(140, 30, 10, 2, g) {
+Elf::Elf(Grid *g): Enemy(140, 30, 10, 2, g, "Elf") {
 
 }
 

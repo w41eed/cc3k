@@ -13,6 +13,7 @@ class Stairs : public Item {
 	public:
 		Stairs(); //constructor
 		char getSym() override; //returns the symbol
+		std::string getType(); //does nothing
 		~Stairs();
 };
 

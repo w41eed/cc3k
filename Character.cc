@@ -3,8 +3,8 @@
 #include <iostream>
 
 // ctor
-Character::Character(int HP, int Atk, int Def, int gold, int xCo, int yCo):
- HP{HP}, Atk{Atk}, Def{Def}, gold{gold}, xCo{xCo}, yCo{yCo} {}
+Character::Character(int HP, int Atk, int Def, int gold, int xCo, int yCo, std::string n):
+ HP{HP}, Atk{Atk}, Def{Def}, gold{gold}, xCo{xCo}, yCo{yCo} , name{n} {}
 
 // dtor
 Character::~Character() {
@@ -85,4 +85,13 @@ void Character::setDef(int DefChange) {
  if (Def < 0) {
   Def = 0;
  }
+}
+
+
+int Character::getG(){
+	return gold;
+}
+
+std::string Character::getName(){
+	return name;
 }

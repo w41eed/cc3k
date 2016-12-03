@@ -13,6 +13,7 @@ class Gold: public Item {
 		Gold(int n, char s); //constructor for Gold
 		char getSym(); //returns the Gold symbol
 		int getVal(); //returns the gold value
+		std::string getType(); //doesn't do anything
 		virtual ~Gold() {} //virtual destructor for gold and types of gold
 
 };

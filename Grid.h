@@ -6,11 +6,13 @@
 #include <fstream>
 #include "Cell.h"
 #include "TextDisplay.h"
+#include "ActionBar.h"
 
 class Grid {
  std::vector<std::vector<Cell *>> theGrid; // the actual grid
  int gridLen; // length of the Grid
  TextDisplay *td; // TextDisplay for displaying the Grid
+ ActionBar *ab; //ActionBar for Displaying Player Stats
 
  public:
  Grid(); // ctor
@@ -28,7 +30,7 @@ class Grid {
  bool nextFloor(int x, int y); //returns true if player is on stairs
  Character *getCPtr(int, int); //  returns character ptr at X, Y
  Item *getIPtr(int, int); //  returns item ptr at X, Y
-
+ ActionBar * getAction(); // return a pointer to the ActionBar
 };
 
 #endif

@@ -2,7 +2,7 @@
 
 // ctor
 Drow::Drow() :
- Player(150, 25, 15, 0) {}
+ Player(150, 25, 15, 0, "Drow") {}
 
 // Elf strikes Drow only once
 void Drow::getStruckBy(Elf &other) {

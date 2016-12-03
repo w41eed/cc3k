@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int HP, int Atk, int Def, int gold, Grid *g) :
-        Character(HP, Atk, Def, gold, 0, 0), g{g} {}
+Enemy::Enemy(int HP, int Atk, int Def, int gold, Grid *g , std::string name) :
+        Character(HP, Atk, Def, gold, 0, 0, name), g{g} {}
 
 Enemy::~Enemy() {
 

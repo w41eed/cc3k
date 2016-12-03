@@ -113,6 +113,10 @@ void randPlace(Item *i, Grid &g) {
 
 }
 
+std::string eName;
+int ePreStrike;
+int ePostStrike;
+int pPreStrike;
 
 
 void pAttack(Character *player, Grid &g) {
@@ -143,8 +147,15 @@ void pAttack(Character *player, Grid &g) {
  if (enem == nullptr) {
   return;
  }
- player->strike(*enem);
+ eName = enem->getName();
+ ePreStrike = enem->getHealth();
+ pPreStrike = player->getHealth();
+
+  player->strike(*enem);
+ ePostStrike = enem->getHealth();
 }
+
+std::string PotionType; //stores the potion type for action bar
 
 void pGetPotion(Character *player, Grid &g) {
  string dir;
@@ -182,6 +193,7 @@ void pGetPotion(Character *player, Grid &g) {
  if (i == nullptr) {
   return;
  }
+ PotionType = i->getType();
  i->usePotion(player);
  delete i;
  i = nullptr;
@@ -247,6 +259,7 @@ void Controller::play() {
  int floorNum = 1;
  string haveQuit;
  bool next_floor;
+ ActionBar *ab = g.getAction();
 
 while(floorNum <= 5) {
 //loop starts here for new floor
@@ -303,8 +316,9 @@ while(floorNum <= 5) {
  }
 
 
-
-
+ ab->updateFloor(floorNum);
+ ab->updatePlayer(c);
+ ab->updateAction(1);
  g.printIt();
 
  string input;
@@ -318,7 +332,6 @@ while(floorNum <= 5) {
 
 // command loop
  while(1) {
-  cout << "Player HP: " << c->getHealth() << endl;
   cout << "Please enter command: ";
   cin >> input;
   if (cin.fail()) {
@@ -330,16 +343,21 @@ while(floorNum <= 5) {
 
   if (input == "a") {
     pAttack(c, g);
-    cout << "Attacked Enemy" << endl;
+    ab->updateAttack(eName,ePreStrike,ePostStrike,pPreStrike);
+    ab->updateAction(11);
+    
   } else if (input == "u") {
     pGetPotion(c,g);
-    cout << "Used Potion" << endl;
+    ab->updatePotion(PotionType);
+    ab->updateAction(2);
+    
   } else if (input == "no") {
     if (g.canWalk(curX, curY - 1)) {
      g.moveOff(curX, curY);
      g.place(curX, curY - 1, c);
      c->setX(curX);
      c->setY(curY - 1);
+     ab->updateAction(3);
      next_floor = g.nextFloor(curX,curY-1);
      if(next_floor == 1) {break;}
 
@@ -350,6 +368,7 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY, c);
      c->setX(curX + 1);
      c->setY(curY);
+     ab->updateAction(4);
      next_floor = g.nextFloor(curX+1,curY);
      if(next_floor == 1) {break;}
     }
@@ -359,6 +378,7 @@ while(floorNum <= 5) {
      g.place(curX, curY + 1, c);
      c->setX(curX);
      c->setY(curY + 1);
+     ab->updateAction(5);
      next_floor = g.nextFloor(curX,curY+1);
      if(next_floor == 1) {break;}
     }
@@ -368,6 +388,7 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY, c);
      c->setX(curX - 1);
      c->setY(curY);
+     ab->updateAction(6);
      next_floor = g.nextFloor(curX-1,curY);
      if(next_floor == 1) {break;}
     }
@@ -377,6 +398,7 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY - 1, c);
      c->setX(curX + 1);
      c->setY(curY - 1);
+     ab->updateAction(7);
      next_floor = g.nextFloor(curX+1,curY-1);
      if(next_floor == 1) {break;}
     }
@@ -386,6 +408,7 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY - 1, c);
      c->setX(curX - 1);
      c->setY(curY - 1);
+     ab->updateAction(8);
      next_floor = g.nextFloor(curX-1,curY-1);
      if(next_floor == 1) {break;}
     }
@@ -395,6 +418,7 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY + 1, c);
      c->setX(curX + 1);
      c->setY(curY + 1);
+     ab->updateAction(9);
      next_floor = g.nextFloor(curX+1,curY+1);
      if(next_floor == 1) {break;}
     }
@@ -404,6 +428,7 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY + 1, c);
      c->setX(curX - 1);
      c->setY(curY + 1);
+     ab->updateAction(10);
      next_floor = g.nextFloor(curX-1,curY+1);
      if(next_floor == 1) {break;}
     }
@@ -416,9 +441,10 @@ while(floorNum <= 5) {
  for (int i = 0; i < 20; ++i) {
    enemyVec[i]->Move();
   }
-   g.printIt();
-  cout << "Attack Points:" << c->getAtk() << endl;
-  cout << "Defence Points:" << c->getDef() << endl;
+   ab->updatePlayer(c);
+   g.printIt(); //printing is done here
+  
+  
  } //inner loop ends
   ++floorNum;
   c->setAtk(originalAtk - c->getAtk()); // sets atk back to original atk
