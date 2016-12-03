@@ -15,10 +15,9 @@ protected:
 public:
     Enemy(int HP, int Atk, int Def, int gold, Grid *, std::string name);
     virtual ~Enemy();
-    virtual void Move();
+    virtual bool Move(bool);
     virtual char getChar() = 0;
     bool eAttack();
-    void getStruckBy(Character &) override;
 };
 
 

@@ -320,6 +320,8 @@ while(floorNum <= 5) {
 
  int curX;
  int curY;
+ bool eMove = true;
+
 
   // store original value of Atk and Def to allow resetting of them after new floor
  const int originalAtk = c->getAtk();
@@ -340,7 +342,14 @@ while(floorNum <= 5) {
     pAttack(c, g);
     ab->updateAttack(eName,ePreStrike,ePostStrike,pPreStrike);
     ab->updateAction(11);
-    
+  } else if (input == "f") {
+    if (eMove) {
+     cout << "Enemy movement halted" << endl;
+     eMove = false;
+    } else {
+     cout << "Enemy movement resumed" << endl;
+     eMove = true;
+    }
   } else if (input == "u") {
     pGetPotion(c,g);
     ab->updatePotion(PotionType);
@@ -433,11 +442,15 @@ while(floorNum <= 5) {
     break;
    }
 
- for (int i = 0; i < 20; ++i) {
-   if (enemyVec[i]) {
-    enemyVec[i]->Move();
+  for (int i = 0; i < 20; ++i) {
+   if (enemyVec[i]) { 
+    if (enemyVec[i]->Move(eMove)) {
+     delete enemyVec[i];
+     enemyVec[i] = nullptr;
+    }
    }
   }
+  
    ab->updatePlayer(c);
 
    g.printIt(); // print the screen

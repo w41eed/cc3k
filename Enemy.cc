@@ -25,10 +25,15 @@ bool Enemy::checkAndPlace(int xDisp, int yDisp) {
   return false;
 }
 
-void Enemy::Move() {
-
+bool Enemy::Move(bool eMove) {
+ if (HP <= 0) {
+  g->moveOff(getX(), getY());
+  return true;
+ }
  if (eAttack()) {
-  return;
+  return false;
+ } else if (eMove == false) {
+  return false;
  }
 
   while(1) {
@@ -36,24 +41,27 @@ void Enemy::Move() {
 
     switch (randPos) {
         case 0:
-            if (checkAndPlace( 0, -1)) {return;}
+            if (checkAndPlace( 0, -1)) {return false;}
         case 1:
-            if (checkAndPlace( 1, 0)) {return;}
+            if (checkAndPlace( 1, 0)) {return false;}
         case 2:
-            if (checkAndPlace( 0, 1)) {return;}
+            if (checkAndPlace( 0, 1)) {return false;}
         case 3:
-            if (checkAndPlace( -1, 0)) {return;}
+            if (checkAndPlace( -1, 0)) {return false;}
         case 4:
-            if (checkAndPlace( 1, -1)) {return;}
+            if (checkAndPlace( 1, -1)) {return false;}
         case 5:
-            if (checkAndPlace( 1, 1)) {return;}
+            if (checkAndPlace( 1, 1)) {return false;}
         case 6:
-            if (checkAndPlace( -1, 1)) {return;}
+            if (checkAndPlace( -1, 1)) {return false;}
         case 7:
-            if (checkAndPlace( -1, -1)) {return;}
+            if (checkAndPlace( -1, -1)) {return false;}
     }
 
   }
+
+ return false;
+
 }
 
 bool Enemy::eAttack() {
@@ -89,15 +97,5 @@ bool Enemy::eAttack() {
  }
 
  return true;
-
-}
-
-void Enemy::getStruckBy(Character &other) {
- Character::getStruckBy(other);
-
- if (HP <= 0) {
-  g->moveOff(getX(), getY());
-  delete this;
- }
 
 }
