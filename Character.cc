@@ -4,7 +4,7 @@
 
 // ctor
 Character::Character(int HP, int Atk, int Def, int gold, int xCo, int yCo, std::string n):
- HP{HP}, Atk{Atk}, Def{Def}, gold{gold}, name{n}, xCo{xCo}, yCo{yCo} {}
+ HP{HP}, maxHP{HP}, Atk{Atk}, Def{Def}, gold{gold}, name{n}, xCo{xCo}, yCo{yCo} {}
 
 // dtor
 Character::~Character() {
@@ -57,6 +57,10 @@ void Character::getStruckBy(Character &other) {
   net = 0;
  }
  HP -= net;
+ if (HP <= 0) {
+  HP = 0;
+ }
+
 }
 
 // Elf strikes Character twice
@@ -71,6 +75,9 @@ void Character::getStruckBy(Elf &other) {
 // adds healthChange to Character's health
 void Character::setHealth(int healthChange) {
  HP += healthChange;
+ if (HP > maxHP) {
+  HP = maxHP;
+ }
 }
 
 void Character::setAtk(int AtkChange) {
@@ -94,4 +101,8 @@ int Character::getG(){
 
 std::string Character::getName(){
 	return name;
+}
+
+void Character::setG(int g) {
+ gold += g;
 }

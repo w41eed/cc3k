@@ -10,7 +10,8 @@ class Item {
 	virtual char getSym() = 0;
 	virtual std::string getType() = 0;
 	virtual ~Item() {};
-    virtual void usePotion(Character *c) {};
+        virtual void usePotion(Character *c) {};
+	virtual int getVal() {return 0;}
 
 };
 

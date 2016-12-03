@@ -37,6 +37,7 @@
 
 using namespace std;
 
+bool Merchant::isHostile = false;
 
 int getRand(int min, int max) {
  double f = 1.0 / (RAND_MAX + 1.0);
@@ -436,8 +437,14 @@ while(floorNum <= 5) {
    enemyVec[i]->Move();
   }
    ab->updatePlayer(c);
-   g.printIt(); //printing is done here
-  
+
+   g.printIt(); // print the screen
+
+   if (c->getHealth() == 0) {
+    haveQuit = "q";
+    cout << "Game Over! You Lose" << endl;
+    break;
+   }
   
  } //inner loop ends
   ++floorNum;
@@ -445,6 +452,11 @@ while(floorNum <= 5) {
   c->setDef(originalDef - c->getDef()); // sets def back to original def
   if(haveQuit == "q"){ break;}
   g.cleanGrid();
+  if (floorNum == 6) {
+   cout << "You win!" << endl;
+   break;
+  }
+
 }
  //loop ends here for new floor
  c = nullptr;

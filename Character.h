@@ -7,6 +7,7 @@ class Elf;
 class Character {
  protected:
  int HP; // health
+ int maxHP; // max health
  int Atk; // attack power
  int Def; // defence
  int gold; // current gold
@@ -26,14 +27,15 @@ class Character {
  int getY(); // returns Y val
  int getAtk(); // return Atk val
  int getDef(); // return Def val
- void strike(Character &);
- void getStruckBy(Character &);
- void getStruckBy(Elf &);
- int getHealth();
+ virtual void strike(Character &); // strikes a Character
+ virtual void getStruckBy(Character &); // gets struck by a Character
+ void getStruckBy(Elf &); // gets struck by a Character
+ int getHealth(); // returns health value
  int getG(); //returns the gold amount
- void setHealth(int healthChange);
- void setAtk(int AtkChange);
- void setDef(int DefChange);
+ void setG(int); // sets the gold amount
+ void setHealth(int healthChange); // sets HP
+ void setAtk(int AtkChange); // sets Atk
+ void setDef(int DefChange); // sets Def
  std::string getName(); //returns the name of the character
 
 
