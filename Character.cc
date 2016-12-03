@@ -4,7 +4,7 @@
 
 // ctor
 Character::Character(int HP, int Atk, int Def, int gold, int xCo, int yCo, std::string n):
- HP{HP}, Atk{Atk}, Def{Def}, gold{gold}, xCo{xCo}, yCo{yCo} , name{n} {}
+ HP{HP}, Atk{Atk}, Def{Def}, gold{gold}, name{n}, xCo{xCo}, yCo{yCo} {}
 
 // dtor
 Character::~Character() {

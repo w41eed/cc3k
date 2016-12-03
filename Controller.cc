@@ -217,15 +217,9 @@ Item *pickItem(int val, bool gold) {
   return new WoundAttack;
  } else if (val <= 24 && gold == false) {
   return new WoundDefence;
- } else if (val <= 24) {
+ } else {
   return new SmallGold;
  }
-
-
-
-
-
-
 }
 
 void Controller::play() {
