@@ -434,7 +434,9 @@ while(floorNum <= 5) {
    }
 
  for (int i = 0; i < 20; ++i) {
-   enemyVec[i]->Move();
+   if (enemyVec[i]) {
+    enemyVec[i]->Move();
+   }
   }
    ab->updatePlayer(c);
 

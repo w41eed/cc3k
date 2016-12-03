@@ -25,7 +25,7 @@ void Merchant::getStruckBy(Character &other) {
 
 void Merchant::strike(Character &other) {
  if (isHostile == true) {
-  Character::strike(other);
+  Enemy::strike(other);
  } else {
   return;
  }

@@ -91,3 +91,13 @@ bool Enemy::eAttack() {
  return true;
 
 }
+
+void Enemy::getStruckBy(Character &other) {
+ Character::getStruckBy(other);
+
+ if (HP <= 0) {
+  g->moveOff(getX(), getY());
+  delete this;
+ }
+
+}

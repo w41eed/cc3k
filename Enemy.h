@@ -18,6 +18,7 @@ public:
     virtual void Move();
     virtual char getChar() = 0;
     bool eAttack();
+    void getStruckBy(Character &) override;
 };
 
 
