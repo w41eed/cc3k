@@ -88,14 +88,16 @@ ostream &operator<<(ostream &out, const ActionBar &ab){
  	//Action Statements
  	std::string spawn = "Player has Spawned"; //Action 1
  	std::string usePotion = "Player uses " + potion; //Action 2
- 	std::string move1 = "Player is moving North"; //Action 3
- 	std::string move2 = "Player is moving East"; //Action 4
- 	std::string move3 = "Player is moving South"; //Action 5
- 	std::string move4 = "Player is moving West"; //Action 6
- 	std::string move5 = "Player is moving NorthEast"; //Action 7
- 	std::string move6 = "Player is moving NorthWest"; //Action 8
- 	std::string move7 = "Player is moving SouthEast"; //Action 9
- 	std::string move8 = "Player is moving SouthWest"; //Action 10
+ 	std::string move1 = "Player moved North"; //Action 3
+ 	std::string move2 = "Player moved East"; //Action 4
+ 	std::string move3 = "Player moved South"; //Action 5
+ 	std::string move4 = "Player moved West"; //Action 6
+ 	std::string move5 = "Player moved NorthEast"; //Action 7
+ 	std::string move6 = "Player moved NorthWest"; //Action 8
+ 	std::string move7 = "Player moved SouthEast"; //Action 9
+ 	std::string move8 = "Player moved SouthWest"; //Action 10
+  std::string attack = "Player is under attack!"; //Action 12
+  std::string goldCollect = "Gold collected!"; //Action 13
  	
 
 
@@ -117,8 +119,12 @@ ostream &operator<<(ostream &out, const ActionBar &ab){
   else if (action == 9) { out << move7;}
   else if (action == 10) { out << move8;}
   else if (action == 11) { 
-  	out << player << " deals " << eDamage << " damage" << " to " << eName << " (" << eHealth << ") " << ", " << eName << " deals " << pDamage << " damage" << " to " << player;
+    if(eHealth == 0){out << player << " killed " << eName;}
+  	else {out << player << " deals " << eDamage << " damage" << " to " << eName << " (" << eHealth << ") " << ", " << eName << " deals " << pDamage << " damage" << " to " << player;
+    }
   }
+  else if (action == 12){ out << attack;}
+  else if (action == 13){ out << goldCollect;}
   out << '\n';
   return out;
 

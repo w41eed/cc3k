@@ -327,8 +327,17 @@ while(floorNum <= 5) {
  const int originalAtk = c->getAtk();
  const int originalDef = c->getDef();
 
+ int preGold;
+ int postGold;
+ int preHealth;
+ int postHealth;
+
 // command loop
  while(1) {
+  
+  preHealth = c->getHealth();
+  preGold = c->getG();
+
   cout << "Please enter command: ";
   cin >> input;
   if (cin.fail()) {
@@ -361,7 +370,13 @@ while(floorNum <= 5) {
      g.place(curX, curY - 1, c);
      c->setX(curX);
      c->setY(curY - 1);
-     ab->updateAction(3);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(3);}
+     
      next_floor = g.nextFloor(curX,curY-1);
      if(next_floor == 1) {break;}
 
@@ -372,7 +387,13 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY, c);
      c->setX(curX + 1);
      c->setY(curY);
-     ab->updateAction(4);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(4);}
+
      next_floor = g.nextFloor(curX+1,curY);
      if(next_floor == 1) {break;}
     }
@@ -382,7 +403,13 @@ while(floorNum <= 5) {
      g.place(curX, curY + 1, c);
      c->setX(curX);
      c->setY(curY + 1);
-     ab->updateAction(5);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(5);}
+
      next_floor = g.nextFloor(curX,curY+1);
      if(next_floor == 1) {break;}
     }
@@ -392,7 +419,13 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY, c);
      c->setX(curX - 1);
      c->setY(curY);
-     ab->updateAction(6);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(6);}
+
      next_floor = g.nextFloor(curX-1,curY);
      if(next_floor == 1) {break;}
     }
@@ -402,7 +435,13 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY - 1, c);
      c->setX(curX + 1);
      c->setY(curY - 1);
-     ab->updateAction(7);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(7);}
+
      next_floor = g.nextFloor(curX+1,curY-1);
      if(next_floor == 1) {break;}
     }
@@ -412,7 +451,13 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY - 1, c);
      c->setX(curX - 1);
      c->setY(curY - 1);
-     ab->updateAction(8);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(8);}
+
      next_floor = g.nextFloor(curX-1,curY-1);
      if(next_floor == 1) {break;}
     }
@@ -422,7 +467,13 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY + 1, c);
      c->setX(curX + 1);
      c->setY(curY + 1);
-     ab->updateAction(9);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(9);}
+
      next_floor = g.nextFloor(curX+1,curY+1);
      if(next_floor == 1) {break;}
     }
@@ -432,7 +483,13 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY + 1, c);
      c->setX(curX - 1);
      c->setY(curY + 1);
-     ab->updateAction(10);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(10);}
+
      next_floor = g.nextFloor(curX-1,curY+1);
      if(next_floor == 1) {break;}
     }
@@ -441,7 +498,7 @@ while(floorNum <= 5) {
  else if (input == "q") {
     break;
    }
-
+  preHealth = c->getHealth();
   for (int i = 0; i < 20; ++i) {
    if (enemyVec[i]) { 
     if (enemyVec[i]->Move(eMove)) {
@@ -450,6 +507,8 @@ while(floorNum <= 5) {
     }
    }
   }
+   postHealth = c->getHealth();
+   if(preHealth > postHealth && input != "u" && input != "a") { ab->updateAction(12);}
   
    ab->updatePlayer(c);
 
