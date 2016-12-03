@@ -82,7 +82,7 @@ ostream &operator<<(ostream &out, const ActionBar &ab){
  	int action = ab.getaction();
  	int eDamage = ab.getEnemyDamage();
  	int pDamage = ab.getPlayerDamage();
- 	int eHealth = ab.getEnemyHealth();
+ 	int eHealth = ab.getEnemyHealth() - eDamage;
  	std::string eName = ab.getEnemyName();
 
  	//Action Statements
