@@ -21,10 +21,10 @@
 #include "Dragon.h"
 #include "Halfling.h"
 #include "Potions.h"
+#include "Item.h"
 #include "BoostAttack.h"
 #include "BoostDefence.h"
 #include "DragonGold.h"
-#include "Item.h"
 #include "MerchantGold.h"
 #include "NormalGold.h"
 #include "PoisonHealth.h"
@@ -41,7 +41,7 @@ bool Merchant::isHostile = false;
 
 int getRand(int min, int max) {
  double f = 1.0 / (RAND_MAX + 1.0);
- int x = rand() * f * (max - min + 1) + min;
+ int x = (int) (rand() * f * (max - min + 1) + min);
  return x;
 }
 
@@ -94,11 +94,57 @@ void randPlace(Character *ch, Grid &g) {
 
 }
 
+// places the Dragon near the gold
+Enemy *placeDragon(int x, int y, Grid &g, int &placedX, int &placedY, DragonGold *i) {
+ Enemy *e = new Dragon(&g, i);
 
-void randPlace(Item *i, Grid &g) {
+ if (g.canWalk(x, y -1)) {
+  g.place(x, y - 1, e);
+  placedX = x;
+  placedY = y - 1;
+ } else if (g.canWalk(x + 1, y - 1)) {
+  g.place(x + 1, y - 1, e);
+  placedX = x + 1;
+  placedY = y - 1;
+ } else if (g.canWalk(x + 1, y)) {
+  g.place(x + 1, y, e);
+  placedX = x + 1;
+  placedY = y;
+ } else if (g.canWalk(x + 1, y + 1)) {
+  g.place(x + 1, y + 1, e);
+  placedX = x + 1;
+  placedY = y + 1;
+ } else if (g.canWalk(x, y + 1)) {
+  g.place(x, y + 1, e);
+  placedX = x;
+  placedY = y + 1;
+ } else if (g.canWalk(x - 1, y + 1)) {
+  g.place(x - 1, y + 1, e);
+  placedX = x - 1;
+  placedY = y + 1;
+ } else if (g.canWalk(x - 1, y)) {
+  g.place(x - 1, y, e);
+  placedX = x - 1;
+  placedY = y;
+ } else if (g.canWalk(x - 1, y - 1)) {
+  g.place(x - 1, y - 1, e);
+  placedX = x - 1;
+  placedY = y - 1;
+ } else {
+  g.place(x, y, e);
+  placedX = x;
+  placedY = y;
+ }
+
+ return e;
+
+}
+Enemy *randPlace(Item *i, Grid &g, int &placeX, int &placeY) {
 
  int x;
  int y;
+ DragonGold *ptr;
+ int val = i->getVal();
 
  while(1) {
   x = getRand(0, 78);
@@ -107,10 +153,25 @@ void randPlace(Item *i, Grid &g) {
  char c = g.getChar(x, y);
 
   if (g.canPlace(x,y) && c != '+' && c != '#') {
-   g.place(x, y, i);
-   break;
+   if (val == 6) {
+    ptr = new DragonGold;
+    g.place(x, y, ptr);
+    delete i;
+    break;
+   } else {
+    g.place(x, y, i);
+    break;
+   }
   }
  }
+
+ Enemy *e = nullptr;
+
+ if (val == 6) {
+  e = placeDragon(x, y, g, placeX, placeY, ptr);
+ }
+
+ return e;
 
 }
 
@@ -237,10 +298,13 @@ void Controller::play() {
  bool running = true;
  Character *c;
  Item *sp;
+ string playName;
+
  while (running) {
  // reads in file name
  cout << "Please enter map file: ";
-
+ int placedX = 0;
+ int placedY = 0;
  string fileName;
  cin >> fileName;
 
@@ -262,7 +326,7 @@ while(floorNum <= 5) {
 //loop starts here for new floor
   
  randPlace(c, g);
- randPlace(sp,g);
+ randPlace(sp,g, placedX, placedY);
 
  int type = 0;
 
@@ -297,21 +361,27 @@ while(floorNum <= 5) {
 
  bool gold = false;
 
+
+ // item spawn
  for (int i = 0; i < 20; ++i) {
   type = getRand(1, 24);
   Item *it = nullptr;
 
   it = pickItem(type, gold);
 
-  randPlace(it, g);
+  Enemy *drag = randPlace(it, g, placedX, placedY);
 
+ if (drag && drag->getChar() == 'D') {
+   enemyVec.emplace_back(drag);
+   drag->setX(placedX);
+   drag->setY(placedY);
+  }
 
   if (i == 9) {
    gold = true;
   }
 
  }
-
 
  ab->updateFloor(floorNum);
  ab->updatePlayer(c);
@@ -511,9 +581,31 @@ while(floorNum <= 5) {
     return;
    }
   preHealth = c->getHealth();
-  for (int i = 0; i < 20; ++i) {
+  int len = enemyVec.size();
+
+  for (int i = 0; i < len; ++i) {
    if (enemyVec[i]) { 
-    if (enemyVec[i]->Move(eMove)) {
+    if (enemyVec[i]->Update(eMove)) { // case when enemy dies and drops gold
+     char enemyType;
+     enemyType = enemyVec[i]->getChar();
+     int goldDropped = getRand(1,2);
+     const int normalPile = 2;
+     const int merchantHoard = 4;
+     const int GoblinSteal = 5;
+     switch (enemyType) {
+      case 'H':
+       c->setG(normalPile * 2); // humans drop 2 piles of normal gold
+       break;
+      case 'M':
+       c->setG(merchantHoard); // merchant drop merchant hoard
+       break;
+      default:
+       // other enemies randomly drop a small pile or a normal pile
+       c->setG(goldDropped);
+     }
+     if (c->getName() == "Goblin") {
+      c->setG(GoblinSteal); // Goblin gains 5 extra gold from every kill
+     }
      delete enemyVec[i];
      enemyVec[i] = nullptr;
     }
@@ -524,12 +616,22 @@ while(floorNum <= 5) {
   
    ab->updatePlayer(c);
 
+   playName = c->getName();
+   if (playName == "Troll") {
+    c->setHealth(5);
+   }
+
    g.printIt(); // print the screen
 
-   if (c->getHealth() == 0) {
+   if (c->getHealth() <= 0) {
     haveQuit = "q";
     cout << "Game Over! You Lose" << endl;
-    break;
+    g.cleanGrid();
+    delete c;
+    delete sp;
+    c = nullptr;
+    sp = nullptr;
+    return;
    }
   
  } //inner loop ends

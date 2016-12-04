@@ -29,11 +29,11 @@ class Character {
  int getDef(); // return Def val
  virtual void strike(Character &); // strikes a Character
  virtual void getStruckBy(Character &); // gets struck by a Character
- void getStruckBy(Elf &); // gets struck by a Character
+ virtual void getStruckBy(Elf &); // gets struck by a Character
  int getHealth(); // returns health value
  int getG(); //returns the gold amount
  void setG(int); // sets the gold amount
- void setHealth(int healthChange); // sets HP
+ virtual void setHealth(int healthChange); // sets HP
  void setAtk(int AtkChange); // sets Atk
  void setDef(int DefChange); // sets Def
  std::string getName(); //returns the name of the character

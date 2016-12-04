@@ -13,6 +13,11 @@ PoisonHealth::PoisonHealth():Potions(-10,'P',"PH") {}
 PoisonHealth::~PoisonHealth(){}
 
 void PoisonHealth::usePotion(Character *c) {
-    const int HPLose = -10;
-    c->setHealth(HPLose);
+    const int HPLose = getAmount();
+    const double DrowPotionMultiplier = 1.5;
+    if (c->getName() == "Drow") {
+        c->setHealth((int) (DrowPotionMultiplier * HPLose));
+    } else {
+        c->setHealth(HPLose);
+    }
 }

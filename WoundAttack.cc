@@ -13,6 +13,11 @@ WoundAttack::WoundAttack():Potions(-5,'P',"WA") {}
 WoundAttack::~WoundAttack(){}
 
 void WoundAttack::usePotion(Character *c) {
-    const int AtkLoss = -5;
-    c->setAtk(AtkLoss);
+    const int AtkLoss = getAmount();
+    const double DrowPotionMultiplier = 1.5;
+    if (c->getName() == "Drow") {
+        c->setAtk((int) (DrowPotionMultiplier * AtkLoss));
+    } else {
+        c->setAtk(AtkLoss);
+    }
 }

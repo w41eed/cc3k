@@ -14,3 +14,8 @@ char Gold::getSym(){ return symbol;}
 
 // returns object type
 std::string Gold::getType() {return "Gold";}
+
+// for dragongold
+char Gold::dSym() {
+ return 'G';
+}

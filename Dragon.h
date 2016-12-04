@@ -7,10 +7,13 @@
 
 
 #include "Enemy.h"
+#include "DragonGold.h"
 
 class Dragon: public Enemy {
+    DragonGold *ptr;
 public:
-    Dragon(Grid *); // ctor
+    Dragon(Grid *, DragonGold *); // ctor
+    ~Dragon();
     char getChar() override; // gets char to be printed
 };
 

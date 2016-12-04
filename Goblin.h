@@ -3,12 +3,14 @@
 
 #include "Player.h"
 #include "Enemy.h"
+#include "Orc.h"
 
 class Goblin: public Player {
 
 
 public:
  Goblin(); // ctor
+ void getStruckBy(Orc &);
 };
 
 #endif
