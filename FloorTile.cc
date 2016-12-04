@@ -44,7 +44,7 @@ void FloorTile::place(Character *other) {
  char car1 = c->getChar();
  char car2;
  if (i) {
-  car2 = i->getSym();
+  car2 = i->dSym();
  } else {
   return;
  }

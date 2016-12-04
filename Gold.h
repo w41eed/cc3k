@@ -11,7 +11,8 @@ class Gold: public Item {
 		char symbol; //the symbol that gets displayed on TextDisplay
 	public:
 		Gold(int n, char s); //constructor for Gold
-		char getSym(); //returns the Gold symbol
+		char dSym() override; // for dragongold
+	        char getSym(); //returns the Gold symbol
 		int getVal(); //returns the gold value
 		std::string getType(); //doesn't do anything
 		virtual ~Gold() {} //virtual destructor for gold and types of gold
