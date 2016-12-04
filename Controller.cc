@@ -41,7 +41,7 @@ bool Merchant::isHostile = false;
 
 int getRand(int min, int max) {
  double f = 1.0 / (RAND_MAX + 1.0);
- int x = rand() * f * (max - min + 1) + min;
+ int x = (int) (rand() * f * (max - min + 1) + min);
  return x;
 }
 
@@ -271,6 +271,7 @@ while(floorNum <= 5) {
  vector<Enemy *> enemyVec;
 
  for (int i = 0; i < 20; ++i) {
+//  TODO: give proper probabilities to enemy spawning
   type = getRand(1, 18);
   Enemy *e = nullptr;
   if (type <= 2) {
@@ -553,7 +554,7 @@ while(floorNum <= 5) {
 
    g.printIt(); // print the screen
 
-   if (c->getHealth() == 0) {
+   if (c->getHealth() <= 0) {
     haveQuit = "q";
     cout << "Game Over! You Lose" << endl;
     break;
