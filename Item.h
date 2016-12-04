@@ -6,6 +6,9 @@
 #include "Character.h"
 
 class Item {
+	int xCo;
+	int yCo;
+
 	public:
 	virtual char getSym() = 0;
 	virtual std::string getType() = 0;

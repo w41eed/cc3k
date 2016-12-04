@@ -51,7 +51,7 @@ void Character::strike(Character &other) {
  other.getStruckBy(*this);
 }
 
-// striks other Character
+// strikes other Character
 void Character::getStruckBy(Character &other) {
  int net = ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
 
@@ -98,11 +98,11 @@ void Character::setDef(int DefChange) {
 
 
 int Character::getG(){
-	return gold;
+ return gold;
 }
 
 std::string Character::getName(){
-	return name;
+ return name;
 }
 
 void Character::setG(int g) {

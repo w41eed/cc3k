@@ -15,6 +15,7 @@ class Stairs : public Item {
 		char getSym() override; //returns the symbol
 		std::string getType(); //does nothing
 		~Stairs();
+                int getVal() {return -1;}
 };
 
 

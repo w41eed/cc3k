@@ -21,10 +21,10 @@
 #include "Dragon.h"
 #include "Halfling.h"
 #include "Potions.h"
+#include "Item.h"
 #include "BoostAttack.h"
 #include "BoostDefence.h"
 #include "DragonGold.h"
-#include "Item.h"
 #include "MerchantGold.h"
 #include "NormalGold.h"
 #include "PoisonHealth.h"
@@ -94,8 +94,52 @@ void randPlace(Character *ch, Grid &g) {
 
 }
 
+// places the Dragon near the gold
+Enemy *placeDragon(int x, int y, Grid &g, int &placedX, int &placedY) {
+ Enemy *e = new Dragon(&g);
 
-void randPlace(Item *i, Grid &g) {
+ if (g.canWalk(x, y -1)) {
+  g.place(x, y - 1, e);
+  placedX = x;
+  placedY = y - 1;
+ } else if (g.canWalk(x + 1, y - 1)) {
+  g.place(x + 1, y - 1, e);
+  placedX = x + 1;
+  placedY = y - 1;
+ } else if (g.canWalk(x + 1, y)) {
+  g.place(x + 1, y, e);
+  placedX = x + 1;
+  placedY = y;
+ } else if (g.canWalk(x + 1, y + 1)) {
+  g.place(x + 1, y + 1, e);
+  placedX = x + 1;
+  placedY = y + 1;
+ } else if (g.canWalk(x, y + 1)) {
+  g.place(x, y + 1, e);
+  placedX = x;
+  placedY = y + 1;
+ } else if (g.canWalk(x - 1, y + 1)) {
+  g.place(x - 1, y + 1, e);
+  placedX = x - 1;
+  placedY = y + 1;
+ } else if (g.canWalk(x - 1, y)) {
+  g.place(x - 1, y, e);
+  placedX = x - 1;
+  placedY = y;
+ } else if (g.canWalk(x - 1, y - 1)) {
+  g.place(x - 1, y - 1, e);
+  placedX = x - 1;
+  placedY = y - 1;
+ } else {
+  g.place(x, y, e);
+  placedX = x;
+  placedY = y;
+ }
+
+ return e;
+
+}
+Enemy *randPlace(Item *i, Grid &g, int &placeX, int &placeY) {
 
  int x;
  int y;
@@ -111,6 +155,15 @@ void randPlace(Item *i, Grid &g) {
    break;
   }
  }
+
+ int val = i->getVal();
+ Enemy *e = nullptr;
+
+ if (val == 6) {
+  e = placeDragon(x, y, g, placeX, placeY);
+ }
+
+ return e;
 
 }
 
@@ -242,7 +295,8 @@ void Controller::play() {
  while (running) {
  // reads in file name
  cout << "Please enter map file: ";
-
+ int placedX = 0;
+ int placedY = 0;
  string fileName;
  cin >> fileName;
 
@@ -264,14 +318,13 @@ while(floorNum <= 5) {
 //loop starts here for new floor
   
  randPlace(c, g);
- randPlace(sp,g);
+ randPlace(sp,g, placedX, placedY);
 
  int type = 0;
 
  vector<Enemy *> enemyVec;
 
  for (int i = 0; i < 20; ++i) {
-//  TODO: give proper probabilities to enemy spawning
   type = getRand(1, 18);
   Enemy *e = nullptr;
   if (type <= 2) {
@@ -300,21 +353,27 @@ while(floorNum <= 5) {
 
  bool gold = false;
 
+
+ // item spawn
  for (int i = 0; i < 20; ++i) {
   type = getRand(1, 24);
   Item *it = nullptr;
 
   it = pickItem(type, gold);
 
-  randPlace(it, g);
+  Enemy *drag = randPlace(it, g, placedX, placedY);
 
+ if (drag && drag->getChar() == 'D') {
+   enemyVec.emplace_back(drag);
+   drag->setX(placedX);
+   drag->setY(placedY);
+  }
 
   if (i == 9) {
    gold = true;
   }
 
  }
-
 
  ab->updateFloor(floorNum);
  ab->updatePlayer(c);
@@ -514,7 +573,9 @@ while(floorNum <= 5) {
     return;
    }
   preHealth = c->getHealth();
-  for (int i = 0; i < 20; ++i) {
+  int len = enemyVec.size();
+
+  for (int i = 0; i < len; ++i) {
    if (enemyVec[i]) { 
     if (enemyVec[i]->Update(eMove)) { // case when enemy dies and drops gold
      char enemyType;

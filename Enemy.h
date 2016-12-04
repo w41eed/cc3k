@@ -18,6 +18,8 @@ public:
     virtual bool Update(bool);
     virtual char getChar() = 0;
     bool eAttack();
+    void dAttack(const int, const int, Character *);
+    bool checkTiles(int, int);
 };
 
 
