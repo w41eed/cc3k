@@ -77,6 +77,8 @@ void Character::setHealth(int healthChange) {
  HP += healthChange;
  if (HP > maxHP) {
   HP = maxHP;
+ } else if (getName() == "Vampire") {
+  HP += healthChange; // vampire has no max HP
  }
 }
 
