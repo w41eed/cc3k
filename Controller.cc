@@ -593,11 +593,22 @@ while(floorNum <= 5) {
      char enemyType;
      enemyType = enemyVec[i]->getChar();
      int goldDropped = getRand(1,2);
+     const int normalPile = 2;
+     const int merchantHoard = 4;
      const int GoblinSteal = 5;
      if (c->getName() == "Goblin") {
       c->setG(GoblinSteal); // Goblin gains 5 extra gold from every kill
-     } else if (c->getName() != "Human" && c->getName() != "Merchant") {
-       c->setG(goldDropped);
+     } else {
+      switch (enemyType) {
+       case 'H':
+        c->setG(normalPile * 2); // humans drop 2 piles of normal gold
+              break;
+       case 'M':
+        c->setG(merchantHoard); // merchant drop merchant hoard
+              break;
+       default:
+        // other enemies randomly drop a small pile or a normal pile
+        c->setG(goldDropped);
       }
      }
      delete enemyVec[i];
