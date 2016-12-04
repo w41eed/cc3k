@@ -234,7 +234,10 @@ void Controller::play() {
  cout << endl;
  */
  srand(time(0));
-
+ bool running = true;
+ Character *c;
+ Item *sp;
+ while (running) {
  // reads in file name
  cout << "Please enter map file: ";
 
@@ -242,12 +245,11 @@ void Controller::play() {
  cin >> fileName;
 
  ifstream file(fileName);
-
- Character *c = selectCharacter();
- Item *sp = new Stairs;
-
  Grid g;
  g.init(file);
+
+ c = selectCharacter();
+ sp = new Stairs;
 
  file.close();
 
@@ -351,6 +353,10 @@ while(floorNum <= 5) {
     pAttack(c, g);
     ab->updateAttack(eName,ePreStrike,ePostStrike,pPreStrike);
     ab->updateAction(11);
+  } else if (input == "r") {
+    cout << "Game restarted" << endl;
+    g.cleanGrid();
+    break;
   } else if (input == "f") {
     if (eMove) {
      cout << "Enemy movement halted" << endl;
@@ -496,7 +502,13 @@ while(floorNum <= 5) {
    }
 
  else if (input == "q") {
-    break;
+    cout << "Game over! You lose!" << endl;
+    g.cleanGrid();
+    delete c;
+    delete sp;
+    c = nullptr;
+    sp = nullptr;
+    return;
    }
   preHealth = c->getHealth();
   for (int i = 0; i < 20; ++i) {
@@ -524,14 +536,19 @@ while(floorNum <= 5) {
   ++floorNum;
   c->setAtk(originalAtk - c->getAtk()); // sets atk back to original atk
   c->setDef(originalDef - c->getDef()); // sets def back to original def
-  if(haveQuit == "q"){ break;}
+  if(haveQuit == "r"){ 
+   break;
+  }
   g.cleanGrid();
   if (floorNum == 6) {
    cout << "You win!" << endl;
    break;
   }
 
-}
+} // new floor loop
+ delete c;
+ delete sp;
+} // entire game loop
  //loop ends here for new floor
  c = nullptr;
  sp = nullptr;
