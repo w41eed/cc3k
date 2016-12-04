@@ -237,6 +237,8 @@ void Controller::play() {
  bool running = true;
  Character *c;
  Item *sp;
+ string playName;
+
  while (running) {
  // reads in file name
  cout << "Please enter map file: ";
@@ -539,6 +541,11 @@ while(floorNum <= 5) {
    if(preHealth > postHealth && input != "u" && input != "a") { ab->updateAction(12);}
   
    ab->updatePlayer(c);
+
+   playName = c->getName();
+   if (playName == "Troll") {
+    c->setHealth(5);
+   }
 
    g.printIt(); // print the screen
 
