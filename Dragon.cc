@@ -6,7 +6,7 @@
 #include "Player.h"
 
 // ctor
-Dragon::Dragon(Grid *g) : Enemy(150, 20, 20, 6, g) {
+Dragon::Dragon(Grid *g) : Enemy(150, 20, 20, 6, g ,"Dragon") {
 
 }
 

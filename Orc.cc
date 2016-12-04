@@ -7,7 +7,7 @@
 
 
 // ctor
-Orc::Orc(Grid *g): Enemy(180, 30, 25, 1, g) {}
+Orc::Orc(Grid *g): Enemy(180, 30, 25, 1, g, "Orc") {}
 
 // gets char to be printed
 char Orc::getChar() {

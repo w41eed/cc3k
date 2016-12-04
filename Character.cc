@@ -3,8 +3,8 @@
 #include <iostream>
 
 // ctor
-Character::Character(int HP, int Atk, int Def, int gold, int xCo, int yCo):
- HP{HP}, Atk{Atk}, Def{Def}, gold{gold}, xCo{xCo}, yCo{yCo} {}
+Character::Character(int HP, int Atk, int Def, int gold, int xCo, int yCo, std::string n):
+ HP{HP}, maxHP{HP}, Atk{Atk}, Def{Def}, gold{gold}, name{n}, xCo{xCo}, yCo{yCo} {}
 
 // dtor
 Character::~Character() {
@@ -57,6 +57,10 @@ void Character::getStruckBy(Character &other) {
   net = 0;
  }
  HP -= net;
+ if (HP <= 0) {
+  HP = 0;
+ }
+
 }
 
 // Elf strikes Character twice
@@ -66,4 +70,39 @@ void Character::getStruckBy(Elf &other) {
   net = 0;
  }
  HP -= net;
+}
+
+// adds healthChange to Character's health
+void Character::setHealth(int healthChange) {
+ HP += healthChange;
+ if (HP > maxHP) {
+  HP = maxHP;
+ }
+}
+
+void Character::setAtk(int AtkChange) {
+ Atk += AtkChange;
+ if (Atk < 0) {
+  Atk = 0;
+ }
+}
+
+void Character::setDef(int DefChange) {
+ Def += DefChange;
+ if (Def < 0) {
+  Def = 0;
+ }
+}
+
+
+int Character::getG(){
+	return gold;
+}
+
+std::string Character::getName(){
+	return name;
+}
+
+void Character::setG(int g) {
+ gold += g;
 }

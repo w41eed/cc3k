@@ -9,9 +9,13 @@
 
 
 class Merchant: public Enemy {
+    static bool isHostile;
+
 public:
     Merchant(Grid *); // ctor
     char getChar() override; // gets char to be printed
+    void getStruckBy(Character &) override; // gets struck by and sets hostility
+    void strike(Character &) override; // strikes after checking hostility
 };
 
 

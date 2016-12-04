@@ -1,4 +1,5 @@
 #include "FloorTile.h"
+#include "Item.h"
 
 // ctor
 FloorTile::FloorTile(int x, int y) : Cell{'.', x ,y} {
@@ -39,6 +40,22 @@ bool FloorTile::canWalk() {
 void FloorTile::place(Character *other) {
  c = other;
  notifyObservers();
+
+ char car1 = c->getChar();
+ char car2;
+ if (i) {
+  car2 = i->getSym();
+ } else {
+  return;
+ }
+
+ if (car1 == '@' && car2 == 'G') {
+  c->setG(i->getVal());
+  delete i;
+  i = nullptr;
+ }
+
+
 }
 
 // place Items atop

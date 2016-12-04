@@ -37,6 +37,7 @@
 
 using namespace std;
 
+bool Merchant::isHostile = false;
 
 int getRand(int min, int max) {
  double f = 1.0 / (RAND_MAX + 1.0);
@@ -113,6 +114,10 @@ void randPlace(Item *i, Grid &g) {
 
 }
 
+std::string eName;
+int ePreStrike;
+int ePostStrike;
+int pPreStrike;
 
 
 void pAttack(Character *player, Grid &g) {
@@ -143,7 +148,56 @@ void pAttack(Character *player, Grid &g) {
  if (enem == nullptr) {
   return;
  }
- player->strike(*enem);
+ eName = enem->getName();
+ ePreStrike = enem->getHealth();
+ pPreStrike = player->getHealth();
+
+  player->strike(*enem);
+ ePostStrike = enem->getHealth();
+}
+
+std::string PotionType; //stores the potion type for action bar
+
+void pGetPotion(Character *player, Grid &g) {
+ string dir;
+ cin >> dir;
+ Item *i;
+ int x = player->getX();
+ int y = player->getY();
+
+ if (dir == "no") {
+  i = g.getIPtr(x, y - 1);
+  g.takeOff(x,y - 1);
+ } else if (dir == "ne") {
+  i = g.getIPtr(x + 1, y - 1);
+  g.takeOff(x + 1,y - 1);
+ } else if (dir == "ea") {
+  i = g.getIPtr(x + 1, y);
+  g.takeOff(x + 1,y);
+ } else if (dir == "se") {
+  i = g.getIPtr(x + 1, y + 1);
+  g.takeOff(x + 1,y + 1);
+ } else if (dir == "so") {
+  i = g.getIPtr(x, y + 1);
+  g.takeOff(x,y + 1);
+ } else if (dir == "sw") {
+  i = g.getIPtr(x - 1, y + 1);
+  g.takeOff(x - 1,y + 1);
+ } else if (dir == "we") {
+  i = g.getIPtr(x - 1, y);
+  g.takeOff(x - 1,y);
+ } else if (dir == "nw") {
+  i = g.getIPtr(x - 1, y - 1);
+  g.takeOff(x - 1,y - 1);
+ }
+
+ if (i == nullptr) {
+  return;
+ }
+ PotionType = i->getType();
+ i->usePotion(player);
+ delete i;
+ i = nullptr;
 }
 
 
@@ -164,15 +218,9 @@ Item *pickItem(int val, bool gold) {
   return new WoundAttack;
  } else if (val <= 24 && gold == false) {
   return new WoundDefence;
- } else if (val <= 24) {
+ } else {
   return new SmallGold;
  }
-
-
-
-
-
-
 }
 
 void Controller::play() {
@@ -186,7 +234,10 @@ void Controller::play() {
  cout << endl;
  */
  srand(time(0));
-
+ bool running = true;
+ Character *c;
+ Item *sp;
+ while (running) {
  // reads in file name
  cout << "Please enter map file: ";
 
@@ -194,18 +245,18 @@ void Controller::play() {
  cin >> fileName;
 
  ifstream file(fileName);
-
- Character *c = selectCharacter();
- Item *sp = new Stairs;
-
  Grid g;
  g.init(file);
+
+ c = selectCharacter();
+ sp = new Stairs;
 
  file.close();
 
  int floorNum = 1;
  string haveQuit;
  bool next_floor;
+ ActionBar *ab = g.getAction();
 
 while(floorNum <= 5) {
 //loop starts here for new floor
@@ -262,18 +313,33 @@ while(floorNum <= 5) {
  }
 
 
-
-
+ ab->updateFloor(floorNum);
+ ab->updatePlayer(c);
+ ab->updateAction(1);
  g.printIt();
 
  string input;
 
  int curX;
  int curY;
+ bool eMove = true;
+
+
+  // store original value of Atk and Def to allow resetting of them after new floor
+ const int originalAtk = c->getAtk();
+ const int originalDef = c->getDef();
+
+ int preGold;
+ int postGold;
+ int preHealth;
+ int postHealth;
 
 // command loop
  while(1) {
-  cout << "Player HP: " << c->getHealth() << endl;
+  
+  preHealth = c->getHealth();
+  preGold = c->getG();
+
   cout << "Please enter command: ";
   cin >> input;
   if (cin.fail()) {
@@ -285,13 +351,38 @@ while(floorNum <= 5) {
 
   if (input == "a") {
     pAttack(c, g);
-    cout << "Attacked Enemy" << endl;
+    ab->updateAttack(eName,ePreStrike,ePostStrike,pPreStrike);
+    ab->updateAction(11);
+  } else if (input == "r") {
+    cout << "Game restarted" << endl;
+    g.cleanGrid();
+    break;
+  } else if (input == "f") {
+    if (eMove) {
+     cout << "Enemy movement halted" << endl;
+     eMove = false;
+    } else {
+     cout << "Enemy movement resumed" << endl;
+     eMove = true;
+    }
+  } else if (input == "u") {
+    pGetPotion(c,g);
+    ab->updatePotion(PotionType);
+    ab->updateAction(2);
+    
   } else if (input == "no") {
     if (g.canWalk(curX, curY - 1)) {
      g.moveOff(curX, curY);
      g.place(curX, curY - 1, c);
      c->setX(curX);
      c->setY(curY - 1);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(3);}
+     
      next_floor = g.nextFloor(curX,curY-1);
      if(next_floor == 1) {break;}
 
@@ -302,6 +393,13 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY, c);
      c->setX(curX + 1);
      c->setY(curY);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(4);}
+
      next_floor = g.nextFloor(curX+1,curY);
      if(next_floor == 1) {break;}
     }
@@ -311,6 +409,13 @@ while(floorNum <= 5) {
      g.place(curX, curY + 1, c);
      c->setX(curX);
      c->setY(curY + 1);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(5);}
+
      next_floor = g.nextFloor(curX,curY+1);
      if(next_floor == 1) {break;}
     }
@@ -320,6 +425,13 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY, c);
      c->setX(curX - 1);
      c->setY(curY);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(6);}
+
      next_floor = g.nextFloor(curX-1,curY);
      if(next_floor == 1) {break;}
     }
@@ -329,6 +441,13 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY - 1, c);
      c->setX(curX + 1);
      c->setY(curY - 1);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(7);}
+
      next_floor = g.nextFloor(curX+1,curY-1);
      if(next_floor == 1) {break;}
     }
@@ -338,6 +457,13 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY - 1, c);
      c->setX(curX - 1);
      c->setY(curY - 1);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(8);}
+
      next_floor = g.nextFloor(curX-1,curY-1);
      if(next_floor == 1) {break;}
     }
@@ -347,6 +473,13 @@ while(floorNum <= 5) {
      g.place(curX + 1, curY + 1, c);
      c->setX(curX + 1);
      c->setY(curY + 1);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(9);}
+
      next_floor = g.nextFloor(curX+1,curY+1);
      if(next_floor == 1) {break;}
     }
@@ -356,24 +489,66 @@ while(floorNum <= 5) {
      g.place(curX - 1, curY + 1, c);
      c->setX(curX - 1);
      c->setY(curY + 1);
+
+     postHealth = c->getHealth();
+     postGold = c->getG();
+     if(preHealth != postHealth){ ab->updateAction(12);}
+     else if(preGold != postGold){ ab->updateAction(13);}
+     else { ab->updateAction(10);}
+
      next_floor = g.nextFloor(curX-1,curY+1);
      if(next_floor == 1) {break;}
     }
    }
 
  else if (input == "q") {
+    cout << "Game over! You lose!" << endl;
+    g.cleanGrid();
+    delete c;
+    delete sp;
+    c = nullptr;
+    sp = nullptr;
+    return;
+   }
+  preHealth = c->getHealth();
+  for (int i = 0; i < 20; ++i) {
+   if (enemyVec[i]) { 
+    if (enemyVec[i]->Move(eMove)) {
+     delete enemyVec[i];
+     enemyVec[i] = nullptr;
+    }
+   }
+  }
+   postHealth = c->getHealth();
+   if(preHealth > postHealth && input != "u" && input != "a") { ab->updateAction(12);}
+  
+   ab->updatePlayer(c);
+
+   g.printIt(); // print the screen
+
+   if (c->getHealth() == 0) {
+    haveQuit = "q";
+    cout << "Game Over! You Lose" << endl;
     break;
    }
-
- for (int i = 0; i < 20; ++i) {
-   enemyVec[i]->Move();
-  }
-   g.printIt();
+  
  } //inner loop ends
   ++floorNum;
-  if(haveQuit == "q"){ break;}
+  c->setAtk(originalAtk - c->getAtk()); // sets atk back to original atk
+  c->setDef(originalDef - c->getDef()); // sets def back to original def
+  if(haveQuit == "r"){ 
+   break;
+  }
   g.cleanGrid();
-}
+  if (floorNum == 6) {
+   cout << "You win!" << endl;
+   break;
+  }
+
+} // new floor loop
+ delete c;
+ delete sp;
+} // entire game loop
  //loop ends here for new floor
  c = nullptr;
  sp = nullptr;

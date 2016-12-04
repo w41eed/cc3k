@@ -1,5 +1,6 @@
 #include "Cell.h"
 #include <iostream>
+#include "Item.h"
 
 // dtor
 Cell::~Cell() {
@@ -59,4 +60,13 @@ bool Cell::nextFloor(){
 
 Character *Cell::getCPtr() {
  return c;
+}
+
+Item *Cell::getIPtr() {
+ return i;
+}
+
+void Cell::takeOff() {
+ i = nullptr;
+ notifyObservers();
 }

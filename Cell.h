@@ -3,7 +3,8 @@
 
 #include "Subject.h"
 #include "Character.h"
-#include "Item.h"
+//#include "Item.h"
+class Item;
 
 class Cell: public Subject{
 protected:
@@ -27,7 +28,8 @@ public:
  int getY() override; // returns y coordinate
  bool nextFloor(); //determines if player is on stairs
  Character *getCPtr(); // returns pointer to character on cell
-
+ Item *getIPtr();
+ void takeOff(); // takes item off cell
 
 };
 

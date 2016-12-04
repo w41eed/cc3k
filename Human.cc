@@ -6,7 +6,7 @@
 #include "Player.h"
 
 // ctor
-Human::Human(Grid *g) : Enemy(140, 20, 20, 4, g) {}
+Human::Human(Grid *g) : Enemy(140, 20, 20, 4, g, "Human") {}
 
 // gets char to be printed
 char Human::getChar() {

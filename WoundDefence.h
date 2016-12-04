@@ -15,6 +15,7 @@ public:
 	
 	~WoundDefence ();
 
+	void usePotion(Character *c) override;
 };
 
 #endif

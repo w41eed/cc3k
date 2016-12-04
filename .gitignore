@@ -5,3 +5,5 @@ CMakeLists.txt
 *.d
 *.gch
 *.out
+cc-3k
+cc-3k2

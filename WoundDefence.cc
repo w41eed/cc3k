@@ -11,3 +11,8 @@ WoundDefence::WoundDefence(): Potions(-5,'P',"WD") {}
 
 //Destructor
 WoundDefence::~WoundDefence(){}
+
+void WoundDefence::usePotion(Character *c) {
+    const int DefLoss = -5;
+    c->setAtk(DefLoss);
+}
