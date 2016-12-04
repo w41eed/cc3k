@@ -517,17 +517,17 @@ while(floorNum <= 5) {
      char enemyType;
      enemyType = enemyVec[i]->getChar();
      int goldDropped = getRand(1,2);
-     int normalPile = 2;
-     int merchantHoard = 4;
+     const int normalPile = 2;
+     const int merchantHoard = 4;
      switch (enemyType) {
       case 'H':
        c->setG(normalPile * 2); // humans drop 2 piles of normal gold
        break;
       case 'M':
-       c->setG(merchantHoard); // merchant drop merchant hoarde
+       c->setG(merchantHoard); // merchant drop merchant hoard
        break;
       default:
-       // other enemies drop randomly a small pile or a normal pile
+       // other enemies randomly drop a small pile or a normal pile
        c->setG(goldDropped);
      }
      delete enemyVec[i];
