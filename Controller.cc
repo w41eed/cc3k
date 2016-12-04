@@ -513,7 +513,7 @@ while(floorNum <= 5) {
   preHealth = c->getHealth();
   for (int i = 0; i < 20; ++i) {
    if (enemyVec[i]) { 
-    if (enemyVec[i]->Move(eMove)) {
+    if (enemyVec[i]->Update(eMove)) {
      delete enemyVec[i];
      enemyVec[i] = nullptr;
     }

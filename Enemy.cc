@@ -25,7 +25,7 @@ bool Enemy::checkAndPlace(int xDisp, int yDisp) {
   return false;
 }
 
-bool Enemy::Move(bool eMove) {
+bool Enemy::Update(bool eMove) {
  if (HP <= 0) {
   g->moveOff(getX(), getY());
   return true;
