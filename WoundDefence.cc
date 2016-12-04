@@ -13,6 +13,6 @@ WoundDefence::WoundDefence(): Potions(-5,'P',"WD") {}
 WoundDefence::~WoundDefence(){}
 
 void WoundDefence::usePotion(Character *c) {
-    const int DefLoss = -5;
+    const int DefLoss = getAmount();
     c->setAtk(DefLoss);
 }

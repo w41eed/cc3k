@@ -13,6 +13,6 @@ PoisonHealth::PoisonHealth():Potions(-10,'P',"PH") {}
 PoisonHealth::~PoisonHealth(){}
 
 void PoisonHealth::usePotion(Character *c) {
-    const int HPLose = -10;
+    const int HPLose = getAmount();
     c->setHealth(HPLose);
 }

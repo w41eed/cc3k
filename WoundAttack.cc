@@ -13,6 +13,6 @@ WoundAttack::WoundAttack():Potions(-5,'P',"WA") {}
 WoundAttack::~WoundAttack(){}
 
 void WoundAttack::usePotion(Character *c) {
-    const int AtkLoss = -5;
+    const int AtkLoss = getAmount();
     c->setAtk(AtkLoss);
 }

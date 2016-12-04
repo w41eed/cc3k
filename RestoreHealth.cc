@@ -14,6 +14,6 @@ RestoreHealth::~RestoreHealth(){}
 
 
 void RestoreHealth::usePotion(Character *c) {
-    const int HPGain = 10;
+    const int HPGain = getAmount();
     c->setHealth(HPGain);
 }

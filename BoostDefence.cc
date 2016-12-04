@@ -13,6 +13,6 @@ BoostDefence::BoostDefence(): Potions(5,'P',"BD") {}
 BoostDefence::~BoostDefence(){}
 
 void BoostDefence::usePotion(Character *c) {
-    const int DefGain = 5;
+    const int DefGain = getAmount();
     c->setAtk(DefGain);
 }

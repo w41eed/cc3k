@@ -13,6 +13,6 @@ BoostAttack::BoostAttack(): Potions(5,'P',"BA") {}
 BoostAttack::~BoostAttack(){}
 
 void BoostAttack::usePotion(Character *c) {
-    const int AtkGain = 5;
+    const int AtkGain = getAmount();
     c->setAtk(AtkGain);
 }
