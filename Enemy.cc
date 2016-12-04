@@ -103,7 +103,9 @@ void Enemy::dAttack(const int x, const int y, Character *other) {
  }
 
  if (other) {
-  strike(*other);
+  if (getERand(1, 2) == 1) {
+   strike(*other);
+  }
  }
 }
 
