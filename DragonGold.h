@@ -10,6 +10,7 @@ class DragonGold: public Gold {
 	public:
 		DragonGold(); //Constructs a DragonGold with value 6
 		~DragonGold();
+		void truePick();
 		char dSym() override;
 
 

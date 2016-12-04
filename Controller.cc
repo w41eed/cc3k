@@ -95,8 +95,8 @@ void randPlace(Character *ch, Grid &g) {
 }
 
 // places the Dragon near the gold
-Enemy *placeDragon(int x, int y, Grid &g, int &placedX, int &placedY) {
- Enemy *e = new Dragon(&g);
+Enemy *placeDragon(int x, int y, Grid &g, int &placedX, int &placedY, DragonGold *i) {
+ Enemy *e = new Dragon(&g, i);
 
  if (g.canWalk(x, y -1)) {
   g.place(x, y - 1, e);
@@ -143,6 +143,8 @@ Enemy *randPlace(Item *i, Grid &g, int &placeX, int &placeY) {
 
  int x;
  int y;
+ DragonGold *ptr;
+ int val = i->getVal();
 
  while(1) {
   x = getRand(0, 78);
@@ -151,16 +153,22 @@ Enemy *randPlace(Item *i, Grid &g, int &placeX, int &placeY) {
  char c = g.getChar(x, y);
 
   if (g.canPlace(x,y) && c != '+' && c != '#') {
-   g.place(x, y, i);
-   break;
+   if (val == 6) {
+    ptr = new DragonGold;
+    g.place(x, y, ptr);
+    delete i;
+    break;
+   } else {
+    g.place(x, y, i);
+    break;
+   }
   }
  }
 
- int val = i->getVal();
  Enemy *e = nullptr;
 
  if (val == 6) {
-  e = placeDragon(x, y, g, placeX, placeY);
+  e = placeDragon(x, y, g, placeX, placeY, ptr);
  }
 
  return e;

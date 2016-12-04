@@ -17,3 +17,7 @@ char DragonGold::dSym() {
   return 'Z';
  }
 }
+
+void DragonGold::truePick() {
+ pickable = true;
+}
