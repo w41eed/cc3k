@@ -14,5 +14,10 @@ WoundDefence::~WoundDefence(){}
 
 void WoundDefence::usePotion(Character *c) {
     const int DefLoss = getAmount();
-    c->setAtk(DefLoss);
+    const double DrowPotionMultiplier = 1.5;
+    if (c->getName() == "Drow") {
+        c->setDef((int) (DrowPotionMultiplier * DefLoss));
+    } else {
+        c->setDef(DefLoss);
+    }
 }

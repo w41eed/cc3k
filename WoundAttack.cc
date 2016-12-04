@@ -14,5 +14,10 @@ WoundAttack::~WoundAttack(){}
 
 void WoundAttack::usePotion(Character *c) {
     const int AtkLoss = getAmount();
-    c->setAtk(AtkLoss);
+    const double DrowPotionMultiplier = 1.5;
+    if (c->getName() == "Drow") {
+        c->setAtk((int) (DrowPotionMultiplier * AtkLoss));
+    } else {
+        c->setAtk(AtkLoss);
+    }
 }

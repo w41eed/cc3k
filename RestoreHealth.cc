@@ -15,5 +15,10 @@ RestoreHealth::~RestoreHealth(){}
 
 void RestoreHealth::usePotion(Character *c) {
     const int HPGain = getAmount();
-    c->setHealth(HPGain);
+    const double DrowPotionMultiplier = 1.5;
+    if(c->getName() == "Drow") {
+        c->setHealth((int) (DrowPotionMultiplier * HPGain));
+    } else {
+        c->setHealth(HPGain);
+    }
 }

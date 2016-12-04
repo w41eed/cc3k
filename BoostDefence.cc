@@ -14,5 +14,10 @@ BoostDefence::~BoostDefence(){}
 
 void BoostDefence::usePotion(Character *c) {
     const int DefGain = getAmount();
-    c->setAtk(DefGain);
+    const double DrowPotionMultiplier = 1.5;
+    if (c->getName() == "Drow") {
+        c->setDef((int) (DrowPotionMultiplier * DefGain));
+    } else {
+        c->setDef(DefGain);
+    }
 }

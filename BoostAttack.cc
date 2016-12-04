@@ -14,5 +14,10 @@ BoostAttack::~BoostAttack(){}
 
 void BoostAttack::usePotion(Character *c) {
     const int AtkGain = getAmount();
-    c->setAtk(AtkGain);
+    const double DrowPotionMultiplier = 1.5;
+    if (c->getName() == "Drow") {
+        c->setAtk((int) (DrowPotionMultiplier * AtkGain));
+    } else {
+        c->setAtk(AtkGain);
+    }
 }
