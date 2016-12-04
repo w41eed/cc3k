@@ -3,10 +3,7 @@
 Enemy::Enemy(int HP, int Atk, int Def, int gold, Grid *g , std::string name) :
         Character(HP, Atk, Def, gold, 0, 0, name), g{g} {}
 
-Enemy::~Enemy() {
-
-//    TODO: finish destructor for enemy, probably delete its gold pointer
-}
+Enemy::~Enemy() {}
 
 int getERand(int min, int max) {
     double f = 1.0 / (RAND_MAX + 1.0);
@@ -25,7 +22,7 @@ bool Enemy::checkAndPlace(int xDisp, int yDisp) {
   return false;
 }
 
-bool Enemy::Move(bool eMove) {
+bool Enemy::Update(bool eMove) {
  if (HP <= 0) {
   g->moveOff(getX(), getY());
   return true;
