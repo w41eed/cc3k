@@ -514,6 +514,22 @@ while(floorNum <= 5) {
   for (int i = 0; i < 20; ++i) {
    if (enemyVec[i]) { 
     if (enemyVec[i]->Update(eMove)) {
+     char enemyType;
+     enemyType = enemyVec[i]->getChar();
+     int goldDropped = getRand(1,2);
+     int normalPile = 2;
+     int merchantHoard = 4;
+     switch (enemyType) {
+      case 'H':
+       c->setG(normalPile * 2); // humans drop 2 piles of normal gold
+       break;
+      case 'M':
+       c->setG(merchantHoard); // merchant drop merchant hoarde
+       break;
+      default:
+       // other enemies drop randomly a small pile or a normal pile
+       c->setG(goldDropped);
+     }
      delete enemyVec[i];
      enemyVec[i] = nullptr;
     }
