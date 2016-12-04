@@ -557,7 +557,12 @@ while(floorNum <= 5) {
    if (c->getHealth() <= 0) {
     haveQuit = "q";
     cout << "Game Over! You Lose" << endl;
-    break;
+    g.cleanGrid();
+    delete c;
+    delete sp;
+    c = nullptr;
+    sp = nullptr;
+    return;
    }
   
  } //inner loop ends

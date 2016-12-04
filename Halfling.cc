@@ -4,6 +4,7 @@
 
 #include "Halfling.h"
 #include "Controller.h" // include controller for getRand(int, int)
+#include <math.h>
 
 // ctor
 Halfling::Halfling(Grid *g): Enemy(100, 15, 20, 1, g, "Halfling"){
@@ -16,7 +17,7 @@ char Halfling::getChar() {
 }
 
 void Halfling::getStruckBy(Character &other) {
-    int net = other.getAtk() - Def;
+    int net = ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
     net = net + (net / 2);
 
     if (net <= 0) {
@@ -26,7 +27,7 @@ void Halfling::getStruckBy(Character &other) {
     const int hitOrMiss = getRand(0,1);
 
     if (hitOrMiss) {
-        HP -= net; // if random number is 1, then hit and player
+        HP -= net; // if random number is 1, then hit by player
     }
     if (HP <= 0) {
         HP = 0;

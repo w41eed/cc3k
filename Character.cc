@@ -1,6 +1,7 @@
 #include "Character.h"
 #include "Elf.h"
 #include <iostream>
+#include <math.h>
 
 // ctor
 Character::Character(int HP, int Atk, int Def, int gold, int xCo, int yCo, std::string n):
@@ -52,7 +53,8 @@ void Character::strike(Character &other) {
 
 // striks other Character
 void Character::getStruckBy(Character &other) {
- int net = other.getAtk() - Def;
+ int net = ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
+
  if (net <= 0) {
   net = 0;
  }
