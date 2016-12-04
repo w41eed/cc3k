@@ -530,6 +530,7 @@ while(floorNum <= 5) {
        // other enemies randomly drop a small pile or a normal pile
        c->setG(goldDropped);
      }
+     ab->updatePlayer(c);
      delete enemyVec[i];
      enemyVec[i] = nullptr;
     }
