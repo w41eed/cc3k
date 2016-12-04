@@ -207,14 +207,18 @@ void pAttack(Character *player, Grid &g) {
  }
 
  if (enem == nullptr) {
-  return;
+  ePreStrike = -100;
+  ePostStrike = 0;
+  
  }
+ else{
  eName = enem->getName();
  ePreStrike = enem->getHealth();
  pPreStrike = player->getHealth();
 
   player->strike(*enem);
  ePostStrike = enem->getHealth();
+}
 }
 
 std::string PotionType; //stores the potion type for action bar

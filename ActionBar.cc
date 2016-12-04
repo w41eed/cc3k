@@ -119,7 +119,9 @@ ostream &operator<<(ostream &out, const ActionBar &ab){
   else if (action == 9) { out << move7;}
   else if (action == 10) { out << move8;}
   else if (action == 11) { 
-    if(eHealth == 0){out << player << " killed " << eName;}
+    if(eDamage < 0){ out << "Nothing to attack!";}
+    else if(eHealth == 0){out << player << " killed " << eName;}
+    else if(pDamage < 0){ out << player << " deals " << eDamage << " damage" << " to " << eName << " (" << eHealth << ") " << ", " << eName << " deals " << "0" << " damage" << " to " << player;}
   	else {out << player << " deals " << eDamage << " damage" << " to " << eName << " (" << eHealth << ") " << ", " << eName << " deals " << pDamage << " damage" << " to " << player;
     }
   }
