@@ -16,3 +16,8 @@ char Potions::getSym(){ return symbol;}
 
 //Returns the type of potion
 std::string Potions::getType(){ return potionType;}
+
+void Potions::usePotion(Character *c) {
+    const int statChange = getAmount();
+    c->setAtk(statChange);
+}
