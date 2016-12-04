@@ -30,6 +30,7 @@ class Character {
  virtual void strike(Character &); // strikes a Character
  virtual void getStruckBy(Character &); // gets struck by a Character
  void getStruckBy(Elf &); // gets struck by a Character
+    // TODO: getStruckBy isn't virtual
  int getHealth(); // returns health value
  int getG(); //returns the gold amount
  void setG(int); // sets the gold amount
