@@ -317,43 +317,44 @@ void Controller::stairPlace(Item *stair, Grid &g, const int &playX, const int &p
  }
 }
 
+Grid g;
+int preGold;
+int postGold;
+int preHealth;
+int postHealth;
+int curX;
+int curY;
+ActionBar *ab;
+bool next_floor;
+Character *c;
+
+bool checkAndPlacePlayer(int xDisp, int yDisp, int actionNum) {
+ if (g.canWalk(curX + xDisp, curY + yDisp)) {
+  g.moveOff(curX, curY);
+  g.place(curX + xDisp, curY + yDisp, c);
+  c->setX(curX + xDisp);
+  c->setY(curY + yDisp);
+
+  postHealth = c->getHealth();
+  postGold = c->getG();
+  if(preHealth != postHealth){ ab->updateAction(12);}
+  else if(preGold != postGold){ ab->updateAction(13);}
+  else { ab->updateAction( actionNum );}
+
+  next_floor = g.nextFloor(curX,curY-1);
+  if(next_floor == 1) {
+   return true;
+  }
+ }
+ return false;
+}
 
 void Controller::play() {
  srand(time(0));
  bool running = true;
- Character *c;
  Item *sp;
  string playName;
 
- Grid g;
- int preGold;
- int postGold;
- int preHealth;
- int postHealth;
- int curX;
- int curY;
- ActionBar *ab;
- bool next_floor;
-
- bool checkAndPlacePlayer(int xDisp, int yDisp, int actionNum) {
-  if (g.canWalk(curX + xDisp, curY + yDisp)) {
-   g.moveOff(curX, curY);
-   g->place(curX + xDisp, curY + yDisp, c);
-   c->setX(curX + xDisp);
-   c->setY(curY + yDisp);
-
-   postHealth = c->getHealth();
-   postGold = c->getG();
-   if(preHealth != postHealth){ ab->updateAction(12);}
-   else if(preGold != postGold){ ab->updateAction(13);}
-   else { ab->updateAction( actionNum );}
-
-   next_floor = g.nextFloor(curX,curY-1);
-   if(next_floor == 1) {break;}
-   return true;
-  }
-  return false;
- }
 
  while (running) {
  // reads in file name
@@ -488,134 +489,21 @@ while(floorNum <= 5) {
     ab->updateAction(2);
     
   } else if (input == "no") {
-    if (g.canWalk(curX, curY - 1)) {
-     g.moveOff(curX, curY);
-     g.place(curX, curY - 1, c);
-     c->setX(curX);
-     c->setY(curY - 1);
-
-     postHealth = c->getHealth();
-     postGold = c->getG();
-     if(preHealth != postHealth){ ab->updateAction(12);}
-     else if(preGold != postGold){ ab->updateAction(13);}
-     else { ab->updateAction(3);}
-
-     next_floor = g.nextFloor(curX,curY-1);
-     if(next_floor == 1) {break;}
-
-    }
+    if ( checkAndPlacePlayer(0, -1, 3)) break;
    } else if (input == "ea") {
-    if (g.canWalk(curX + 1, curY)) {
-     g.moveOff(curX, curY);
-     g.place(curX + 1, curY, c);
-     c->setX(curX + 1);
-     c->setY(curY);
-
-     postHealth = c->getHealth();
-     postGold = c->getG();
-     if(preHealth != postHealth){ ab->updateAction(12);}
-     else if(preGold != postGold){ ab->updateAction(13);}
-     else { ab->updateAction(4);}
-
-     next_floor = g.nextFloor(curX+1,curY);
-     if(next_floor == 1) {break;}
-    }
+    if (checkAndPlacePlayer(1, 0, 4)) break;
    } else if (input == "so") {
-    if (g.canWalk(curX, curY + 1)) {
-     g.moveOff(curX, curY);
-     g.place(curX, curY + 1, c);
-     c->setX(curX);
-     c->setY(curY + 1);
-
-     postHealth = c->getHealth();
-     postGold = c->getG();
-     if(preHealth != postHealth){ ab->updateAction(12);}
-     else if(preGold != postGold){ ab->updateAction(13);}
-     else { ab->updateAction(5);}
-
-     next_floor = g.nextFloor(curX,curY+1);
-     if(next_floor == 1) {break;}
-    }
+    if (checkAndPlacePlayer(0, 1, 5)) break;
    } else if (input == "we") {
-    if (g.canWalk(curX - 1, curY)) {
-     g.moveOff(curX, curY);
-     g.place(curX - 1, curY, c);
-     c->setX(curX - 1);
-     c->setY(curY);
-
-     postHealth = c->getHealth();
-     postGold = c->getG();
-     if(preHealth != postHealth){ ab->updateAction(12);}
-     else if(preGold != postGold){ ab->updateAction(13);}
-     else { ab->updateAction(6);}
-
-     next_floor = g.nextFloor(curX-1,curY);
-     if(next_floor == 1) {break;}
-    }
+    if (checkAndPlacePlayer(-1, 0, 6)) break;
    } else if (input == "ne") {
-    if (g.canWalk(curX + 1, curY - 1)) {
-     g.moveOff(curX, curY);
-     g.place(curX + 1, curY - 1, c);
-     c->setX(curX + 1);
-     c->setY(curY - 1);
-
-     postHealth = c->getHealth();
-     postGold = c->getG();
-     if(preHealth != postHealth){ ab->updateAction(12);}
-     else if(preGold != postGold){ ab->updateAction(13);}
-     else { ab->updateAction(7);}
-
-     next_floor = g.nextFloor(curX+1,curY-1);
-     if(next_floor == 1) {break;}
-    }
+    if (checkAndPlacePlayer(1, -1, 7)) break;
    } else if (input == "nw") {
-    if (g.canWalk(curX - 1, curY - 1)) {
-     g.moveOff(curX, curY);
-     g.place(curX - 1, curY - 1, c);
-     c->setX(curX - 1);
-     c->setY(curY - 1);
-
-     postHealth = c->getHealth();
-     postGold = c->getG();
-     if(preHealth != postHealth){ ab->updateAction(12);}
-     else if(preGold != postGold){ ab->updateAction(13);}
-     else { ab->updateAction(8);}
-
-     next_floor = g.nextFloor(curX-1,curY-1);
-     if(next_floor == 1) {break;}
-    }
+    if (checkAndPlacePlayer(-1, -1, 8)) break;
    } else if (input == "se") {
-    if (g.canWalk(curX + 1, curY + 1)) {
-     g.moveOff(curX, curY);
-     g.place(curX + 1, curY + 1, c);
-     c->setX(curX + 1);
-     c->setY(curY + 1);
-
-     postHealth = c->getHealth();
-     postGold = c->getG();
-     if(preHealth != postHealth){ ab->updateAction(12);}
-     else if(preGold != postGold){ ab->updateAction(13);}
-     else { ab->updateAction(9);}
-
-     next_floor = g.nextFloor(curX+1,curY+1);
-     if(next_floor == 1) {break;}
-    }
+    if (checkAndPlacePlayer(1, 1, 9)) break;
    } else if (input == "sw") {
-    if (g.canWalk(curX - 1, curY + 1)) {
-     g.moveOff(curX, curY);
-     g.place(curX - 1, curY + 1, c);
-     c->setX(curX - 1);
-     c->setY(curY + 1);
-
-     postHealth = c->getHealth();
-     postGold = c->getG();
-     if(preHealth != postHealth){ ab->updateAction(12);}
-     else if(preGold != postGold){ ab->updateAction(13);}
-     else { ab->updateAction(10);}
-
-     next_floor = g.nextFloor(curX-1,curY+1);
-     if(next_floor == 1) {break;}
-    }
+    if (checkAndPlacePlayer(-1, 1, 10)) break;
    }
 
  else if (input == "q") {
