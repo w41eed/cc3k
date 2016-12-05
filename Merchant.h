@@ -9,7 +9,7 @@
 
 
 class Merchant: public Enemy {
-    static bool isHostile;
+    static bool isHostile; // shared hostility towards Player Character
 
 public:
     Merchant(Grid *); // ctor

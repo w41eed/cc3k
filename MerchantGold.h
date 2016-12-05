@@ -8,8 +8,8 @@
 
 class MerchantGold: public Gold {
 	public:
-		MerchantGold(); //Constructs a MerchantGold with value 4
-        ~MerchantGold();
+	MerchantGold(); //Constructs a MerchantGold with value 4
+        ~MerchantGold(); // dtor
 
 
 

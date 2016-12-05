@@ -37,6 +37,7 @@ void Passage::place(Character *other) {
  notifyObservers();
 }
 
+// place Item atop
 void Passage::place(Item *other) {
  i = other;
  notifyObservers();

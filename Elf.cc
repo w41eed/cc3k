@@ -4,8 +4,6 @@
 
 #include "Elf.h"
 #include "Player.h"
-#include <iostream>
-using namespace std;
 
 // ctor
 Elf::Elf(Grid *g): Enemy(140, 30, 10, 2, g, "Elf") {

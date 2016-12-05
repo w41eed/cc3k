@@ -1,17 +1,21 @@
 #include "Enemy.h"
 #include <iostream>
 
+// ctor
 Enemy::Enemy(int HP, int Atk, int Def, int gold, Grid *g , std::string name) :
         Character(HP, Atk, Def, gold, 0, 0, name), g{g} {}
 
+// dtor
 Enemy::~Enemy() {}
 
+// gets random number
 int getERand(int min, int max) {
     double f = 1.0 / (RAND_MAX + 1.0);
     int x = static_cast<int>(rand() * f * (max - min + 1) + min); // cast expression to int
     return x;
 }
 
+// checks if can move and moves Enemy there
 bool Enemy::checkAndPlace(int xDisp, int yDisp) {
     if (g->canPlace(getX() + xDisp, getY() + yDisp)) {
         g->moveOff(getX(), getY());
@@ -23,6 +27,7 @@ bool Enemy::checkAndPlace(int xDisp, int yDisp) {
   return false;
 }
 
+// updates Enemy
 bool Enemy::Update(bool eMove) {
  if (HP <= 0) {
   g->moveOff(getX(), getY());
@@ -65,6 +70,7 @@ bool Enemy::Update(bool eMove) {
 
 }
 
+// checks tiles
 bool Enemy::checkTiles(int x, int y) {
  char c = g->getChar(x, y);
 
@@ -82,7 +88,7 @@ bool Enemy::checkTiles(int x, int y) {
  return true;
 }
 
-
+// dragon attack
 void Enemy::dAttack(const int x, const int y, Character *other) {
  if (checkTiles(x, y - 1)) {
   other = g->getCPtr(x, y - 1);
@@ -111,7 +117,7 @@ void Enemy::dAttack(const int x, const int y, Character *other) {
 
 
 
-
+// Enemy attack
 bool Enemy::eAttack() {
 
  Character *plyr = nullptr;

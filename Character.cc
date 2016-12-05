@@ -90,6 +90,7 @@ void Character::setHealth(int healthChange) {
  }
 }
 
+// sets Character attack
 void Character::setAtk(int AtkChange) {
  Atk += AtkChange;
  if (Atk < 0) {
@@ -97,6 +98,7 @@ void Character::setAtk(int AtkChange) {
  }
 }
 
+// sets Character defence
 void Character::setDef(int DefChange) {
  Def += DefChange;
  if (Def < 0) {

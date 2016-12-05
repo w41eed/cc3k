@@ -10,7 +10,7 @@ class Goblin: public Player {
 
 public:
  Goblin(); // ctor
- void getStruckBy(Orc &);
+ void getStruckBy(Orc &); // struck by Orc
 };
 
 #endif

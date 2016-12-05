@@ -16,6 +16,7 @@ char Halfling::getChar() {
     return 'L';
 }
 
+// struck by Character, 50% miss
 void Halfling::getStruckBy(Character &other) {
     int net = ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
     net = net + (net / 2);

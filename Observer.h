@@ -7,6 +7,6 @@ class Observer {
  public:
   virtual void notify(Subject &whoNotified) = 0;  // pass the Cell that called
                                                   // called the method
-  virtual ~Observer() = default;
+  virtual ~Observer() = default; // dtor
 };
 #endif

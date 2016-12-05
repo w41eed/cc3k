@@ -12,7 +12,7 @@ public:
 	BoostDefence(); //constructor. initializes the amount to +5, symbol = P, 
 					 //potionType = BD
 	
-	~BoostDefence();
+	~BoostDefence(); // dtor
 
 	void usePotion(Character *c) override; //applies potion effect on player
 };

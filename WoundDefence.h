@@ -1,21 +1,20 @@
+#ifndef WOUND_DEF
+#define WOUND_DEF
+
 #include "Cell.h"
 #include "Item.h"
 #include <iostream>
 #include "Potions.h"
 #include <string>
 
-#ifndef WOUND_DEFENCE_H
-#define WOUND_DEFENCE_H
-
-
 class WoundDefence : public Potions {
 public:
 	WoundDefence (); //constructor. initializes the amount to -5, symbol = P, 
 					 //potionType = WD
 	
-	~WoundDefence ();
+	~WoundDefence (); // dtor
 
-	void usePotion(Character *c) override;
+	void usePotion(Character *c) override; // use a potion
 };
 
 #endif

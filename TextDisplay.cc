@@ -4,6 +4,7 @@
 #include "Cell.h"
 using namespace std;
 
+// ctor
 TextDisplay::TextDisplay() {
 	theDisplay.resize(col);
 	for(int i = 0; i < col; i++){
@@ -27,6 +28,7 @@ void TextDisplay::notify(Subject &whoNotified) {
 
 }
 
+// dtor
 TextDisplay::~TextDisplay() {}
 ostream &operator<<(ostream &out, const TextDisplay &td) {
 	
@@ -34,7 +36,7 @@ ostream &operator<<(ostream &out, const TextDisplay &td) {
 		for(int k = 0; k < td.col; k++) {
 			out << td.theDisplay[k][i];
 		}
-		out << "\n";
+		out << endl;
 	}	
 
  return out;

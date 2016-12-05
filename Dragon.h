@@ -10,7 +10,7 @@
 #include "DragonGold.h"
 
 class Dragon: public Enemy {
-    DragonGold *ptr;
+    DragonGold *ptr; // pointer to gold protected by Dragon
 public:
     Dragon(Grid *, DragonGold *); // ctor
     ~Dragon(); // dtor

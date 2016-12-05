@@ -16,6 +16,7 @@ class TextDisplay: public Observer {
   	  	  	  	  	  	  	  	  	  	  	  //changes the character at that position.
   ~TextDisplay();
 
+ // output TextDisplay
   friend std::ostream &operator<<(std::ostream &out, const TextDisplay &td);
 };
 

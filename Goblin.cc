@@ -15,8 +15,6 @@ void Goblin::getStruckBy(Orc &other) {
   net = 0;
  }
 
-
-
  HP -= net;
  if (HP <= 0) {
   HP = 0;

@@ -5,9 +5,9 @@
 #include <iostream>
 
 class NormalGold: public Gold {
-	public:
-		NormalGold(); //Constructs a NormalGold with value 2
-		~NormalGold();
+	public:	
+	NormalGold(); // Constructs a NormalGold with value 2
+	~NormalGold(); // dtor
 
 
 

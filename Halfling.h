@@ -11,7 +11,7 @@ class Halfling: public Enemy {
 public:
     Halfling(Grid *); // ctor
     char getChar() override; // gets char to be printed
-    void getStruckBy(Character &);
+    void getStruckBy(Character &); // struck by Character, 50% miss
 };
 
 

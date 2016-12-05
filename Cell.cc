@@ -68,7 +68,7 @@ Item *Cell::getIPtr() {
  return i;
 }
 
-
+// takes item off of Cell
 void Cell::takeOff() {
  i = nullptr;
  notifyObservers();

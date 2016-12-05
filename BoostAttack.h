@@ -12,7 +12,7 @@ public:
 	BoostAttack(); //constructor. initializes the amount to +5, symbol = P,
 					 //potionType = BA
 	
-	~BoostAttack();
+	~BoostAttack(); // dtor
     void usePotion(Character *c) override; //applies potion effect to player
 };
 

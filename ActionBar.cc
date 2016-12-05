@@ -46,31 +46,41 @@ void ActionBar::updateAttack(std::string ename, int epre, int epost, int ppre){
 	pPreStrike = ppre;
 }
 
-
+// returns Player health
 int ActionBar::getHealth() const { return PHealth;}
 
+// returns Player attack
 int ActionBar::getAttack() const { return PAttack;}
 
+// returns Player defence
 int ActionBar::getDefence() const { return PDefence;}
 
+// returns floor number
 int ActionBar::getFloor() const { return FloorNum;}
 
+// returns Player gold
 int ActionBar::getGold() const { return PGold;}
 
+// returns PlayerType
 std::string ActionBar::getP() const { return PlayerType;}
 
+// returns PotionType
 std::string ActionBar::getPotion() const {return PotionType;}
 
+// returns the action number
 int ActionBar::getaction() const { return actionNum;}
 
+// returns Enemy prestrike
 int ActionBar::getEnemyHealth() const { return EnemyPreStrike;}
 
+// return Enemy total damage
 int ActionBar::getEnemyDamage() const { return EnemyPreStrike - EnemyPostStrike;}
 
+// returns name of Enemy
 std::string ActionBar::getEnemyName() const { return EnemyName;}
 
+// returns total Player damage
 int ActionBar::getPlayerDamage() const { return pPreStrike - PHealth;}
-
 
 //operator<< overload for ActionBar
 ostream &operator<<(ostream &out, const ActionBar &ab){
