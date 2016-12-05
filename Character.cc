@@ -63,6 +63,10 @@ void Character::getStruckBy(Character &other) {
  HP -= net;
  if (HP <= 0) {
   HP = 0;
+  if (other.getName() == "Goblin") {
+   other.setG(5);
+   return;
+  }
   amount = getRand(1, 2);
   other.setG(amount);
  }
