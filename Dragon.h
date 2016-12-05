@@ -13,8 +13,9 @@ class Dragon: public Enemy {
     DragonGold *ptr;
 public:
     Dragon(Grid *, DragonGold *); // ctor
-    ~Dragon();
+    ~Dragon(); // dtor
     char getChar() override; // gets char to be printed
+    void getStruckBy(Character &) override; // struck by a Character
 };
 
 
