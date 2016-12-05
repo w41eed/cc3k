@@ -6,6 +6,8 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "MerchantGold.h"
+#include "Controller.h"
+#include <math.h>
 
 // ctor
 Merchant::Merchant(Grid *g): Enemy(30, 70, 5, 0, g, "Merchant"){
@@ -31,7 +33,20 @@ char Merchant::getChar() {
 // gets struck by and sets hostility
 void Merchant::getStruckBy(Character &other) {
  isHostile = true;
- Character::getStruckBy(other);
+ int net = ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
+ int amount;
+
+ if (net <= 0) {
+     net = 0;
+ }
+ HP -= net;
+ if (HP <= 0) {
+     HP = 0;
+     if (other.getName() == "Goblin") {
+         other.setG(5);
+         return;
+     }
+ }
 }
 
 // strikes after checking hostility
