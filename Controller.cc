@@ -351,7 +351,6 @@ while(floorNum <= 5) {
 //loop starts here for new floor
   
  randPlace(c, g);
- cout << "PLAYER X: " << c->getX() << " AND Y: " << c->getY() << endl;
 
  stairPlace(sp,g, c->getX(), c->getY());
 
