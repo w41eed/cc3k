@@ -5,6 +5,8 @@
 #include "Human.h"
 #include "Player.h"
 #include "NormalGold.h"
+#include "Controller.h"
+#include <math.h>
 
 
 // ctor
@@ -54,4 +56,21 @@ Human::~Human() {
 // gets char to be printed
 char Human::getChar() {
     return 'H';
+}
+
+void Human::getStruckBy(Character &other) {
+ int net = (int) ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
+ int amount;
+
+ if (net <= 0) {
+  net = 0;
+ }
+ HP -= net;
+ if (HP <= 0) {
+  HP = 0;
+  if (other.getName() == "Goblin") {
+   other.setG(5);
+   return;
+  }
+ }
 }

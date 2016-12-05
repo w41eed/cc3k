@@ -12,6 +12,7 @@ public:
     Human(Grid *); // ctor
     ~Human(); // dtor
     char getChar() override; // gets char to be printed
+    void getStruckBy(Character &other);
 };
 
 

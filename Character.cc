@@ -54,7 +54,7 @@ void Character::strike(Character &other) {
 
 // strikes other Character
 void Character::getStruckBy(Character &other) {
- int net = ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
+ int net = (int) ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
  int amount;
 
  if (net <= 0) {
