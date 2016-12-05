@@ -610,8 +610,6 @@ while(floorNum <= 5) {
   for (int i = 0; i < len; ++i) {
    if (enemyVec[i]) {
     if (enemyVec[i]->Update(eMove)) { // case when enemy dies and drops gold
-     char enemyType;
-     enemyType = enemyVec[i]->getChar();
      int goldDropped = getRand(1,2);
      const int GoblinSteal = 5;
      if (c->getName() == "Goblin") {
