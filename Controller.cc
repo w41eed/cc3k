@@ -590,14 +590,14 @@ while(floorNum <= 5) {
   for (int i = 0; i < len; ++i) {
    if (enemyVec[i]) {
     if (enemyVec[i]->Update(eMove)) { // case when enemy dies and drops gold
-     char enemyType;
-     enemyType = enemyVec[i]->getChar();
+     string enemyType;
+     enemyType = enemyVec[i]->getName();
      int goldDropped = getRand(1,2);
      const int GoblinSteal = 5;
-     if (c->getName() == "Goblin") {
+     if (enemyType == "Goblin") {
       c->setG(GoblinSteal); // Goblin gains 5 extra gold from every kill
-     } else if (c->getName() != "Human" && c->getName() != "Merchant"
-                && c->getName() != "Dragon") {
+     } else if (enemyType != "Human" && enemyType != "Merchant"
+                && enemyType != "Dragon") {
       c->setG(goldDropped);
      }
      delete enemyVec[i];
@@ -609,7 +609,7 @@ while(floorNum <= 5) {
    if(preHealth > postHealth && input != "u" && input != "a") {
     ab->updateAction(12);
    }
-  
+
    ab->updatePlayer(c);
 
    playName = c->getName();
