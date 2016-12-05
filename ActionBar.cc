@@ -105,10 +105,10 @@ ostream &operator<<(ostream &out, const ActionBar &ab){
 
 
   out << "Race: " << player << "     Gold: " << Gold << "                                                " << "Floor " << Floor;
-  out << '\n';
-  out << "HP: " << Health << '\n';
-  out << "Atk: " << Attack << '\n';
-  out << "Def: " << Defence << '\n';
+  out << endl;
+  out << "HP: " << Health << endl;
+  out << "Atk: " << Attack << endl;
+  out << "Def: " << Defence << endl;
   out << "Action: ";
   if(action == 1) { out << spawn;}
   else if (action == 2) { out << usePotion;}
@@ -129,7 +129,7 @@ ostream &operator<<(ostream &out, const ActionBar &ab){
   }
   else if (action == 12){ out << attack;}
   else if (action == 13){ out << goldCollect;}
-  out << '\n';
+  out << endl;
   return out;
-
 }
+
