@@ -8,7 +8,7 @@ Enemy::~Enemy() {}
 
 int getERand(int min, int max) {
     double f = 1.0 / (RAND_MAX + 1.0);
-    int x = (int) (rand() * f * (max - min + 1) + min); // cast expression to int
+    int x = static_cast<int>(rand() * f * (max - min + 1) + min); // cast expression to int
     return x;
 }
 

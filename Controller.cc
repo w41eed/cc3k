@@ -333,8 +333,30 @@ while(floorNum <= 5) {
  randPlace(sp,g, placedX, placedY);
 
  int type = 0;
-
  vector<Enemy *> enemyVec;
+
+ bool gold = false;
+
+ // item spawn
+ for (int i = 0; i < 20; ++i) {
+  type = getRand(1, 24);
+  Item *it = nullptr;
+
+  it = pickItem(type, gold);
+
+  Enemy *drag = randPlace(it, g, placedX, placedY);
+
+ if (drag && drag->getChar() == 'D') {
+   enemyVec.emplace_back(drag);
+   drag->setX(placedX);
+   drag->setY(placedY);
+  }
+
+  if (i == 9) {
+   gold = true;
+  }
+
+ }
 
  for (int i = 0; i < 20; ++i) {
   type = getRand(1, 18);
@@ -360,30 +382,6 @@ while(floorNum <= 5) {
   }
 
   randPlace(e, g);
-
- }
-
- bool gold = false;
-
-
- // item spawn
- for (int i = 0; i < 20; ++i) {
-  type = getRand(1, 24);
-  Item *it = nullptr;
-
-  it = pickItem(type, gold);
-
-  Enemy *drag = randPlace(it, g, placedX, placedY);
-
- if (drag && drag->getChar() == 'D') {
-   enemyVec.emplace_back(drag);
-   drag->setX(placedX);
-   drag->setY(placedY);
-  }
-
-  if (i == 9) {
-   gold = true;
-  }
 
  }
 
