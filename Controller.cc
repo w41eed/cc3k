@@ -45,7 +45,7 @@ int getRand(int min, int max) {
  return x;
 }
 
-Character *selectCharacter() {
+Character *Controller::selectCharacter() {
 cout << "Please select your class: ";
 char c;
 cin >> c;
@@ -71,7 +71,7 @@ cin >> c;
 
 
 
-void randPlace(Character *ch, Grid &g) {
+void Controller::randPlace(Character *ch, Grid &g) {
 
  int x;
  int y;
@@ -95,7 +95,7 @@ void randPlace(Character *ch, Grid &g) {
 }
 
 // places the Dragon near the gold
-Enemy *placeDragon(int x, int y, Grid &g, int &placedX, int &placedY, DragonGold *i) {
+Enemy *Controller::placeDragon(int x, int y, Grid &g, int &placedX, int &placedY, DragonGold *i) {
  Enemy *e = new Dragon(&g, i);
 
  if (g.canPlace(x, y -1)) {
@@ -139,7 +139,8 @@ Enemy *placeDragon(int x, int y, Grid &g, int &placedX, int &placedY, DragonGold
  return e;
 
 }
-Enemy *randPlace(Item *i, Grid &g, int &placeX, int &placeY) {
+
+Enemy *Controller::randPlace(Item *i, Grid &g, int &placeX, int &placeY) {
 
  int x;
  int y;
@@ -181,7 +182,7 @@ int ePostStrike;
 int pPreStrike;
 
 
-void pAttack(Character *player, Grid &g) {
+void Controller::pAttack(Character *player, Grid &g) {
  string dir;
  cin >> dir;
  Character *enem;
@@ -223,7 +224,7 @@ void pAttack(Character *player, Grid &g) {
 
 std::string PotionType; //stores the potion type for action bar
 
-void pGetPotion(Character *player, Grid &g) {
+void Controller::pGetPotion(Character *player, Grid &g) {
  string dir;
  cin >> dir;
  Item *i;
@@ -266,7 +267,7 @@ void pGetPotion(Character *player, Grid &g) {
 }
 
 
-Item *pickItem(int val, bool gold) {
+Item *Controller::pickItem(int val, bool gold) {
  if (val <= 4 && gold == false) {
   return new BoostAttack;
  } else if (val <= 8 && gold == false) {
@@ -289,7 +290,7 @@ Item *pickItem(int val, bool gold) {
 }
 
 
-bool okStairs(const int &x, const int &y, const int &playX, const int &playY) {
+bool Controller::okStairs(const int &x, const int &y, const int &playX, const int &playY) {
  if (x <= (playX - 25) || x >= (playX + 25)) {
   if (y <= (playY - 10) || y >= (playY + 10)) {
    return true;
@@ -300,7 +301,7 @@ bool okStairs(const int &x, const int &y, const int &playX, const int &playY) {
 
 
 
-void stairPlace(Item *stair, Grid &g, const int &playX, const int &playY) {
+void Controller::stairPlace(Item *stair, Grid &g, const int &playX, const int &playY) {
  int x;
  int y;
 
