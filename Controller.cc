@@ -593,6 +593,8 @@ while(floorNum <= 5) {
      char enemyType;
      enemyType = enemyVec[i]->getChar();
      int goldDropped = getRand(1,2);
+     const int normalPile = 2;
+     const int merchantHoard = 4;
      const int GoblinSteal = 5;
      if (c->getName() == "Goblin") {
       c->setG(GoblinSteal); // Goblin gains 5 extra gold from every kill

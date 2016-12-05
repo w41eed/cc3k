@@ -5,12 +5,20 @@
 #include "Merchant.h"
 #include "Enemy.h"
 #include "Player.h"
-#include <iostream>
-using namespace std;
+#include "MerchantGold.h"
 
 // ctor
-Merchant::Merchant(Grid *g): Enemy(30, 70, 5, 4, g, "Merchant"){
+Merchant::Merchant(Grid *g): Enemy(30, 70, 5, 0, g, "Merchant"){
 
+}
+
+// dtor
+Merchant::~Merchant() {
+  int x = getX();
+  int y = getY();
+
+ MerchantGold *mg = new MerchantGold;
+ g->place(x, y, mg);
 }
 
 // gets char to be printed

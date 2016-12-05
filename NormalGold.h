@@ -1,8 +1,7 @@
 #ifndef NORMAL_GOLD_H
 #define NORMAL_GOLD_H
 
-#include "Cell.h"
-#include "Item.h"
+#include "Gold.h"
 #include <iostream>
 
 class NormalGold: public Gold {

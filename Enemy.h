@@ -8,9 +8,9 @@
 #include "Player.h"
 
 class Enemy: public Character {
+protected:
     Grid *g;
     bool checkAndPlace(int xDisp, int yDisp); 
-protected:
     int goldDrop;
 public:
     Enemy(int HP, int Atk, int Def, int gold, Grid *, std::string name);
