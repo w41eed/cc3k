@@ -34,4 +34,8 @@ void Dragon::getStruckBy(Character &other) {
   HP = 0;
  }
 
+ if(other.getName() == "Goblin") {
+  other.setG(5);
+ }
+
 }

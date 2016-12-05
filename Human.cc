@@ -60,7 +60,6 @@ char Human::getChar() {
 
 void Human::getStruckBy(Character &other) {
  int net = ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
- int amount;
 
  if (net <= 0) {
   net = 0;
