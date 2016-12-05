@@ -98,35 +98,35 @@ void randPlace(Character *ch, Grid &g) {
 Enemy *placeDragon(int x, int y, Grid &g, int &placedX, int &placedY, DragonGold *i) {
  Enemy *e = new Dragon(&g, i);
 
- if (g.canWalk(x, y -1)) {
+ if (g.canPlace(x, y -1)) {
   g.place(x, y - 1, e);
   placedX = x;
   placedY = y - 1;
- } else if (g.canWalk(x + 1, y - 1)) {
+ } else if (g.canPlace(x + 1, y - 1)) {
   g.place(x + 1, y - 1, e);
   placedX = x + 1;
   placedY = y - 1;
- } else if (g.canWalk(x + 1, y)) {
+ } else if (g.canPlace(x + 1, y)) {
   g.place(x + 1, y, e);
   placedX = x + 1;
   placedY = y;
- } else if (g.canWalk(x + 1, y + 1)) {
+ } else if (g.canPlace(x + 1, y + 1)) {
   g.place(x + 1, y + 1, e);
   placedX = x + 1;
   placedY = y + 1;
- } else if (g.canWalk(x, y + 1)) {
+ } else if (g.canPlace(x, y + 1)) {
   g.place(x, y + 1, e);
   placedX = x;
   placedY = y + 1;
- } else if (g.canWalk(x - 1, y + 1)) {
+ } else if (g.canPlace(x - 1, y + 1)) {
   g.place(x - 1, y + 1, e);
   placedX = x - 1;
   placedY = y + 1;
- } else if (g.canWalk(x - 1, y)) {
+ } else if (g.canPlace(x - 1, y)) {
   g.place(x - 1, y, e);
   placedX = x - 1;
   placedY = y;
- } else if (g.canWalk(x - 1, y - 1)) {
+ } else if (g.canPlace(x - 1, y - 1)) {
   g.place(x - 1, y - 1, e);
   placedX = x - 1;
   placedY = y - 1;
@@ -288,16 +288,36 @@ Item *pickItem(int val, bool gold) {
  }
 }
 
-void Controller::play() {
- /*
- ifstream bannerfile("banner.txt");
- string s;
 
- while(getline(bannerfile, s)) {
-  cout << s;
+bool okStairs(const int &x, const int &y, const int &playX, const int &playY) {
+ if (x <= (playX - 20) || x >= (playX + 20)) {
+  if (y <= (playY - 10) || y >= (playY + 10)) {
+   return true;
+  }
+ } 
+ return false;
+}
+
+
+
+void stairPlace(Item *stair, Grid &g, const int &playX, const int &playY) {
+ int x;
+ int y;
+
+ while(1) {
+  x = getRand(0, 78);
+  y = getRand(0, 24);
+  char c = g.getChar(x, y);
+
+  if (g.canPlace(x,y) && c != '+' && c != '#' && okStairs(x, y, playX, playY)) {
+   g.place(x, y, stair);
+   return;
+  }
  }
- cout << endl;
- */
+}
+
+
+void Controller::play() {
  srand(time(0));
  bool running = true;
  Character *c;
@@ -330,7 +350,9 @@ while(floorNum <= 5) {
 //loop starts here for new floor
   
  randPlace(c, g);
- randPlace(sp,g, placedX, placedY);
+ cout << "PLAYER X: " << c->getX() << " AND Y: " << c->getY() << endl;
+
+ stairPlace(sp,g, c->getX(), c->getY());
 
  int type = 0;
  vector<Enemy *> enemyVec;
