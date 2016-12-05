@@ -18,7 +18,9 @@ Merchant::~Merchant() {
   int y = getY();
 
  MerchantGold *mg = new MerchantGold;
- g->place(x, y, mg);
+ if (g->place(x, y, mg) == false) {
+  delete mg;
+ }
 }
 
 // gets char to be printed

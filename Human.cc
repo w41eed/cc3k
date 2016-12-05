@@ -12,11 +12,17 @@ Human::Human(Grid *g) : Enemy(140, 20, 20, 4, g, "Human") {}
 
 // dtor
 Human::~Human() {
+
  int x = getX();
  int y = getY();
 
  Item *ng = new NormalGold;
- g->place(x, y, ng);
+
+ if (g->place(x, y, ng) == false) {
+  delete ng;
+  return;
+ }
+
  ng = nullptr;
  ng = new NormalGold;
 
@@ -41,7 +47,6 @@ Human::~Human() {
   delete ng;
   ng = nullptr;
  }
-
 
 
 }
