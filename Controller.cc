@@ -588,7 +588,7 @@ while(floorNum <= 5) {
   int len = enemyVec.size();
 
   for (int i = 0; i < len; ++i) {
-   if (enemyVec[i]) { 
+   if (enemyVec[i]) {
     if (enemyVec[i]->Update(eMove)) { // case when enemy dies and drops gold
      char enemyType;
      enemyType = enemyVec[i]->getChar();
@@ -596,17 +596,19 @@ while(floorNum <= 5) {
      const int GoblinSteal = 5;
      if (c->getName() == "Goblin") {
       c->setG(GoblinSteal); // Goblin gains 5 extra gold from every kill
-     } else if (c->getName() != "Human" && c->getName() != "Merchant") {
-       c->setG(goldDropped);
-      }
+     } else if (c->getName() != "Human" && c->getName() != "Merchant"
+                && c->getName() != "Dragon") {
+      c->setG(goldDropped);
      }
      delete enemyVec[i];
      enemyVec[i] = nullptr;
     }
    }
-  }
+ }
    postHealth = c->getHealth();
-   if(preHealth > postHealth && input != "u" && input != "a") { ab->updateAction(12);}
+   if(preHealth > postHealth && input != "u" && input != "a") {
+    ab->updateAction(12);
+   }
   
    ab->updatePlayer(c);
 
