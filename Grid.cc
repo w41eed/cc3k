@@ -144,7 +144,7 @@ bool Grid::place(int x, int y, Character *other) {
 
 // place Item at x, y
 bool Grid::place(int x, int y, Item *other) {
- if (theGrid[x][y]->canWalk()) {
+ if (theGrid[x][y]->canPlace()) {
   theGrid[x][y]->place(other);
   return true;
  } else {

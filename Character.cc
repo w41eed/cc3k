@@ -2,6 +2,7 @@
 #include "Elf.h"
 #include <iostream>
 #include <math.h>
+#include "Controller.h"
 
 // ctor
 Character::Character(int HP, int Atk, int Def, int gold, int xCo, int yCo, std::string n):
@@ -54,6 +55,7 @@ void Character::strike(Character &other) {
 // strikes other Character
 void Character::getStruckBy(Character &other) {
  int net = ceil((100.0 / (100.0 + static_cast<float>(Def))) * static_cast<float>(other.getAtk()));
+ int amount;
 
  if (net <= 0) {
   net = 0;
@@ -61,6 +63,8 @@ void Character::getStruckBy(Character &other) {
  HP -= net;
  if (HP <= 0) {
   HP = 0;
+  amount = getRand(1, 2);
+  other.setG(amount);
  }
 
 }

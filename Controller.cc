@@ -609,15 +609,7 @@ while(floorNum <= 5) {
 
   for (int i = 0; i < len; ++i) {
    if (enemyVec[i]) {
-    if (enemyVec[i]->Update(eMove)) { // case when enemy dies and drops gold
-     int goldDropped = getRand(1,2);
-     const int GoblinSteal = 5;
-     if (c->getName() == "Goblin") {
-      c->setG(GoblinSteal); // Goblin gains 5 extra gold from every kill
-     } else if (c->getName() != "Human" && c->getName() != "Merchant"
-                && c->getName() != "Dragon") {
-      c->setG(goldDropped);
-     }
+    if(enemyVec[i]->Update(eMove)) {
      delete enemyVec[i];
      enemyVec[i] = nullptr;
     }
