@@ -290,7 +290,7 @@ Item *pickItem(int val, bool gold) {
 
 
 bool okStairs(const int &x, const int &y, const int &playX, const int &playY) {
- if (x <= (playX - 20) || x >= (playX + 20)) {
+ if (x <= (playX - 25) || x >= (playX + 25)) {
   if (y <= (playY - 10) || y >= (playY + 10)) {
    return true;
   }
