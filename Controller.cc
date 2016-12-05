@@ -325,6 +325,36 @@ void Controller::play() {
  Item *sp;
  string playName;
 
+ Grid g;
+ int preGold;
+ int postGold;
+ int preHealth;
+ int postHealth;
+ int curX;
+ int curY;
+ ActionBar *ab;
+ bool next_floor;
+
+ bool checkAndPlacePlayer(int xDisp, int yDisp, int actionNum) {
+  if (g.canWalk(curX + xDisp, curY + yDisp)) {
+   g.moveOff(curX, curY);
+   g->place(curX + xDisp, curY + yDisp, c);
+   c->setX(curX + xDisp);
+   c->setY(curY + yDisp);
+
+   postHealth = c->getHealth();
+   postGold = c->getG();
+   if(preHealth != postHealth){ ab->updateAction(12);}
+   else if(preGold != postGold){ ab->updateAction(13);}
+   else { ab->updateAction( actionNum );}
+
+   next_floor = g.nextFloor(curX,curY-1);
+   if(next_floor == 1) {break;}
+   return true;
+  }
+  return false;
+ }
+
  while (running) {
  // reads in file name
  cout << "Please enter map file: ";
@@ -334,7 +364,6 @@ void Controller::play() {
  cin >> fileName;
 
  ifstream file(fileName);
- Grid g;
  g.init(file);
 
  c = selectCharacter();
@@ -344,8 +373,8 @@ void Controller::play() {
 
  int floorNum = 1;
  string haveQuit;
- bool next_floor;
  ActionBar *ab = g.getAction();
+
 
 while(floorNum <= 5) {
 //loop starts here for new floor
@@ -414,8 +443,6 @@ while(floorNum <= 5) {
 
  string input;
 
- int curX;
- int curY;
  bool eMove = true;
 
 
@@ -423,30 +450,6 @@ while(floorNum <= 5) {
  const int originalAtk = c->getAtk();
  const int originalDef = c->getDef();
 
- int preGold;
- int postGold;
- int preHealth;
- int postHealth;
-
-bool checkAndPlacePlayer(int xDisp, int yDisp, int actionNum) {
- if (g.canWalk(curX + xDisp, curY + yDisp)) {
-  g.moveOff(curX, curY);
-  g->place(curX + xDisp, curY + yDisp, c);
-  c->setX(curX + xDisp);
-  c->setY(curY + yDisp);
-
-  postHealth = c->getHealth();
-  postGold = c->getG();
-  if(preHealth != postHealth){ ab->updateAction(12);}
-  else if(preGold != postGold){ ab->updateAction(13);}
-  else { ab->updateAction( actionNum );}
-
-  next_floor = g.nextFloor(curX,curY-1);
-  if(next_floor == 1) {break;}
-  return true;
- }
- return false;
-}
 
 // command loop
  while(1) {
@@ -496,7 +499,7 @@ bool checkAndPlacePlayer(int xDisp, int yDisp, int actionNum) {
      if(preHealth != postHealth){ ab->updateAction(12);}
      else if(preGold != postGold){ ab->updateAction(13);}
      else { ab->updateAction(3);}
-     
+
      next_floor = g.nextFloor(curX,curY-1);
      if(next_floor == 1) {break;}
 
