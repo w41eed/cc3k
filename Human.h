@@ -10,6 +10,7 @@
 class Human: public Enemy {
 public:
     Human(Grid *); // ctor
+    ~Human(); // dtor
     char getChar() override; // gets char to be printed
 };
 

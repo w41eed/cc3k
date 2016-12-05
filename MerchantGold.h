@@ -6,7 +6,7 @@
 #ifndef MERCHANT_GOLD_H
 #define MERCHANT_GOLD_H
 
-class MerchantGold: Gold {
+class MerchantGold: public Gold {
 	public:
 		MerchantGold(); //Constructs a MerchantGold with value 4
         ~MerchantGold();

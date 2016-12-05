@@ -13,6 +13,7 @@ class Merchant: public Enemy {
 
 public:
     Merchant(Grid *); // ctor
+    ~Merchant(); //dtor
     char getChar() override; // gets char to be printed
     void getStruckBy(Character &) override; // gets struck by and sets hostility
     void strike(Character &) override; // strikes after checking hostility
