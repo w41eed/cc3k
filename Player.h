@@ -11,7 +11,7 @@ class Player: public Character {
 
 public:
  Player(int, int, int, int, std::string); //ctor
- char getChar(); // gets char to be printed
+ char getChar() override; // gets char to be printed
 };
 
 #endif

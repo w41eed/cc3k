@@ -28,15 +28,17 @@ void ActionBar::updateFloor(int f){
 	FloorNum = f;
 }
 
+//updates the potion type
 void ActionBar::updatePotion(std::string p){
 	PotionType = p;
 }
 
+//updates the action bar statement
 void ActionBar::updateAction(int n){
 	actionNum = n;
 }
 
-
+//updates the attack statements
 void ActionBar::updateAttack(std::string ename, int epre, int epost, int ppre){
 	EnemyName = ename;
 	EnemyPreStrike = epre;

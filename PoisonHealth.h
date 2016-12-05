@@ -14,7 +14,7 @@ public:
 	~PoisonHealth();
 
 	void usePotion(Character *c) override;
-//	TODO: check if health below 0. log message of obtaining potion
+//	//player uses potion
 };
 
 

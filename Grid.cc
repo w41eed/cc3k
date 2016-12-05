@@ -158,7 +158,7 @@ void Grid::moveOff(int x, int y) {
 }
 
 // returns char at x,y
-char Grid::getChar(int x, int y) {
+char Grid::getChar(int x, int y) const{
  if (theGrid[x][y]) {
   return theGrid[x][y]->getChar();
  }
@@ -167,12 +167,12 @@ char Grid::getChar(int x, int y) {
 }
 
 // returns character pointer at x, y
-Character *Grid::getCPtr(int x, int y) {
+Character *Grid::getCPtr(int x, int y) const {
  return theGrid[x][y]->getCPtr();
 }
 
 // returns a item pointer at x, y
-Item *Grid::getIPtr(int x, int y) {
+Item *Grid::getIPtr(int x, int y) const {
  return theGrid[x][y]->getIPtr();
 }
 
@@ -183,6 +183,6 @@ void Grid::takeOff(int x, int y) {
 
 
 //returns a pointer to the ActionBar
-ActionBar * Grid::getAction(){
+ActionBar * Grid::getAction() const{
   return ab;
 }

@@ -28,12 +28,12 @@ public:
 	ActionBar();
 	~ActionBar();
 
-	void updatePlayer(Character * c);
-	void updateFloor(int f);
-	void updatePotion(std::string p);
-	void updateAttack(std::string ename, int epre, int epost, int ppre);
-	void updateAction(int n);
-	int getHealth() const;
+	void updatePlayer(Character * c); //updates players health,attack, defence
+	void updateFloor(int f); //updates the floor numbers
+	void updatePotion(std::string p); //updates the potion type
+	void updateAttack(std::string ename, int epre, int epost, int ppre); //updates the attack action
+	void updateAction(int n); //updates the action statement
+	int getHealth() const; 
 	int getAttack() const;
 	int getDefence() const;
 	int getFloor() const;

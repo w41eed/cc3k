@@ -12,6 +12,7 @@ BoostDefence::BoostDefence(): Potions(5,'P',"BD") {}
 //Destructor
 BoostDefence::~BoostDefence(){}
 
+//applies potion effect on player
 void BoostDefence::usePotion(Character *c) {
     const int DefGain = getAmount();
     const double DrowPotionMultiplier = 1.5;

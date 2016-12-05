@@ -12,7 +12,7 @@ RestoreHealth::RestoreHealth(): Potions(10,'P',"RH") {}
 //Destructor
 RestoreHealth::~RestoreHealth(){}
 
-
+// use potion
 void RestoreHealth::usePotion(Character *c) {
     const int HPGain = getAmount();
     const double DrowPotionMultiplier = 1.5;

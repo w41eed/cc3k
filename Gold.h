@@ -12,9 +12,9 @@ class Gold: public Item {
 	public:
 		Gold(int n, char s); //constructor for Gold
 		char dSym() override; // for dragongold
-	        char getSym(); //returns the Gold symbol
+	    char getSym() override ; //returns the Gold symbol
 		int getVal(); //returns the gold value
-		std::string getType(); //doesn't do anything
+		std::string getType() override; //doesn't do anything
 		virtual ~Gold() {} //virtual destructor for gold and types of gold
 
 };

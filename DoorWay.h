@@ -9,7 +9,7 @@ class DoorWay: public Cell {
 
 public:
  DoorWay(int, int); // ctor
- char getChar() override; // returns char to be printed
+ char getChar()  override; // returns char to be printed
  bool canWalk() override; // can be walked on
  bool canPlace() override; // can be placed on
  void place(Character *) override; // place Character atop

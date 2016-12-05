@@ -12,6 +12,7 @@ BoostAttack::BoostAttack(): Potions(5,'P',"BA") {}
 //Destructor
 BoostAttack::~BoostAttack(){}
 
+//applies potion effect on player
 void BoostAttack::usePotion(Character *c) {
     const int AtkGain = getAmount();
     const double DrowPotionMultiplier = 1.5;

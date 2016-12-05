@@ -28,11 +28,13 @@ char Merchant::getChar() {
     return 'M';
 }
 
+// gets struck by and sets hostility
 void Merchant::getStruckBy(Character &other) {
  isHostile = true;
  Character::getStruckBy(other);
 }
 
+// strikes after checking hostility
 void Merchant::strike(Character &other) {
  if (isHostile == true) {
   Enemy::strike(other);

@@ -27,7 +27,7 @@ bool Enemy::Update(bool eMove) {
  if (HP <= 0) {
   g->moveOff(getX(), getY());
 
-  std::cout << getChar() << " DIED" << std::endl;
+  
 
   return true;
  }
@@ -145,7 +145,9 @@ bool Enemy::eAttack() {
   return false;
  }
 
- if(getERand(1, 2) == 1) {
+ if(getChar() == 'L'){ strike(*plyr);}
+
+ else if(getERand(1, 2) == 1) {
   strike(*plyr);
  }
 

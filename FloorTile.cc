@@ -6,7 +6,7 @@ FloorTile::FloorTile(int x, int y) : Cell{'.', x ,y} {
 }
 
 // gets char to be printed
-char FloorTile::getChar() {
+char FloorTile::getChar()  {
  
  if (c != nullptr) {
   return c->getChar();

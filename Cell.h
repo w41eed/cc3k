@@ -28,7 +28,7 @@ public:
  int getY() override; // returns y coordinate
  bool nextFloor(); //determines if player is on stairs
  Character *getCPtr(); // returns pointer to character on cell
- Item *getIPtr();
+ Item *getIPtr(); //returns a pointer to an item
  void takeOff(); // takes item off cell
 
 };

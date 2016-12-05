@@ -14,7 +14,7 @@ public:
 	
 	~BoostDefence();
 
-	void usePotion(Character *c) override;
+	void usePotion(Character *c) override; //applies potion effect on player
 };
 
 

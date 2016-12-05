@@ -12,6 +12,7 @@ PoisonHealth::PoisonHealth():Potions(-10,'P',"PH") {}
 //Destructor
 PoisonHealth::~PoisonHealth(){}
 
+//player uses potion
 void PoisonHealth::usePotion(Character *c) {
     const int HPLose = getAmount();
     const double DrowPotionMultiplier = 1.5;

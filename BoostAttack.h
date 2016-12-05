@@ -13,7 +13,7 @@ public:
 					 //potionType = BA
 	
 	~BoostAttack();
-    void usePotion(Character *c) override;
+    void usePotion(Character *c) override; //applies potion effect to player
 };
 
 

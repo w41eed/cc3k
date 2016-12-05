@@ -25,12 +25,12 @@ class Grid {
  bool place(int, int, Item *); // places Item at X, Y
  void moveOff(int, int); // moves Character off X, Y
  void takeOff(int, int); // takes Item off of X, Y
- char getChar(int, int); // gets char at x,y
+ char getChar(int, int) const; // gets char at x,y
  void cleanGrid(); // removes all the pointers to all the characters and items
  bool nextFloor(int x, int y); //returns true if player is on stairs
- Character *getCPtr(int, int); //  returns character ptr at X, Y
- Item *getIPtr(int, int); //  returns item ptr at X, Y
- ActionBar * getAction(); // return a pointer to the ActionBar
+ Character *getCPtr(int, int) const; //  returns character ptr at X, Y
+ Item *getIPtr(int, int) const; //  returns item ptr at X, Y
+ ActionBar * getAction() const; // return a pointer to the ActionBar
 };
 
 #endif

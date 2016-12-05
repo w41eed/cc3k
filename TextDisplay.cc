@@ -16,6 +16,7 @@ TextDisplay::TextDisplay() {
 	}
 }
 
+//textdisplay gets notified
 void TextDisplay::notify(Subject &whoNotified) {
 	int cellRow = whoNotified.getX();
 	int cellCol = whoNotified.getY();

@@ -5,7 +5,7 @@ DoorWay::DoorWay(int x, int y) : Cell{'+', x, y} {
 }
 
 // returns char to be printed
-char DoorWay::getChar() {
+char DoorWay::getChar()  {
  if (c == nullptr) {
   return symbol;
  } else {

@@ -58,13 +58,16 @@ bool Cell::nextFloor(){
 	
 }
 
+//returns a pointer to a character
 Character *Cell::getCPtr() {
  return c;
 }
 
+//retuns a pointer to an item
 Item *Cell::getIPtr() {
  return i;
 }
+
 
 void Cell::takeOff() {
  i = nullptr;

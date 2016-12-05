@@ -14,6 +14,7 @@ public:
 	
 	~RestoreHealth();
 	void usePotion(Character *c) override;
+	//use potion
 };
 
 

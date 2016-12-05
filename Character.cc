@@ -12,12 +12,12 @@ Character::~Character() {
 }
 
 // returns X coordinate
-int Character::getX() {
+int Character::getX() const{
  return xCo;
 }
 
 // returns Y coordinate
-int Character::getY() {
+int Character::getY() const{
  return yCo;
 }
 
@@ -32,17 +32,17 @@ void Character::setY(int i) {
 }
 
 // return Atk val
-int Character::getAtk() {
+int Character::getAtk() const{
  return Atk;
 }
 
 // return Def val
-int Character::getDef() {
+int Character::getDef() const{
  return Def;
 }
 
 // returns HP
-int Character::getHealth() {
+int Character::getHealth() const{
  return HP;
 }
 
@@ -96,15 +96,17 @@ void Character::setDef(int DefChange) {
  }
 }
 
-
-int Character::getG(){
+// returns the gold value
+int Character::getG() const{
  return gold;
 }
 
-std::string Character::getName(){
+//return the character name
+std::string Character::getName() const{
  return name;
 }
 
+//sets the gold value
 void Character::setG(int g) {
  gold += g;
 }
