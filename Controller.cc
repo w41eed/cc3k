@@ -428,6 +428,26 @@ while(floorNum <= 5) {
  int preHealth;
  int postHealth;
 
+bool checkAndPlacePlayer(int xDisp, int yDisp, int actionNum) {
+ if (g.canWalk(curX + xDisp, curY + yDisp)) {
+  g.moveOff(curX, curY);
+  g->place(curX + xDisp, curY + yDisp, c);
+  c->setX(curX + xDisp);
+  c->setY(curY + yDisp);
+
+  postHealth = c->getHealth();
+  postGold = c->getG();
+  if(preHealth != postHealth){ ab->updateAction(12);}
+  else if(preGold != postGold){ ab->updateAction(13);}
+  else { ab->updateAction( actionNum );}
+
+  next_floor = g.nextFloor(curX,curY-1);
+  if(next_floor == 1) {break;}
+  return true;
+ }
+ return false;
+}
+
 // command loop
  while(1) {
   
